@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Loading Screen Animation Fadeout
     const loader = document.getElementById('loader');
     if (loader) {
-        // Ensure loader is shown for a brief cinematic moment (1200ms)
         setTimeout(() => {
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
             
-            // Prevent background scrolling when mobile menu is open
             if (navLinks.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close mobile menu when a nav link is clicked
         const links = navLinks.querySelectorAll('.nav-link, .btn-primary');
         links.forEach(link => {
             link.addEventListener('click', () => {
@@ -54,7 +51,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Intersection Observer for Scroll Fade-In Animations
+    // 4. Venn Diagram Interactivity (Click circles to view capabilities details)
+    const vennCircles = document.querySelectorAll('.venn-circle');
+    const detailsPanels = document.querySelectorAll('.details-content');
+
+    if (vennCircles.length > 0 && detailsPanels.length > 0) {
+        vennCircles.forEach(circle => {
+            circle.addEventListener('click', () => {
+                // Remove active class from all circles
+                vennCircles.forEach(c => c.classList.remove('active-circle'));
+                // Add active class to clicked circle
+                circle.classList.add('active-circle');
+
+                // Get target key
+                const targetKey = circle.getAttribute('data-target');
+
+                // Hide all details panels
+                detailsPanels.forEach(panel => {
+                    panel.classList.remove('active');
+                });
+
+                // Show target details panel
+                const activePanel = document.getElementById(`details-${targetKey}`);
+                if (activePanel) {
+                    activePanel.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // 5. Intersection Observer for Scroll Fade-In Animations
     const fadeElements = document.querySelectorAll('.fade-in');
     
     if ('IntersectionObserver' in window) {
@@ -62,20 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Stop observing once animated in
                     observer.unobserve(entry.target);
                 }
             });
         }, {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters view
+            rootMargin: '0px 0px -50px 0px'
         });
 
         fadeElements.forEach(element => {
             fadeObserver.observe(element);
         });
     } else {
-        // Fallback for older browsers without IntersectionObserver support
         fadeElements.forEach(element => {
             element.classList.add('visible');
         });
