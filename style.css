@@ -723,10 +723,6 @@ a {
     border: 1.5px solid var(--border);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2.5rem;
     cursor: pointer;
     transition: var(--transition);
 }
@@ -736,18 +732,36 @@ a {
     top: 10px;
     left: 100px;
     background-color: rgba(255, 255, 255, 0.01);
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 3.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .circle-development {
     bottom: 20px;
     left: 10px;
     background-color: rgba(37, 99, 235, 0.02);
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+    padding-bottom: 3.5rem;
+    padding-left: 3.5rem;
+    padding-right: 2rem;
 }
 
 .circle-intelligence {
     bottom: 20px;
     right: 10px;
     background-color: rgba(168, 85, 247, 0.02);
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+    padding-bottom: 3.5rem;
+    padding-right: 3.5rem;
+    padding-left: 2rem;
 }
 
 .venn-circle:hover,
@@ -797,24 +811,22 @@ a {
     left: 215px;
     width: 90px;
     height: 90px;
-    border-radius: 50%;
-    background-color: var(--bg-base);
-    border: 1.5px solid var(--border);
     z-index: 12;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    pointer-events: none;
 }
 
 .intersection-label {
     font-family: var(--font-heading);
     font-size: 0.65rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: var(--accent-secondary);
     text-align: center;
     letter-spacing: 0.05em;
     line-height: 1.2;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
 }
 
 /* Detailed content box */
@@ -1047,22 +1059,53 @@ a {
     .venn-circle {
         width: 220px;
         height: 220px;
-        padding: 1.5rem;
     }
     
-    .circle-marketing { top: 10px; left: 70px; }
-    .circle-development { bottom: 10px; left: 10px; }
-    .circle-intelligence { bottom: 10px; right: 10px; }
+    .circle-marketing {
+        top: 10px;
+        left: 70px;
+        padding-top: 2.2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .circle-development {
+        bottom: 10px;
+        left: 10px;
+        padding-bottom: 2.2rem;
+        padding-left: 2.2rem;
+        padding-right: 1rem;
+        justify-content: flex-end;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .circle-intelligence {
+        bottom: 10px;
+        right: 10px;
+        padding-bottom: 2.2rem;
+        padding-right: 2.2rem;
+        padding-left: 1rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+        text-align: right;
+    }
     
     .venn-intersection {
         top: 150px;
         left: 145px;
         width: 70px;
         height: 70px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
     }
     
     .circle-title { font-size: 0.85rem; line-height: 1.2; }
-    .circle-desc { font-size: 0.65rem; max-width: 130px; line-height: 1.3; }
+    .circle-desc { font-size: 0.65rem; max-width: 120px; line-height: 1.3; }
     
     .results-grid {
         grid-template-columns: 1fr;
