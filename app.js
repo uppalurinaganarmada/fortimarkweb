@@ -182,31 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targetSection.classList.add('visible');
 
         // Play staggered animations depending on clicked option
-        if (targetId === '#services') {
-            const circles = targetSection.querySelectorAll('.venn-circle');
-            circles.forEach((circle, idx) => {
-                circle.style.opacity = '0';
-                circle.style.transform = 'scale(0.8) translateY(20px)';
-                setTimeout(() => {
-                    circle.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.15)';
-                    circle.style.opacity = '1';
-                    circle.style.transform = 'scale(1) translateY(0)';
-                }, idx * 150);
-            });
-        } 
-        else if (targetId === '#how-we-work') {
-            const items = targetSection.querySelectorAll('.timeline-item');
-            items.forEach((item, idx) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(40px)';
-                setTimeout(() => {
-                    item.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, idx * 120);
-            });
-        } 
-        else if (targetId === '#results') {
+        if (targetId === '#results') {
             const pawnSVGs = targetSection.querySelectorAll('.real-pawn-svg');
             const resultTexts = targetSection.querySelectorAll('.result-text');
 
@@ -235,6 +211,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }, 180);
                 }, rowStartDelay);
+            });
+        } 
+        else {
+            // Staggered left-to-right slide for other sections
+            const slideElements = targetSection.querySelectorAll('.slide-left-to-right');
+            
+            slideElements.forEach(el => {
+                el.classList.remove('animated');
+                el.style.opacity = '';
+                el.style.transform = '';
+                el.style.transition = '';
+                void el.offsetWidth; // trigger reflow
+            });
+
+            slideElements.forEach((el, idx) => {
+                setTimeout(() => {
+                    el.classList.add('animated');
+                }, 100 + idx * 120); // 120ms stagger
             });
         }
     }

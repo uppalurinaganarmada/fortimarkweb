@@ -319,6 +319,18 @@ a {
     transform: translateY(0);
 }
 
+/* Left-to-right entry reveal animation for section elements */
+.slide-left-to-right {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-left-to-right.animated {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
