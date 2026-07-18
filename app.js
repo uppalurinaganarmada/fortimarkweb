@@ -206,8 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const targetSection = document.querySelector(href);
                 if (targetSection) {
-                    // Smoothly scroll to target
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    // Smoothly scroll to target with offset to prevent fixed navbar overlap
+                    const headerHeight = document.querySelector('.top-bar').offsetHeight || 80;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight - 30;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                     
                     // Active style highlight in navbar links
                     navLinksList.forEach(l => l.style.color = '');
