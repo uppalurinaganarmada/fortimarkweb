@@ -642,7 +642,7 @@ a {
     grid-template-columns: 1fr 1.2fr;
     gap: 4rem;
     align-items: start;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .highlight-quote {
@@ -694,8 +694,7 @@ a {
 }
 
 .problem-outro {
-    border-top: 1px solid var(--border);
-    padding-top: 2rem;
+    padding-top: 0.5rem;
     font-size: 1.15rem;
     color: var(--text-secondary);
 }
