@@ -536,11 +536,11 @@ a {
 
 /* Active State: Unrolled Scroll */
 .scroll-frame.unrolled .scroll-paper {
-    height: 180px; /* expands downward */
+    height: 200px; /* expands downward */
 }
 
 .scroll-frame.unrolled .scroll-roller-bottom {
-    top: 198px; /* 18px base + 180px height */
+    top: 218px; /* 18px base + 200px height */
 }
 
 .scroll-frame.unrolled .scroll-content {
