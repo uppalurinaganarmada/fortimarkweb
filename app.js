@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     }
 
-    // 1b. Chessboard Background Generation & Headline Reveal
+    // 1b. Chessboard Background & Cinematic Logo Text Reveal Sequence
     const chessboardElement = document.getElementById('chessboard');
     const heroTitle = document.querySelector('.hero-title');
+    const logoName = document.getElementById('logo-name');
     
     if (chessboardElement && heroTitle) {
         // Generate the 64 squares dynamically (empty background grid)
@@ -23,10 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Trigger the hero title fade-in right after the Netflix logo zoom finishes (1.8s)
+        // 1. Reveal the name "FORTIMARK" as the logo zoom is completing (1.5 seconds)
+        if (logoName) {
+            setTimeout(() => {
+                logoName.classList.add('visible');
+            }, 1500);
+        }
+
+        // 2. Reveal the main headline after the logo text finishes its fade-in (2.5 seconds)
         setTimeout(() => {
             heroTitle.classList.add('title-fade-in');
-        }, 1800); 
+        }, 2500); 
     }
 
 
