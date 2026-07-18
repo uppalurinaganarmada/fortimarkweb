@@ -280,48 +280,46 @@ a {
     background-color: rgba(5, 6, 11, 0.35); /* highly transparent dark square */
 }
 
-.chess-piece {
-    width: 65%;
-    height: 65%;
+/* Netflix-Style Cinematic Zoom Logo */
+.netflix-logo-container {
+    width: 140px;
+    height: 168px;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transform: translateY(-10px) scale(0.8);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    perspective: 1000px;
+    z-index: 15;
 }
 
-/* White Pieces Color Styling (Subtle) */
-.piece-white {
-    color: rgba(243, 244, 246, 0.18); /* very faint silver white */
-}
-
-/* Black Pieces Color Styling (Subtle) */
-.piece-black {
-    color: rgba(87, 96, 117, 0.18); /* very faint slate black */
-}
-
-/* Logo Piece Special Styling (Vibrant Hero) */
-.piece-logo {
-    width: 80%;
-    height: 80%;
-    color: #f3f4f6; /* crisp white */
-    filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.9));
-    z-index: 5;
-}
-
-.crowned-rook-svg {
+.netflix-logo-rook {
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transform: translate3d(0, 0, -200px) scale(0.2);
+    animation: netflixZoomIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
 }
 
-/* Animation trigger class for pieces */
-.chess-piece.animate-in {
-    opacity: 1; /* let the rgba color transparency determine opacity */
-}
-
-.piece-logo.animate-in {
-    opacity: 0.95 !important;
+@keyframes netflixZoomIn {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, -300px) scale(0.1);
+        filter: drop-shadow(0 0 0 rgba(37, 99, 235, 0)) blur(10px);
+    }
+    35% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    75% {
+        transform: translate3d(0, 0, 40px) scale(1.1);
+        filter: drop-shadow(0 10px 40px rgba(37, 99, 235, 0.4));
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: drop-shadow(0 10px 30px rgba(37, 99, 235, 0.25));
+    }
 }
 
 .title-delayed-fade {
