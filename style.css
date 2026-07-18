@@ -710,15 +710,15 @@ a {
 
 .venn-diagram {
     position: relative;
-    width: 480px;
-    height: 480px;
+    width: 520px;
+    height: 520px;
     margin: 0 auto;
 }
 
 .venn-circle {
     position: absolute;
-    width: 280px;
-    height: 280px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
     border: 1.5px solid var(--border);
     display: flex;
@@ -726,27 +726,27 @@ a {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2rem;
+    padding: 2.5rem;
     cursor: pointer;
     transition: var(--transition);
 }
 
 /* Overlapping placement */
 .circle-marketing {
-    top: 20px;
+    top: 10px;
     left: 100px;
     background-color: rgba(255, 255, 255, 0.01);
 }
 
 .circle-development {
-    bottom: 40px;
-    left: 20px;
+    bottom: 20px;
+    left: 10px;
     background-color: rgba(37, 99, 235, 0.02);
 }
 
 .circle-intelligence {
-    bottom: 40px;
-    right: 20px;
+    bottom: 20px;
+    right: 10px;
     background-color: rgba(168, 85, 247, 0.02);
 }
 
@@ -775,24 +775,26 @@ a {
 
 .circle-title {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
+    line-height: 1.25;
 }
 
 .circle-desc {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     font-weight: 400;
-    max-width: 180px;
+    max-width: 170px;
+    line-height: 1.35;
 }
 
 /* Intersection center badge */
 .venn-intersection {
     position: absolute;
-    top: 195px;
-    left: 195px;
+    top: 220px;
+    left: 215px;
     width: 90px;
     height: 90px;
     border-radius: 50%;
@@ -1038,29 +1040,29 @@ a {
     
     .venn-diagram {
         width: 100%;
-        max-width: 320px;
-        height: 320px;
+        max-width: 360px;
+        height: 360px;
     }
     
     .venn-circle {
-        width: 180px;
-        height: 180px;
-        padding: 1rem;
+        width: 220px;
+        height: 220px;
+        padding: 1.5rem;
     }
     
     .circle-marketing { top: 10px; left: 70px; }
-    .circle-development { bottom: 20px; left: 10px; }
-    .circle-intelligence { bottom: 20px; right: 10px; }
+    .circle-development { bottom: 10px; left: 10px; }
+    .circle-intelligence { bottom: 10px; right: 10px; }
     
     .venn-intersection {
-        top: 125px;
-        left: 125px;
+        top: 150px;
+        left: 145px;
         width: 70px;
         height: 70px;
     }
     
-    .circle-title { font-size: 0.9rem; }
-    .circle-desc { font-size: 0.65rem; max-width: 120px; }
+    .circle-title { font-size: 0.85rem; line-height: 1.2; }
+    .circle-desc { font-size: 0.65rem; max-width: 130px; line-height: 1.3; }
     
     .results-grid {
         grid-template-columns: 1fr;
