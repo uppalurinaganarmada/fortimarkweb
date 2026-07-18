@@ -52,16 +52,22 @@
     <!-- Main Content Container -->
     <main>
         
+        <!-- Cinematic Intro Video Section (Full Width) -->
+        <section class="intro-video-section fade-in">
+            <div class="intro-video-container">
+                <video autoplay muted playsinline id="intro-video">
+                    <!-- Local user video source -->
+                    <source src="video/chess-intro.mp4" type="video/mp4">
+                    <!-- Live online preview fallback source -->
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-playing-chess-close-up-4841-large.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
         <!-- Hero Section -->
-        <section class="hero-section" id="hero">
+        <section class="hero-section" id="hero" style="padding-top: 5rem;">
             <div class="hero-container">
-                <!-- Cinematic Intro Video -->
-                <div class="intro-video-container fade-in">
-                    <video autoplay muted playsinline id="intro-video">
-                        <source src="video/chess-intro.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
                 <h1 class="hero-title title-delayed-fade" style="margin-bottom: 2rem;">Marketing Isn't Broken. <br><span class="accent-text">It's Just Disconnected.</span></h1>
                 
                 <!-- Our Services Section (Venn Diagram relocated here) -->
