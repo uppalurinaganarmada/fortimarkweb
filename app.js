@@ -195,4 +195,74 @@ document.addEventListener('DOMContentLoaded', () => {
             element.classList.add('visible');
         });
     }
+
+    // 7. Navbar Click Interceptor & Staggered Section Animations
+    const navLinksList = document.querySelectorAll('.nav-link');
+    
+    function triggerSectionClickAnimation(targetId) {
+        const targetSection = document.querySelector(targetId);
+        if (!targetSection) return;
+        
+        // Ensure targeted section is visible
+        targetSection.classList.add('visible');
+
+        // Play staggered animations depending on clicked option
+        if (targetId === '#services') {
+            const circles = targetSection.querySelectorAll('.venn-circle');
+            circles.forEach((circle, idx) => {
+                circle.style.opacity = '0';
+                circle.style.transform = 'scale(0.8) translateY(20px)';
+                setTimeout(() => {
+                    circle.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.15)';
+                    circle.style.opacity = '1';
+                    circle.style.transform = 'scale(1) translateY(0)';
+                }, idx * 150);
+            });
+        } 
+        else if (targetId === '#how-we-work') {
+            const items = targetSection.querySelectorAll('.timeline-item');
+            items.forEach((item, idx) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(40px)';
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, idx * 120);
+            });
+        } 
+        else if (targetId === '#results') {
+            const boxes = targetSection.querySelectorAll('.chess-square-box');
+            boxes.forEach((box, idx) => {
+                box.style.opacity = '0';
+                box.style.transform = 'scale(0.8) translateY(25px)';
+                setTimeout(() => {
+                    box.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.12)';
+                    box.style.opacity = '1';
+                    box.style.transform = 'scale(1) translateY(0)';
+                }, idx * 100);
+            });
+        }
+    }
+
+    navLinksList.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
+                if (targetSection) {
+                    // Smoothly scroll to target
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Active style highlight in navbar links
+                    navLinksList.forEach(l => l.style.color = '');
+                    link.style.color = 'var(--text-primary)';
+                    
+                    // Play custom staggered entrance animation
+                    triggerSectionClickAnimation(href);
+                }
+            }
+        });
+    });
 });
