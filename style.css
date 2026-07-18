@@ -229,6 +229,8 @@ a {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-badge {
@@ -244,37 +246,20 @@ a {
     margin-bottom: 2rem;
 }
 
-/* Chessboard Intro Section */
-.chess-intro-section {
+/* Chessboard Background Grid */
+.hero-chess-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    overflow: hidden;
-    background-color: #030408;
-    border-bottom: 1px solid var(--border);
-    margin-top: 72px; /* clear fixed top bar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3.5rem 1rem;
-}
-
-.chess-banner-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.chessboard-element {
+    height: 100vh; /* cover the first fold */
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    width: min(420px, 90vw);
-    height: min(420px, 90vw);
-    border: 3px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(37, 99, 235, 0.15);
-    background-color: #020306;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
 }
 
 .chess-square {
@@ -288,43 +273,40 @@ a {
 }
 
 .square-light {
-    background-color: #12141c; /* lighter chessboard square */
+    background-color: rgba(18, 20, 28, 0.15); /* highly transparent light square */
 }
 
 .square-dark {
-    background-color: #05060b; /* darker chessboard square */
+    background-color: rgba(5, 6, 11, 0.35); /* highly transparent dark square */
 }
 
 .chess-piece {
-    width: 70%;
-    height: 70%;
+    width: 65%;
+    height: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--text-secondary);
     opacity: 0;
     transform: translateY(-10px) scale(0.8);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* White Pieces Color Styling */
+/* White Pieces Color Styling (Subtle) */
 .piece-white {
-    color: #f3f4f6; /* Silver White */
-    filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1));
+    color: rgba(243, 244, 246, 0.18); /* very faint silver white */
 }
 
-/* Black Pieces Color Styling */
+/* Black Pieces Color Styling (Subtle) */
 .piece-black {
-    color: #576075; /* Slate Black */
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    color: rgba(87, 96, 117, 0.18); /* very faint slate black */
 }
 
-/* Logo Piece Special Styling */
+/* Logo Piece Special Styling (Vibrant Hero) */
 .piece-logo {
-    width: 85%;
-    height: 85%;
-    color: var(--text-primary);
-    filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.6));
+    width: 80%;
+    height: 80%;
+    color: #f3f4f6; /* crisp white */
+    filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.9));
     z-index: 5;
 }
 
@@ -335,8 +317,11 @@ a {
 
 /* Animation trigger class for pieces */
 .chess-piece.animate-in {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    opacity: 1; /* let the rgba color transparency determine opacity */
+}
+
+.piece-logo.animate-in {
+    opacity: 0.95 !important;
 }
 
 .title-delayed-fade {
@@ -1152,7 +1137,7 @@ a {
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
     
     .hero-section { padding: 9rem 1.5rem 3rem; }
-    .chess-intro-section { padding: 2rem 1rem; margin-top: 60px; }
+    .hero-chess-bg { height: 100vh; }
     .hero-title { margin-bottom: 3rem; }
     .trust-text::before, .trust-text::after { display: none; }
     .trust-logos { gap: 1.5rem 2rem; }
