@@ -697,6 +697,7 @@ a {
     align-items: center;
     margin-top: 2rem;
     margin-bottom: 4rem;
+    text-align: left;
 }
 
 .venn-diagram {
