@@ -181,56 +181,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure targeted section is visible
         targetSection.classList.add('visible');
 
-        // Play staggered animations depending on clicked option
-        if (targetId === '#results') {
-            const pawnSVGs = targetSection.querySelectorAll('.real-pawn-svg');
-            const resultTexts = targetSection.querySelectorAll('.result-text');
+        // Staggered left-to-right slide for elements in the section
+        const slideElements = targetSection.querySelectorAll('.slide-left-to-right');
+        
+        slideElements.forEach(el => {
+            el.classList.remove('animated');
+            el.style.opacity = '';
+            el.style.transform = '';
+            el.style.transition = '';
+            void el.offsetWidth; // trigger reflow
+        });
 
-            // Reset classes to restart animations
-            pawnSVGs.forEach(pawn => {
-                pawn.classList.remove('pawn-sliding');
-                void pawn.offsetWidth; // trigger reflow
-            });
-            resultTexts.forEach(txt => {
-                txt.classList.remove('revealed');
-            });
-
-            // Play staggered guided slide-reveals row-by-row
-            pawnSVGs.forEach((pawn, idx) => {
-                const textNode = resultTexts[idx];
-                const rowStartDelay = 100 + idx * 450; 
-                
-                setTimeout(() => {
-                    // Start Pawn slide sweep
-                    pawn.classList.add('pawn-sliding');
-                    
-                    // Reveal the text trailing the Pawn as it crosses the boundary
-                    setTimeout(() => {
-                        if (textNode) {
-                            textNode.classList.add('revealed');
-                        }
-                    }, 180);
-                }, rowStartDelay);
-            });
-        } 
-        else {
-            // Staggered left-to-right slide for other sections
-            const slideElements = targetSection.querySelectorAll('.slide-left-to-right');
-            
-            slideElements.forEach(el => {
-                el.classList.remove('animated');
-                el.style.opacity = '';
-                el.style.transform = '';
-                el.style.transition = '';
-                void el.offsetWidth; // trigger reflow
-            });
-
-            slideElements.forEach((el, idx) => {
-                setTimeout(() => {
-                    el.classList.add('animated');
-                }, 100 + idx * 120); // 120ms stagger
-            });
-        }
+        slideElements.forEach((el, idx) => {
+            setTimeout(() => {
+                el.classList.add('animated');
+            }, 100 + idx * 120); // 120ms stagger
+        });
     }
 
     navLinksList.forEach(link => {

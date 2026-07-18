@@ -216,7 +216,7 @@ a {
 
 /* Hero Section */
 .hero-section {
-    padding: 11rem 2rem 4rem;
+    padding: 11rem 2rem 8rem;
     display: flex;
     justify-content: center;
     position: relative;
@@ -1026,16 +1026,12 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible;
-    position: relative;
 }
 
 .real-pawn-svg {
     width: 100%;
     height: 100%;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
-    position: relative;
-    z-index: 30; /* Keep pawn on top of text while translating */
 }
 
 .chess-square-box:hover .real-pawn-svg {
@@ -1050,57 +1046,6 @@ a {
     color: var(--text-primary);
     text-align: left;
     width: 100%;
-    
-    /* Guide Reveal States */
-    clip-path: inset(0 100% 0 0);
-    opacity: 0;
-    transition: clip-path 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.result-text.revealed {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-}
-
-/* Guide Slide Keyframe Animations */
-@keyframes pawnGuideSlide {
-    0% {
-        transform: translateX(0);
-        filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0));
-    }
-    40% {
-        transform: translateX(300px) scale(1.15);
-        filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.85));
-    }
-    65% {
-        transform: translateX(300px) scale(1.15);
-        filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.85));
-    }
-    100% {
-        transform: translateX(0) scale(1);
-        filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0));
-    }
-}
-
-@keyframes pawnGuideSlideMobile {
-    0% {
-        transform: translateX(0);
-    }
-    40% {
-        transform: translateX(180px) scale(1.15);
-        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
-    }
-    65% {
-        transform: translateX(180px) scale(1.15);
-        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
-    }
-    100% {
-        transform: translateX(0) scale(1);
-    }
-}
-
-.pawn-sliding {
-    animation: pawnGuideSlide 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .results-statement {
