@@ -9,6 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     }
 
+    // 1b. Video playback & Hero Title cinematic fade-in
+    const introVideo = document.getElementById('intro-video');
+    const heroTitle = document.querySelector('.hero-title');
+    
+    if (introVideo && heroTitle) {
+        // Video plays once
+        introVideo.loop = false;
+
+        // When the video ends, fade in the hero title
+        introVideo.addEventListener('ended', () => {
+            heroTitle.classList.add('title-fade-in');
+        });
+
+        // Check if video file fails to load or takes too long (fallback to show title)
+        introVideo.addEventListener('error', () => {
+            heroTitle.classList.add('title-fade-in');
+        });
+
+        // Safety fallback: show title if video doesn't trigger/finish within 4.5 seconds
+        setTimeout(() => {
+            if (!heroTitle.classList.contains('title-fade-in')) {
+                heroTitle.classList.add('title-fade-in');
+            }
+        }, 4500);
+    }
+
     // 2. Mobile Menu Navigation Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
