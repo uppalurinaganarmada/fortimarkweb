@@ -171,32 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. Intersection Observer for Scroll Fade-In Animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    if ('IntersectionObserver' in window) {
-        const fadeObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        fadeElements.forEach(element => {
-            fadeObserver.observe(element);
-        });
-    } else {
-        fadeElements.forEach(element => {
-            element.classList.add('visible');
-        });
-    }
-
-    // 7. Navbar Click Interceptor & Staggered Section Animations
+    // 6. Navbar Click Interceptor & Staggered Section Animations
     const navLinksList = document.querySelectorAll('.nav-link');
     
     function triggerSectionClickAnimation(targetId) {
@@ -232,15 +207,34 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } 
         else if (targetId === '#results') {
-            const boxes = targetSection.querySelectorAll('.chess-square-box');
-            boxes.forEach((box, idx) => {
-                box.style.opacity = '0';
-                box.style.transform = 'scale(0.8) translateY(25px)';
+            const pawnSVGs = targetSection.querySelectorAll('.real-pawn-svg');
+            const resultTexts = targetSection.querySelectorAll('.result-text');
+
+            // Reset classes to restart animations
+            pawnSVGs.forEach(pawn => {
+                pawn.classList.remove('pawn-sliding');
+                void pawn.offsetWidth; // trigger reflow
+            });
+            resultTexts.forEach(txt => {
+                txt.classList.remove('revealed');
+            });
+
+            // Play staggered guided slide-reveals row-by-row
+            pawnSVGs.forEach((pawn, idx) => {
+                const textNode = resultTexts[idx];
+                const rowStartDelay = 100 + idx * 450; 
+                
                 setTimeout(() => {
-                    box.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.12)';
-                    box.style.opacity = '1';
-                    box.style.transform = 'scale(1) translateY(0)';
-                }, idx * 100);
+                    // Start Pawn slide sweep
+                    pawn.classList.add('pawn-sliding');
+                    
+                    // Reveal the text trailing the Pawn as it crosses the boundary
+                    setTimeout(() => {
+                        if (textNode) {
+                            textNode.classList.add('revealed');
+                        }
+                    }, 180);
+                }, rowStartDelay);
             });
         }
     }
@@ -265,4 +259,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 7. Intersection Observer for Scroll Fade-In Animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    if ('IntersectionObserver' in window) {
+        const fadeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger guided outcomes animation when outcomes section enters viewport
+                    if (entry.target.id === 'results') {
+                        triggerSectionClickAnimation('#results');
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+    } else {
+        fadeElements.forEach(element => {
+            element.classList.add('visible');
+        });
+    }
 });

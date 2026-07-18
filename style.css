@@ -39,10 +39,10 @@ body {
     line-height: 1.6;
     background-color: #030408;
     background-image: 
-        linear-gradient(45deg, #08090d 25%, transparent 25%), 
-        linear-gradient(-45deg, #08090d 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #08090d 75%), 
-        linear-gradient(-45deg, transparent 75%, #08090d 75%);
+        linear-gradient(45deg, #0f111c 25%, transparent 25%), 
+        linear-gradient(-45deg, #0f111c 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #0f111c 75%), 
+        linear-gradient(-45deg, transparent 75%, #0f111c 75%);
     background-size: 160px 160px;
     background-position: 0 0, 0 80px, 80px -80px, -80px 0px;
 }
@@ -973,9 +973,15 @@ a {
     border: 4px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(37, 99, 235, 0.12);
     border-radius: 10px;
-    overflow: hidden;
+    overflow: visible; /* Allow pawns to cross columns without clipping */
     width: fit-content;
 }
+
+/* Corner-rounding for the individual cell boxes to support overflow: visible */
+.results-chess-column > div:nth-child(1) { border-top-left-radius: 6px; }
+.results-chess-column > div:nth-child(2) { border-top-right-radius: 6px; }
+.results-chess-column > div:nth-last-child(2) { border-bottom-left-radius: 6px; }
+.results-chess-column > div:nth-child(10) { border-bottom-right-radius: 6px; }
 
 .chess-square-box {
     display: flex;
@@ -984,6 +990,7 @@ a {
     padding: 0 1.5rem;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
+    overflow: visible;
 }
 
 .light-box-square {
@@ -1007,12 +1014,16 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+    position: relative;
 }
 
 .real-pawn-svg {
     width: 100%;
     height: 100%;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    position: relative;
+    z-index: 30; /* Keep pawn on top of text while translating */
 }
 
 .chess-square-box:hover .real-pawn-svg {
@@ -1027,6 +1038,57 @@ a {
     color: var(--text-primary);
     text-align: left;
     width: 100%;
+    
+    /* Guide Reveal States */
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transition: clip-path 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.result-text.revealed {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+}
+
+/* Guide Slide Keyframe Animations */
+@keyframes pawnGuideSlide {
+    0% {
+        transform: translateX(0);
+        filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0));
+    }
+    40% {
+        transform: translateX(300px) scale(1.15);
+        filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.85));
+    }
+    65% {
+        transform: translateX(300px) scale(1.15);
+        filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.85));
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0));
+    }
+}
+
+@keyframes pawnGuideSlideMobile {
+    0% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(180px) scale(1.15);
+        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
+    }
+    65% {
+        transform: translateX(180px) scale(1.15);
+        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
+    }
+    100% {
+        transform: translateX(0) scale(1);
+    }
+}
+
+.pawn-sliding {
+    animation: pawnGuideSlide 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .results-statement {
