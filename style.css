@@ -297,8 +297,8 @@ a {
     opacity: 0;
     transform: translate3d(0, 0, -200px) scale(0.2);
     animation: netflixZoomIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    /* Clean white outline shadow + blue ambient glow */
-    filter: drop-shadow(0 0 1.5px #f3f4f6) drop-shadow(0 15px 30px rgba(37, 99, 235, 0.45));
+    /* Soft blue ambient glow behind white logo */
+    filter: drop-shadow(0 15px 30px rgba(37, 99, 235, 0.45));
 }
 
 .logo-name-reveal {
@@ -323,20 +323,20 @@ a {
     0% {
         opacity: 0;
         transform: translate3d(0, 0, -300px) scale(0.1);
-        filter: drop-shadow(0 0 1.5px #f3f4f6) drop-shadow(0 0 0 rgba(37, 99, 235, 0)) blur(10px);
+        filter: drop-shadow(0 0 0 rgba(37, 99, 235, 0)) blur(10px);
     }
     35% {
         opacity: 1;
-        filter: drop-shadow(0 0 1.5px #f3f4f6) blur(0);
+        filter: blur(0);
     }
     75% {
         transform: translate3d(0, 0, 40px) scale(1.1);
-        filter: drop-shadow(0 0 1.5px #f3f4f6) drop-shadow(0 15px 40px rgba(37, 99, 235, 0.6));
+        filter: drop-shadow(0 15px 40px rgba(37, 99, 235, 0.6));
     }
     100% {
         opacity: 1;
         transform: translate3d(0, 0, 0) scale(1);
-        filter: drop-shadow(0 0 1.5px #f3f4f6) drop-shadow(0 15px 30px rgba(37, 99, 235, 0.35));
+        filter: drop-shadow(0 15px 30px rgba(37, 99, 235, 0.35));
     }
 }
 
@@ -996,43 +996,76 @@ a {
 /* ==========================================================================
    04 / Results Styling
    ========================================================================== */
-.results-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-}
-
-.result-item {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border);
-    padding: 2.5rem 1.5rem;
-    border-radius: 8px;
+.results-chess-column {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    transition: var(--transition);
+    max-width: 600px;
+    width: 100%;
+    margin: 3.5rem auto 4.5rem;
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(37, 99, 235, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.result-item:hover {
-    border-color: var(--text-primary);
-    background-color: var(--bg-surface-hover);
-    transform: translateY(-4px);
+.results-chess-row {
+    display: flex;
+    align-items: center;
+    padding: 1.8rem 2.5rem;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
 }
 
-.result-icon {
-    font-size: 1.5rem;
-    color: var(--text-primary);
+.results-chess-row:last-child {
+    border-bottom: none;
+}
+
+.light-row-square {
+    background-color: #12141c; /* lighter chess square */
+}
+
+.dark-row-square {
+    background-color: #05060b; /* darker chess square */
+}
+
+.results-chess-row:hover {
+    background-color: rgba(37, 99, 235, 0.08);
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.soldier-coin {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f3f4f6; /* Silver Pawn */
+    filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.15));
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease, filter 0.3s ease;
+}
+
+.results-chess-row:hover .soldier-coin {
+    transform: scale(1.2) rotate(8deg);
+    color: #2563eb; /* Lights up blue on hover */
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.9));
+}
+
+.pawn-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.result-text {
     font-family: var(--font-heading);
+    font-size: 1.25rem;
     font-weight: 700;
-}
-
-.result-item h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    line-height: 1.4;
     color: var(--text-primary);
+    text-align: left;
+    letter-spacing: 0.02em;
 }
 
 .results-statement {
@@ -1215,8 +1248,16 @@ a {
     .circle-title { font-size: 0.85rem; line-height: 1.2; }
     .circle-desc { font-size: 0.65rem; max-width: 120px; line-height: 1.3; }
     
-    .results-grid {
-        grid-template-columns: 1fr;
+    .results-chess-row {
+        padding: 1.2rem 1.5rem;
+        gap: 1.2rem;
+    }
+    .result-text {
+        font-size: 1.05rem;
+    }
+    .soldier-coin {
+        width: 36px;
+        height: 36px;
     }
     
     .scroll-wrapper {
