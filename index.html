@@ -54,8 +54,6 @@
         
         <!-- Hero Section -->
         <section class="hero-section" id="hero">
-            <!-- Chessboard Background Grid -->
-            <div id="chessboard" class="hero-chess-bg"></div>
             
             <div class="hero-container">
                 <!-- Cinematic Netflix-Style Zoom Logo -->
@@ -330,61 +328,113 @@
                 <span class="badge-accent">03 / The Outcome</span>
                 <h2 class="section-title">We Don't Measure Likes. <br><span class="accent-text">We Measure Growth.</span></h2>
                 
-                <!-- Chessboard Column List with Soldier Coins (Pawns) -->
+                <!-- 2-Column Chessboard Column Grid (Squares) with Realistic Soldier Coins (Pawns) -->
                 <div class="results-chess-column">
-                    <!-- Point 1 -->
-                    <div class="results-chess-row light-row-square">
+                    <!-- Row 1 -->
+                    <div class="chess-square-box light-box-square">
                         <div class="soldier-coin">
-                            <svg viewBox="0 0 100 100" class="pawn-svg">
-                                <circle cx="50" cy="35" r="13" fill="currentColor"/>
-                                <path d="M38,78 L62,78 L57,53 L43,53 Z" fill="currentColor"/>
-                                <rect x="33" y="78" width="34" height="5" rx="1.5" fill="currentColor"/>
+                            <svg viewBox="0 0 100 100" class="real-pawn-svg">
+                                <defs>
+                                    <linearGradient id="pawn-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#ffffff" />
+                                        <stop offset="30%" stop-color="#cbd5e1" />
+                                        <stop offset="70%" stop-color="#64748b" />
+                                        <stop offset="100%" stop-color="#334155" />
+                                    </linearGradient>
+                                    <radialGradient id="pawn-glow" cx="40%" cy="25%" r="50%">
+                                        <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+                                        <stop offset="45%" stop-color="#cbd5e1" stop-opacity="0.8" />
+                                        <stop offset="100%" stop-color="#475569" stop-opacity="0" />
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="50" cy="32" r="16" fill="url(#pawn-glow)" opacity="0.5" />
+                                <ellipse cx="50" cy="85" rx="28" ry="8" fill="#000000" opacity="0.5" />
+                                <path d="M22,82 C22,78 26,75 50,75 C74,75 78,78 78,82 C78,86 74,88 50,88 C26,88 22,86 22,82 Z" fill="url(#pawn-grad)" />
+                                <path d="M25,76 L75,76 L71,68 L29,68 Z" fill="url(#pawn-grad)" />
+                                <path d="M29,68 C29,55 42,48 42,45 C42,45 35,45 35,42 C35,39 65,39 65,42 C65,45 58,45 58,45 C58,48 71,55 71,68 Z" fill="url(#pawn-grad)" />
+                                <ellipse cx="50" cy="42" rx="15" ry="3.5" fill="url(#pawn-grad)" />
+                                <circle cx="50" cy="30" r="13" fill="url(#pawn-grad)" />
+                                <circle cx="45" cy="25" r="4" fill="#ffffff" opacity="0.8" />
                             </svg>
                         </div>
+                    </div>
+                    <div class="chess-square-box dark-box-square">
                         <div class="result-text">Better customer retention</div>
                     </div>
-                    <!-- Point 2 -->
-                    <div class="results-chess-row dark-row-square">
-                        <div class="soldier-coin">
-                            <svg viewBox="0 0 100 100" class="pawn-svg">
-                                <circle cx="50" cy="35" r="13" fill="currentColor"/>
-                                <path d="M38,78 L62,78 L57,53 L43,53 Z" fill="currentColor"/>
-                                <rect x="33" y="78" width="34" height="5" rx="1.5" fill="currentColor"/>
-                            </svg>
-                        </div>
+
+                    <!-- Row 2 -->
+                    <div class="chess-square-box dark-box-square">
                         <div class="result-text">Stronger online visibility</div>
                     </div>
-                    <!-- Point 3 -->
-                    <div class="results-chess-row light-row-square">
+                    <div class="chess-square-box light-box-square">
                         <div class="soldier-coin">
-                            <svg viewBox="0 0 100 100" class="pawn-svg">
-                                <circle cx="50" cy="35" r="13" fill="currentColor"/>
-                                <path d="M38,78 L62,78 L57,53 L43,53 Z" fill="currentColor"/>
-                                <rect x="33" y="78" width="34" height="5" rx="1.5" fill="currentColor"/>
+                            <svg viewBox="0 0 100 100" class="real-pawn-svg">
+                                <circle cx="50" cy="32" r="16" fill="url(#pawn-glow)" opacity="0.5" />
+                                <ellipse cx="50" cy="85" rx="28" ry="8" fill="#000000" opacity="0.5" />
+                                <path d="M22,82 C22,78 26,75 50,75 C74,75 78,78 78,82 C78,86 74,88 50,88 C26,88 22,86 22,82 Z" fill="url(#pawn-grad)" />
+                                <path d="M25,76 L75,76 L71,68 L29,68 Z" fill="url(#pawn-grad)" />
+                                <path d="M29,68 C29,55 42,48 42,45 C42,45 35,45 35,42 C35,39 65,39 65,42 C65,45 58,45 58,45 C58,48 71,55 71,68 Z" fill="url(#pawn-grad)" />
+                                <ellipse cx="50" cy="42" rx="15" ry="3.5" fill="url(#pawn-grad)" />
+                                <circle cx="50" cy="30" r="13" fill="url(#pawn-grad)" />
+                                <circle cx="45" cy="25" r="4" fill="#ffffff" opacity="0.8" />
                             </svg>
                         </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="chess-square-box light-box-square">
+                        <div class="soldier-coin">
+                            <svg viewBox="0 0 100 100" class="real-pawn-svg">
+                                <circle cx="50" cy="32" r="16" fill="url(#pawn-glow)" opacity="0.5" />
+                                <ellipse cx="50" cy="85" rx="28" ry="8" fill="#000000" opacity="0.5" />
+                                <path d="M22,82 C22,78 26,75 50,75 C74,75 78,78 78,82 C78,86 74,88 50,88 C26,88 22,86 22,82 Z" fill="url(#pawn-grad)" />
+                                <path d="M25,76 L75,76 L71,68 L29,68 Z" fill="url(#pawn-grad)" />
+                                <path d="M29,68 C29,55 42,48 42,45 C42,45 35,45 35,42 C35,39 65,39 65,42 C65,45 58,45 58,45 C58,48 71,55 71,68 Z" fill="url(#pawn-grad)" />
+                                <ellipse cx="50" cy="42" rx="15" ry="3.5" fill="url(#pawn-grad)" />
+                                <circle cx="50" cy="30" r="13" fill="url(#pawn-grad)" />
+                                <circle cx="45" cy="25" r="4" fill="#ffffff" opacity="0.8" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="chess-square-box dark-box-square">
                         <div class="result-text">Higher return on ad spend</div>
                     </div>
-                    <!-- Point 4 -->
-                    <div class="results-chess-row dark-row-square">
-                        <div class="soldier-coin">
-                            <svg viewBox="0 0 100 100" class="pawn-svg">
-                                <circle cx="50" cy="35" r="13" fill="currentColor"/>
-                                <path d="M38,78 L62,78 L57,53 L43,53 Z" fill="currentColor"/>
-                                <rect x="33" y="78" width="34" height="5" rx="1.5" fill="currentColor"/>
-                            </svg>
-                        </div>
+
+                    <!-- Row 4 -->
+                    <div class="chess-square-box dark-box-square">
                         <div class="result-text">More repeat customers</div>
                     </div>
-                    <!-- Point 5 -->
-                    <div class="results-chess-row light-row-square">
+                    <div class="chess-square-box light-box-square">
                         <div class="soldier-coin">
-                            <svg viewBox="0 0 100 100" class="pawn-svg">
-                                <circle cx="50" cy="35" r="13" fill="currentColor"/>
-                                <path d="M38,78 L62,78 L57,53 L43,53 Z" fill="currentColor"/>
-                                <rect x="33" y="78" width="34" height="5" rx="1.5" fill="currentColor"/>
+                            <svg viewBox="0 0 100 100" class="real-pawn-svg">
+                                <circle cx="50" cy="32" r="16" fill="url(#pawn-glow)" opacity="0.5" />
+                                <ellipse cx="50" cy="85" rx="28" ry="8" fill="#000000" opacity="0.5" />
+                                <path d="M22,82 C22,78 26,75 50,75 C74,75 78,78 78,82 C78,86 74,88 50,88 C26,88 22,86 22,82 Z" fill="url(#pawn-grad)" />
+                                <path d="M25,76 L75,76 L71,68 L29,68 Z" fill="url(#pawn-grad)" />
+                                <path d="M29,68 C29,55 42,48 42,45 C42,45 35,45 35,42 C35,39 65,39 65,42 C65,45 58,45 58,45 C58,48 71,55 71,68 Z" fill="url(#pawn-grad)" />
+                                <ellipse cx="50" cy="42" rx="15" ry="3.5" fill="url(#pawn-grad)" />
+                                <circle cx="50" cy="30" r="13" fill="url(#pawn-grad)" />
+                                <circle cx="45" cy="25" r="4" fill="#ffffff" opacity="0.8" />
                             </svg>
                         </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="chess-square-box light-box-square">
+                        <div class="soldier-coin">
+                            <svg viewBox="0 0 100 100" class="real-pawn-svg">
+                                <circle cx="50" cy="32" r="16" fill="url(#pawn-glow)" opacity="0.5" />
+                                <ellipse cx="50" cy="85" rx="28" ry="8" fill="#000000" opacity="0.5" />
+                                <path d="M22,82 C22,78 26,75 50,75 C74,75 78,78 78,82 C78,86 74,88 50,88 C26,88 22,86 22,82 Z" fill="url(#pawn-grad)" />
+                                <path d="M25,76 L75,76 L71,68 L29,68 Z" fill="url(#pawn-grad)" />
+                                <path d="M29,68 C29,55 42,48 42,45 C42,45 35,45 35,42 C35,39 65,39 65,42 C65,45 58,45 58,45 C58,48 71,55 71,68 Z" fill="url(#pawn-grad)" />
+                                <ellipse cx="50" cy="42" rx="15" ry="3.5" fill="url(#pawn-grad)" />
+                                <circle cx="50" cy="30" r="13" fill="url(#pawn-grad)" />
+                                <circle cx="45" cy="25" r="4" fill="#ffffff" opacity="0.8" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="chess-square-box dark-box-square">
                         <div class="result-text">More revenue</div>
                     </div>
                 </div>

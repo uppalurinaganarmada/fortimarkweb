@@ -9,21 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     }
 
-    // 1b. Chessboard Background & Cinematic Logo Text Reveal Sequence
-    const chessboardElement = document.getElementById('chessboard');
+    // 1b. Cinematic Logo Text Reveal & Headline Reveal Timeline
     const heroTitle = document.querySelector('.hero-title');
     const logoName = document.getElementById('logo-name');
     
-    if (chessboardElement && heroTitle) {
-        // Generate the 64 squares dynamically (empty background grid)
-        for (let row = 0; row < 8; row++) {
-            for (let col = 0; col < 8; col++) {
-                const square = document.createElement('div');
-                square.className = 'chess-square ' + ((row + col) % 2 === 0 ? 'square-light' : 'square-dark');
-                chessboardElement.appendChild(square);
-            }
-        }
-
+    if (heroTitle) {
         // 1. Reveal the name "FORTIMARK" as the logo zoom is completing (1.5 seconds)
         if (logoName) {
             setTimeout(() => {
