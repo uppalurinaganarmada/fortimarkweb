@@ -70,6 +70,16 @@ h1, h2, h3, h4 {
     line-height: 1.25;
 }
 
+p, 
+.lead-text, 
+.highlight-quote, 
+.highlight-quote span,
+.result-text, 
+.details-sub, 
+.process-statement-card {
+    font-family: "Baskerville Old Face", "Baskerville", "Libre Baskerville", "Georgia", serif;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -646,7 +656,6 @@ a {
 }
 
 .highlight-quote {
-    font-family: var(--font-heading);
     font-size: 1.45rem;
     line-height: 1.4;
     color: var(--text-primary);
