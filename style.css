@@ -38,6 +38,18 @@ body {
     flex-direction: column;
     line-height: 1.6;
     background-color: #030408;
+}
+
+/* Zooming Chessboard Background Container */
+.chessboard-bg {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: -2;
+    pointer-events: none;
+    background-color: #030408;
     background-image: 
         linear-gradient(45deg, #0f111c 25%, transparent 25%), 
         linear-gradient(-45deg, #0f111c 25%, transparent 25%), 
@@ -45,6 +57,17 @@ body {
         linear-gradient(-45deg, transparent 75%, #0f111c 75%);
     background-size: 160px 160px;
     background-position: 0 0, 0 80px, 80px -80px, -80px 0px;
+    animation: chessboardZoom 120s linear infinite alternate;
+    will-change: transform;
+}
+
+@keyframes chessboardZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.15);
+    }
 }
 
 /* Scrollbar Customization */
