@@ -13,7 +13,7 @@
     --border-hover: rgba(255, 255, 255, 0.2);
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-body: "Candara", "Calibri", "Segoe UI", sans-serif;
 }
 
 * {
