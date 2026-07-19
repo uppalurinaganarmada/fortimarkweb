@@ -100,7 +100,7 @@ p,
 .result-text, 
 .details-sub, 
 .process-statement-card {
-    font-family: "Baskerville Old Face", "Baskerville", "Libre Baskerville", "Georgia", serif;
+    font-family: "Candara", "Calibri", "Segoe UI", sans-serif;
 }
 
 a {
@@ -598,6 +598,8 @@ a {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
+    text-align: center;
 }
 
 .badge-accent {
@@ -671,20 +673,36 @@ a {
    01 / The Problem Styling
    ========================================================================== */
 .problem-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
-    align-items: start;
-    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+    width: 100%;
+}
+
+.problem-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
 }
 
 .highlight-quote {
     font-size: 1.45rem;
     line-height: 1.4;
     color: var(--text-primary);
-    border-left: 2px solid var(--accent);
-    padding-left: 1.5rem;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
     margin-top: 2rem;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
 }
 
 .highlight-quote span {
@@ -697,6 +715,8 @@ a {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
 }
 
 .problem-card {
@@ -705,6 +725,11 @@ a {
     padding: 2rem;
     border-radius: 8px;
     transition: var(--transition);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .problem-card:hover {
@@ -717,43 +742,61 @@ a {
     color: var(--text-primary);
     margin-bottom: 0.75rem;
     font-size: 1.05rem;
+    text-align: center;
 }
 
 .problem-card p {
     color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.5;
+    text-align: center;
 }
 
 .problem-outro {
     padding-top: 0.5rem;
     font-size: 1.15rem;
     color: var(--text-secondary);
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* ==========================================================================
    02 / How We Work Styling
    ========================================================================== */
 .process-statement-card {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
-    border-left: 3px solid var(--text-primary);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+    border-top: 3px solid var(--text-primary);
     padding: 1.5rem 2rem;
-    border-radius: 0 8px 8px 0;
+    border-radius: 8px;
     font-size: 1.2rem;
-    margin-bottom: 4rem;
+    margin: 0 auto 4rem;
+    text-align: center;
+    max-width: 800px;
 }
 
 .timeline {
     position: relative;
     max-width: 900px;
-    margin-left: 1rem;
-    padding-left: 3rem;
-    border-left: 1px solid var(--border);
+    margin: 0 auto;
+    padding-left: 0;
+    border-left: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
 }
 
 .timeline-item:last-child {
@@ -761,11 +804,10 @@ a {
 }
 
 .timeline-number {
-    position: absolute;
-    left: -4.15rem;
-    top: 0;
-    width: 2.25rem;
-    height: 2.25rem;
+    position: static;
+    margin-bottom: 1.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     background-color: var(--bg-base);
     border: 1px solid var(--border);
@@ -774,13 +816,17 @@ a {
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     transition: var(--transition);
 }
 
 .timeline-content {
     transition: var(--transition);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .timeline-item:hover .timeline-number {
@@ -793,6 +839,7 @@ a {
     font-size: 1.35rem;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
+    text-align: center;
 }
 
 .timeline-item:hover .timeline-content h3 {
@@ -802,7 +849,8 @@ a {
 .timeline-content p {
     color: var(--text-secondary);
     font-size: 0.95rem;
-    max-width: 700px;
+    max-width: 600px;
+    text-align: center;
 }
 
 .process-outro {
@@ -817,13 +865,16 @@ a {
    03 / What We Help With Styling (Interactive Venn)
    ========================================================================== */
 .venn-wrapper {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 3.5rem;
     margin-top: 2rem;
     margin-bottom: 4rem;
-    text-align: left;
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .venn-diagram {
@@ -962,6 +1013,7 @@ a {
 .details-content {
     display: none;
     animation: fadeIn 0.4s ease forwards;
+    text-align: center;
 }
 
 .details-content.active {
@@ -972,6 +1024,7 @@ a {
     font-size: 1.65rem;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
+    text-align: center;
 }
 
 .details-sub {
@@ -979,12 +1032,14 @@ a {
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .details-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+    justify-content: center;
 }
 
 .details-tags span {
@@ -1075,7 +1130,7 @@ a {
     font-size: 1.15rem;
     font-weight: 700;
     color: var(--text-primary);
-    text-align: left;
+    text-align: center;
     width: 100%;
 }
 
@@ -1108,9 +1163,9 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    text-align: center;
     gap: 1.5rem;
 }
 
