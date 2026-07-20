@@ -165,6 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure targeted section is visible
         targetSection.classList.add('visible');
 
+        // Trigger section heading animation
+        const animatedTitle = targetSection.querySelector('.animated-title');
+        if (animatedTitle) {
+            animatedTitle.classList.remove('animate-heading');
+            void animatedTitle.offsetWidth; // trigger reflow to reset CSS keyframe animation
+            animatedTitle.classList.add('animate-heading');
+        }
+
         // Staggered left-to-right slide for elements in the section
         const slideElements = targetSection.querySelectorAll('.slide-left-to-right');
         
@@ -219,9 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     
-                    // Trigger guided outcomes animation when outcomes section enters viewport
-                    if (entry.target.id === 'results') {
-                        triggerSectionClickAnimation('#results');
+                    // Trigger animations for specific sections when they enter viewport
+                    const sectionId = entry.target.id;
+                    if (['problem', 'services', 'how-we-work', 'results'].includes(sectionId)) {
+                        triggerSectionClickAnimation(`#${sectionId}`);
                     }
                     
                     observer.unobserve(entry.target);

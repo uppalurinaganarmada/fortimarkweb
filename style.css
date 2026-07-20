@@ -1212,6 +1212,99 @@ a {
     transform: translateY(0);
 }
 
+/* Animated Section Title with Chess Coin */
+.animated-title {
+    position: relative;
+    padding-left: 3.5rem;
+    display: inline-block;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.animated-title .title-text {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    display: inline-block;
+    transform: translateX(15px);
+}
+
+.animated-title .title-coin-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.animated-title .title-coin-svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+/* Keyframe Animations */
+.animated-title.animate-heading .title-coin-wrapper {
+    animation: coinSweepReveal 1.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animated-title.animate-heading .title-text {
+    animation: textSweepReveal 1.0s cubic-bezier(0.25, 1, 0.5, 1) 0.25s forwards;
+}
+
+@keyframes coinSweepReveal {
+    0% {
+        opacity: 0;
+        left: 0;
+        transform: translateY(-50%) scale(0.2) rotate(-180deg);
+    }
+    15% {
+        opacity: 1;
+        left: 3.5rem;
+        transform: translateY(-50%) scale(1.3) rotate(0deg);
+    }
+    55% {
+        left: calc(100% - 2.25rem);
+        transform: translateY(-50%) scale(1.3) rotate(360deg);
+        filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.8));
+    }
+    80% {
+        left: 0;
+        transform: translateY(-50%) scale(1.1) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        left: 0;
+        transform: translateY(-50%) scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4));
+    }
+}
+
+@keyframes textSweepReveal {
+    0% {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+        transform: translateX(15px);
+    }
+    60% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 968px) {
     .problem-layout {
@@ -1351,5 +1444,43 @@ a {
     
     .scroll-frame.unrolled .scroll-roller-bottom {
         top: 168px;
+    }
+
+    /* Mobile overrides for animated section title */
+    .animated-title {
+        padding-left: 2.75rem;
+    }
+    
+    .animated-title .title-coin-wrapper {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    
+    @keyframes coinSweepReveal {
+        0% {
+            opacity: 0;
+            left: 0;
+            transform: translateY(-50%) scale(0.2) rotate(-180deg);
+        }
+        15% {
+            opacity: 1;
+            left: 2.75rem;
+            transform: translateY(-50%) scale(1.3) rotate(0deg);
+        }
+        55% {
+            left: calc(100% - 1.75rem);
+            transform: translateY(-50%) scale(1.3) rotate(360deg);
+            filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.8));
+        }
+        80% {
+            left: 0;
+            transform: translateY(-50%) scale(1.1) rotate(0deg);
+        }
+        100% {
+            opacity: 1;
+            left: 0;
+            transform: translateY(-50%) scale(1) rotate(0deg);
+            filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4));
+        }
     }
 }
