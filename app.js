@@ -1,5 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Dynamic Heading Text Width Calculation for Chess Coin Sweep Bounds
+    function updateTitleWidths() {
+        const animatedTitles = document.querySelectorAll('.animated-title');
+        animatedTitles.forEach(title => {
+            const textNode = title.querySelector('.title-text');
+            if (textNode) {
+                const originalStyle = textNode.getAttribute('style') || '';
+                textNode.style.display = 'inline-block';
+                textNode.style.opacity = '1';
+                textNode.style.clipPath = 'none';
+                
+                const width = textNode.getBoundingClientRect().width;
+                
+                textNode.setAttribute('style', originalStyle);
+                title.style.setProperty('--title-width', `${width}px`);
+            }
+        });
+    }
+
+    updateTitleWidths();
+    window.addEventListener('resize', updateTitleWidths);
+
     // 1. Loading Screen Animation Fadeout
     const loader = document.getElementById('loader');
     if (loader) {
@@ -164,6 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Ensure targeted section is visible
         targetSection.classList.add('visible');
+
+        // Update width variables
+        updateTitleWidths();
 
         // Trigger section heading animation
         const animatedTitle = targetSection.querySelector('.animated-title');
