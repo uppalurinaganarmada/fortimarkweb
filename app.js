@@ -132,71 +132,71 @@ document.addEventListener('DOMContentLoaded', () => {
         bologna: {
             title: "Bologna Restaurant",
             subtitle: "Italian Fine Dining & Specialty Kitchen",
-            description: "High-performing website infrastructure, digital reservation connections, and visual menu storytelling.",
             url: "https://slateblue-hedgehog-572890.hostingersite.com",
             logo: "assets/bologna_logo_hd.png",
             waveColor: "linear-gradient(135deg, #1c2841, #0f172a)",
-            accentColor: "#3b82f6",
+            accentColor: "#1d4ed8",
+            titleColor: "#1d4ed8",
             logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         yumm: {
             title: "Yumm Keralam",
             subtitle: "Authentic Kerala Cuisine & Dining",
-            description: "Full-stack digital presence, search engine positioning, and culinary brand storytelling.",
             url: "https://yummkeralam.com",
             logo: "assets/yumm_logo_hd.png",
             waveColor: "linear-gradient(135deg, #881337, #4c0519)",
-            accentColor: "#f43f5e",
+            accentColor: "#be123c",
+            titleColor: "#be123c",
             logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         dayone: {
             title: "Day One Cafe",
             subtitle: "Artisanal Coffee & Specialty Bistro",
-            description: "AI WhatsApp automation, retention workflows, and social engagement strategy.",
             url: "https://dayonecafe.com",
             logo: "assets/dayone_logo_hd.png",
             waveColor: "linear-gradient(135deg, #2f4a37, #142318)",
-            accentColor: "#10b981",
+            accentColor: "#047857",
+            titleColor: "#047857",
             logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         thaichef: {
             title: "Thai Chef",
             subtitle: "Authentic Thai Flavours & Asian Dining",
-            description: "Targeted performance marketing, Google Business optimization, and campaign execution.",
             url: "https://thaichef.fortimark.co",
             logo: "assets/thaichef_logo_hd.png",
             waveColor: "linear-gradient(135deg, #18181b, #09090b)",
-            accentColor: "#eab308",
+            accentColor: "#b45309",
+            titleColor: "#b45309",
             logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         flame: {
             title: "Once Upon a Flame",
             subtitle: "Charcoal & Flame Grill Experience",
-            description: "High-octane reel content, photography, and viral audience engagement campaigns.",
             url: "https://instagram.com/once_upon_a_flame",
             logo: "assets/flame_logo_hd.png",
             waveColor: "linear-gradient(135deg, #7c2d12, #451a03)",
-            accentColor: "#f97316",
+            accentColor: "#c2410c",
+            titleColor: "#c2410c",
             logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         rajya: {
             title: "Rajya Dvaar",
             subtitle: "Royal Heritage Culinary Experience",
-            description: "Brand positioning, luxury identity, and online reputation management.",
             url: "https://instagram.com/rajya.dvaar",
             logo: "assets/rajya_logo_hd.png",
             waveColor: "linear-gradient(135deg, #581c87, #3b0764)",
-            accentColor: "#a855f7",
+            accentColor: "#6d28d9",
+            titleColor: "#6d28d9",
             logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         alley: {
             title: "Cafe Down The Alley",
             subtitle: "Cozy Specialty Cafe & Hangout",
-            description: "Customer acquisition funnels, local discovery SEO, and community engagement.",
             url: "https://instagram.com/cafedownthealley",
             logo: "assets/alley_logo_hd.png",
             waveColor: "linear-gradient(135deg, #0369a1, #075985)",
-            accentColor: "#38bdf8",
+            accentColor: "#0284c7",
+            titleColor: "#0284c7",
             logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         }
     };
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         thumbBtns.forEach(btn => {
             if (btn.getAttribute('data-brand') === key) {
                 btn.classList.add('active');
-                btn.style.setProperty('--accent', data.accentColor);
+                btn.style.setProperty('--accent', data.titleColor || data.accentColor);
             } else {
                 btn.classList.remove('active');
             }
@@ -243,13 +243,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update Text Content
             if (showcaseTitle) {
                 showcaseTitle.textContent = data.title;
-                showcaseTitle.style.color = '#2a201c';
+                showcaseTitle.style.color = data.titleColor || data.accentColor;
             }
             if (showcaseSub) {
                 showcaseSub.textContent = data.subtitle;
-                showcaseSub.style.color = data.accentColor;
+                showcaseSub.style.color = data.titleColor || data.accentColor;
             }
-            if (showcaseDesc) showcaseDesc.textContent = data.description;
+            if (showcaseDesc) showcaseDesc.style.display = 'none';
             if (showcaseCta) {
                 showcaseCta.setAttribute('href', data.url);
                 showcaseCta.innerHTML = data.url.includes('instagram') ? 'View Instagram &rarr;' : 'Visit Official Website &rarr;';
