@@ -127,65 +127,108 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Interactive Brand Scroll Animation (Roll up -> Swap Logo -> Roll down)
-    const brandButtons = document.querySelectorAll('.brand-btn');
-    const scrollFrame = document.getElementById('brand-scroll');
-    const scrollLogoLink = document.getElementById('scroll-logo-link');
+    // 5. 3D Pop-Out Disney-Style Brand Cards Carousel Interactivity
+    const brandsTrack = document.getElementById('brands-track');
+    const popCards = document.querySelectorAll('.pop-brand-card');
+    const prevBtn = document.getElementById('brand-prev-btn');
+    const nextBtn = document.getElementById('brand-next-btn');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    let activeBrandIndex = 0;
+    let carouselTimer = null;
 
-    // Vector brand logos inside the scroll canvas (filled with dark navy #081026 for contrast)
-    const brandLogos = {
-        yumm: {
-            url: "https://yummkeralam.com",
-            svg: `<img src="assets/yumm_logo.png" style="max-height: 130px; max-width: 240px; object-fit: contain;" alt="Yumm Keralam Logo">`
-        },
-        dayone: {
-            url: "https://dayonecafe.com",
-            svg: `<img src="assets/dayone_logo.png" style="max-height: 110px; max-width: 240px; object-fit: contain;" alt="Day One Cafe Logo">`
-        },
-        thaichef: {
-            url: "https://thaichef.fortimark.co",
-            svg: `<div style="background: #06070a; padding: 12px 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;"><img src="assets/thaichef_logo.png" style="max-height: 50px; max-width: 200px; object-fit: contain;" alt="Thai Chef Logo"></div>`
-        },
-        bologna: {
-            url: "https://slateblue-hedgehog-572890.hostingersite.com",
-            svg: `<img src="assets/bologna_logo.png" style="max-height: 110px; max-width: 250px; object-fit: contain;" alt="Bologna Logo">`
-        },
-        flame: {
-            url: "https://instagram.com/once_upon_a_flame",
-            svg: `<img src="assets/flame_logo.png" style="max-height: 120px; max-width: 120px; object-fit: contain; border-radius: 50%;" alt="Once Upon a Flame Logo">`
-        },
-        rajya: {
-            url: "https://instagram.com/rajya.dvaar",
-            svg: `<img src="assets/rajya_logo.png" style="max-height: 130px; max-width: 240px; object-fit: contain;" alt="Rajya Dvaar Logo">`
-        },
-        alley: {
-            url: "https://instagram.com/cafedownthealley",
-            svg: `<img src="assets/alley_logo.png" style="max-height: 130px; max-width: 240px; object-fit: contain;" alt="Cafe Down The Alley Logo">`
+    function updateCarouselPosition(index) {
+        if (popCards.length === 0 || !brandsTrack) return;
+
+        // Wrap index boundaries
+        if (index < 0) index = popCards.length - 1;
+        if (index >= popCards.length) index = 0;
+
+        activeBrandIndex = index;
+
+        popCards.forEach((card, idx) => {
+            if (idx === activeBrandIndex) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+
+        dots.forEach((dot, idx) => {
+            if (idx === activeBrandIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+
+        // Calculate card offset (card width: 240px + gap: 28px = 268px)
+        const cardWidth = popCards[0].offsetWidth || 240;
+        const gap = 28;
+        const offset = activeBrandIndex * (cardWidth + gap);
+
+        brandsTrack.style.transform = `translateX(-${offset}px)`;
+    }
+
+    function startAutoCarousel() {
+        stopAutoCarousel();
+        carouselTimer = setInterval(() => {
+            updateCarouselPosition(activeBrandIndex + 1);
+        }, 4000);
+    }
+
+    function stopAutoCarousel() {
+        if (carouselTimer) {
+            clearInterval(carouselTimer);
+            carouselTimer = null;
         }
-    };
+    }
 
-    if (brandButtons.length > 0 && scrollFrame && scrollLogoLink) {
-        brandButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (btn.classList.contains('active')) return;
+    if (brandsTrack && popCards.length > 0) {
+        // Prev button click
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                updateCarouselPosition(activeBrandIndex - 1);
+                startAutoCarousel();
+            });
+        }
 
-                brandButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        // Next button click
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                updateCarouselPosition(activeBrandIndex + 1);
+                startAutoCarousel();
+            });
+        }
 
-                const brandKey = btn.getAttribute('data-brand');
-                const brandData = brandLogos[brandKey];
-
-                if (brandData) {
-                    scrollFrame.classList.remove('unrolled');
-
-                    setTimeout(() => {
-                        scrollLogoLink.setAttribute('href', brandData.url);
-                        scrollLogoLink.innerHTML = brandData.svg;
-                        scrollFrame.classList.add('unrolled');
-                    }, 420);
-                }
+        // Dot clicks
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                updateCarouselPosition(idx);
+                startAutoCarousel();
             });
         });
+
+        // Direct card clicks
+        popCards.forEach((card, idx) => {
+            card.addEventListener('click', (e) => {
+                // If clicking visit link, allow default navigation
+                if (e.target.closest('.pop-visit-btn')) return;
+                
+                updateCarouselPosition(idx);
+                startAutoCarousel();
+            });
+        });
+
+        // Pause auto-sliding on hover
+        const carouselContainer = document.querySelector('.brands-carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', stopAutoCarousel);
+            carouselContainer.addEventListener('mouseleave', startAutoCarousel);
+        }
+
+        // Initialize position & timer
+        updateCarouselPosition(0);
+        startAutoCarousel();
     }
 
     // 6. Navbar Click Interceptor & Staggered Section Animations
