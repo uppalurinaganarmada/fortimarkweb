@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const showcaseSub = document.getElementById('showcase-sub');
     const showcaseDesc = document.getElementById('showcase-desc');
     const showcaseCta = document.getElementById('showcase-cta');
-    const organicWaveBg = document.getElementById('organic-wave-bg');
+    const fixedCircleBg = document.getElementById('fixed-circle-bg') || document.getElementById('organic-wave-bg');
     const showcaseLogoImg = document.getElementById('showcase-logo-img');
     const showcaseLogoContainer = document.getElementById('showcase-logo-container');
     
@@ -228,15 +228,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Trigger Right-Side Clock Effect (Clockwise Spin Out)
+        // Trigger Half Right-Side Rotation Transition (Spin Out)
         if (showcaseLogoContainer) {
-            showcaseLogoContainer.classList.remove('clock-spin-in');
-            showcaseLogoContainer.classList.add('clock-spin-out');
+            showcaseLogoContainer.classList.remove('half-right-spin-in', 'clock-spin-in', 'clock-spin-out');
+            showcaseLogoContainer.classList.add('half-right-spin-out');
         }
-        if (organicWaveBg) {
-            organicWaveBg.classList.remove('wave-clock-sweep');
-            void organicWaveBg.offsetWidth; // trigger reflow
-            organicWaveBg.classList.add('wave-clock-sweep');
+        if (fixedCircleBg) {
+            fixedCircleBg.classList.remove('right-arc-sweep', 'wave-clock-sweep');
+            void fixedCircleBg.offsetWidth; // trigger reflow
+            fixedCircleBg.classList.add('right-arc-sweep');
         }
 
         setTimeout(() => {
@@ -255,10 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 showcaseCta.innerHTML = data.url.includes('instagram') ? 'View Instagram &rarr;' : 'Visit Official Website &rarr;';
             }
 
-            // Update Organic Wave Background Color
-            if (organicWaveBg) {
-                organicWaveBg.style.background = data.waveColor;
-                organicWaveBg.style.boxShadow = `0 20px 50px ${data.accentColor}44`;
+            // Update Constant Circle Background Color
+            if (fixedCircleBg) {
+                fixedCircleBg.style.background = data.waveColor;
+                fixedCircleBg.style.boxShadow = `0 30px 70px rgba(0, 0, 0, 0.65), 0 0 45px ${data.accentColor}33`;
             }
 
             // Update Logo Image
@@ -268,18 +268,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 showcaseLogoImg.setAttribute('style', data.logoStyle);
             }
 
-            // Trigger Right-Side Clock Effect (Clockwise Spin In)
+            // Trigger Half Right-Side Rotation Transition (Spin In)
             if (showcaseLogoContainer) {
-                showcaseLogoContainer.classList.remove('clock-spin-out');
-                showcaseLogoContainer.classList.add('clock-spin-in');
+                showcaseLogoContainer.classList.remove('half-right-spin-out');
+                showcaseLogoContainer.classList.add('half-right-spin-in');
             }
 
             // Clean up animation classes after completion
             setTimeout(() => {
-                if (showcaseLogoContainer) showcaseLogoContainer.classList.remove('clock-spin-in');
-                if (organicWaveBg) organicWaveBg.classList.remove('wave-clock-sweep');
+                if (showcaseLogoContainer) showcaseLogoContainer.classList.remove('half-right-spin-in');
+                if (fixedCircleBg) fixedCircleBg.classList.remove('right-arc-sweep');
             }, 550);
-        }, 280);
+        }, 260);
     }
 
     function startAutoShowcase() {
