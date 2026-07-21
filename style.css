@@ -1,16 +1,18 @@
-/* Global Variables & Reset */
+/* Global Variables & Reset (FLEUR Luxury Palette) */
 :root {
-    --bg-base: #0b1329;
-    --bg-surface: rgba(30, 27, 75, 0.65);
-    --bg-surface-hover: rgba(49, 16, 66, 0.75);
-    --accent: #60a5fa; /* Electric Sapphire Blue */
-    --accent-rgb: 96, 165, 250;
-    --accent-secondary: #34d399; /* Vibrant Mint Emerald */
-    --text-primary: #ffffff; /* Crisp Pure White */
-    --text-secondary: #f1f5f9; /* High contrast bright silver text */
-    --text-muted: #cbd5e1;
-    --border: rgba(255, 255, 255, 0.15);
-    --border-hover: rgba(255, 255, 255, 0.35);
+    --bg-base: #f5ebe2; /* FLEUR Warm Nude Base */
+    --bg-surface: #e8d7ca; /* FLEUR Sand Card Surface */
+    --bg-surface-hover: #dfcaa8; /* FLEUR Deep Terracotta Sand */
+    --bg-tan: #dfc7b5; /* FLEUR Full Section Tan */
+    --bg-white: #ffffff; /* FLEUR Pure Porcelain White */
+    --accent: #b37e65; /* FLEUR Terracotta Bronze */
+    --accent-rgb: 179, 126, 101;
+    --accent-secondary: #8c5a45; /* FLEUR Deep Terracotta Accent */
+    --text-primary: #2d2420; /* FLEUR Dark Espresso Charcoal */
+    --text-secondary: #6b564a; /* FLEUR Warm Taupe Coffee Text */
+    --text-muted: #8a756a;
+    --border: rgba(45, 36, 32, 0.12);
+    --border-hover: rgba(45, 36, 32, 0.28);
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --font-heading: 'Outfit', sans-serif;
     --font-body: "Candara", "Calibri", "Segoe UI", sans-serif;
@@ -24,7 +26,7 @@
 
 html {
     scroll-behavior: smooth;
-    background: linear-gradient(135deg, #0b1329 0%, #1e1b4b 25%, #2e1045 50%, #112a46 75%, #06382b 100%);
+    background: linear-gradient(135deg, #f5ebe2 0%, #eee1d6 35%, #e4cebe 70%, #ebd9cb 100%);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 16px;
@@ -37,10 +39,11 @@ body {
     display: flex;
     flex-direction: column;
     line-height: 1.6;
-    background: transparent;
+    background: var(--bg-base);
+    color: var(--text-primary);
 }
 
-/* 4K Ultra-High Resolution Vibrant Gradient Patterned Background System */
+/* 4K Ultra-High Resolution FLEUR Nude & Sand Luxury Backdrop */
 .chessboard-bg {
     position: fixed;
     top: 0;
@@ -49,33 +52,32 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    background-color: #0b1329;
+    background-color: #f5ebe2;
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(96, 165, 250, 0.35) 0%, transparent 45%),
-        radial-gradient(circle at 90% 25%, rgba(192, 132, 252, 0.35) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(52, 211, 153, 0.3) 0%, transparent 55%),
-        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 2px, transparent 2px, transparent 24px),
-        linear-gradient(135deg, #0b1329 0%, #1e1b4b 25%, #2e1045 50%, #112a46 75%, #06382b 100%),
-        url('assets/vibrant_gradient_bg.png');
-    background-size: cover, cover, cover, 48px 48px, cover, cover;
+        radial-gradient(circle at 15% 15%, rgba(235, 218, 204, 0.7) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(223, 202, 185, 0.7) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(216, 190, 170, 0.6) 0%, transparent 55%),
+        linear-gradient(135deg, #f5ebe2 0%, #eee1d6 35%, #e4cebe 70%, #ebd9cb 100%),
+        url('assets/nude_sand_bg.png');
+    background-size: cover, cover, cover, cover, cover;
     background-position: center center;
-    background-repeat: no-repeat, no-repeat, no-repeat, repeat, no-repeat, no-repeat;
-    background-blend-mode: screen, screen, screen, overlay, normal, overlay;
-    animation: luxuryGradientPulse 20s ease-in-out infinite alternate;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply, overlay, normal, normal, soft-light;
+    animation: fleurLuxuryGlow 25s ease-in-out infinite alternate;
     will-change: filter, transform;
 }
 
-@keyframes luxuryGradientPulse {
+@keyframes fleurLuxuryGlow {
     0% {
-        filter: contrast(110%) brightness(102%);
+        filter: contrast(100%) brightness(100%);
         transform: scale(1);
     }
     50% {
-        filter: contrast(120%) brightness(112%);
-        transform: scale(1.02);
+        filter: contrast(104%) brightness(102%);
+        transform: scale(1.015);
     }
     100% {
-        filter: contrast(110%) brightness(105%);
+        filter: contrast(100%) brightness(100%);
         transform: scale(1);
     }
 }
@@ -695,14 +697,27 @@ a {
 }
 
 /* ==========================================================================
-   Section Containers
+   Section Containers (FLEUR Alternating Color Blocks)
    ========================================================================== */
 .section-container {
-    padding: 3rem 2rem 8rem;
+    padding: 5rem 2rem 8rem;
     display: flex;
     justify-content: center;
     border-top: 1px solid var(--border);
-    background-color: transparent;
+    transition: background-color 0.4s ease;
+}
+
+#problem {
+    background-color: #f5ebe2; /* FLEUR Soft Warm Alabaster */
+}
+
+#how-we-work {
+    background-color: #ffffff; /* FLEUR Pure Porcelain White Block */
+}
+
+#results {
+    background-color: #dfc7b5; /* Signature FLEUR Warm Tan Block */
+    color: #2d2420;
 }
 
 .section-content {
@@ -835,8 +850,8 @@ a {
 .problem-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border);
-    padding: 2.25rem 2rem;
-    border-radius: 8px;
+    padding: 3rem 2rem 2.25rem;
+    border-radius: 140px 140px 24px 24px; /* Signature FLEUR Arch Card */
     transition: var(--transition);
     text-align: center;
     display: flex;
@@ -845,6 +860,7 @@ a {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(45, 36, 32, 0.05);
 }
 
 .problem-card .card-bg {
@@ -1331,8 +1347,13 @@ a {
     align-items: center;
     gap: 2rem;
     text-align: center;
-    border-top: 1px solid var(--border);
-    padding-top: 4rem;
+    background: #e8d7ca;
+    border-radius: 200px 200px 24px 24px; /* Signature FLEUR Upward Arch Card */
+    padding: 5rem 3rem 4rem;
+    margin: 4rem auto 0;
+    max-width: 750px;
+    box-shadow: 0 15px 40px rgba(45, 36, 32, 0.08);
+    border: 1px solid rgba(45, 36, 32, 0.1);
 }
 
 .punchline-text {
