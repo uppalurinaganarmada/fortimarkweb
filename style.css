@@ -1269,7 +1269,7 @@ a {
     transform: translateY(0);
 }
 
-/* Animated Section Title with Chess Coin */
+/* Animated Section Title with Chess Coin styled as a Card */
 .animated-title {
     display: inline-flex;
     align-items: center;
@@ -1280,6 +1280,38 @@ a {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    
+    /* Premium Card Styling */
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    padding: 0.85rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    
+    /* Card Entry Transition Base */
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+/* Individual entry slide directions */
+.animated-title.slide-up-card {
+    transform: translate3d(0, 80px, 0);
+}
+.animated-title.slide-right-card {
+    transform: translate3d(-120px, 0, 0);
+}
+.animated-title.slide-down-card {
+    transform: translate3d(0, -80px, 0);
+}
+.animated-title.slide-left-card {
+    transform: translate3d(120px, 0, 0);
+}
+
+/* Active transition state */
+.animated-title.animate-heading {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) !important;
 }
 
 .animated-title .title-text {
@@ -1507,6 +1539,8 @@ a {
     /* Mobile overrides for animated section title */
     .animated-title {
         gap: 0.75rem;
+        padding: 0.6rem 1.25rem;
+        border-radius: 8px;
     }
     
     .animated-title .title-coin-wrapper {
