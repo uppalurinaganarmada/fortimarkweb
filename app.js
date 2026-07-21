@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update Text Content
             if (showcaseTitle) {
                 showcaseTitle.textContent = data.title;
-                showcaseTitle.style.color = '#ffffff';
+                showcaseTitle.style.color = '#2a201c';
             }
             if (showcaseSub) {
                 showcaseSub.textContent = data.subtitle;
