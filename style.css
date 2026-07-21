@@ -1270,11 +1270,11 @@ a {
         transform: translateX(0);
     }
     55% {
-        transform: translateX(calc(var(--title-width, 280px) + 1.25rem));
+        transform: translateX(calc(var(--title-width, 280px) + 2.75rem));
         filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.8));
     }
     70% {
-        transform: translateX(calc(var(--title-width, 280px) + 1.25rem));
+        transform: translateX(calc(var(--title-width, 280px) + 2.75rem));
         filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.8));
     }
     90% {
@@ -1467,11 +1467,11 @@ a {
             transform: translateX(0);
         }
         55% {
-            transform: translateX(calc(var(--title-width, 200px) + 0.75rem));
+            transform: translateX(calc(var(--title-width, 200px) + 2.0rem));
             filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
         }
         70% {
-            transform: translateX(calc(var(--title-width, 200px) + 0.75rem));
+            transform: translateX(calc(var(--title-width, 200px) + 2.0rem));
             filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
         }
         90% {
