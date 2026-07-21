@@ -310,8 +310,8 @@ a {
     opacity: 0;
     transform: translate3d(0, 0, -200px) scale(0.2);
     animation: netflixZoomIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    /* Soft blue ambient glow behind white logo */
-    filter: drop-shadow(0 15px 30px rgba(37, 99, 235, 0.45));
+    /* Soft royal blue ambient glow behind blue rook symbol */
+    filter: drop-shadow(0 15px 35px rgba(37, 99, 235, 0.55));
 }
 
 .logo-name-reveal {
@@ -344,12 +344,12 @@ a {
     }
     75% {
         transform: translate3d(0, 0, 40px) scale(1.1);
-        filter: drop-shadow(0 15px 40px rgba(37, 99, 235, 0.6));
+        filter: drop-shadow(0 15px 40px rgba(37, 99, 235, 0.7));
     }
     100% {
         opacity: 1;
         transform: translate3d(0, 0, 0) scale(1);
-        filter: drop-shadow(0 15px 30px rgba(37, 99, 235, 0.35));
+        filter: drop-shadow(0 15px 35px rgba(37, 99, 235, 0.45));
     }
 }
 
@@ -390,8 +390,7 @@ a {
 }
 
 .accent-text {
-    color: #2563eb; /* Vibrant Royal Blue used before */
-    font-weight: 800;
+    color: var(--accent);
 }
 
 /* Interactive Brand Showcase Section */
