@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
         servicesAnimTimeouts.push(t1);
 
-        // Step 2: Reveal second circle with text
+        // Step 2: Reveal second circle with text (starts immediately after Step 1 transition ends)
         const t2 = setTimeout(() => {
             if (marketingCircle) marketingCircle.classList.remove('active-circle');
             if (developmentCircle) {
@@ -252,10 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
             detailPanels.forEach(p => p.classList.remove('active'));
             const detailsDevelopment = document.getElementById('details-development');
             if (detailsDevelopment) detailsDevelopment.classList.add('active');
-        }, 2200);
+        }, 1700);
         servicesAnimTimeouts.push(t2);
 
-        // Step 3: Reveal third circle with text
+        // Step 3: Reveal third circle with text (starts immediately after Step 2 transition ends)
         const t3 = setTimeout(() => {
             if (developmentCircle) developmentCircle.classList.remove('active-circle');
             if (intelligenceCircle) {
@@ -265,10 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
             detailPanels.forEach(p => p.classList.remove('active'));
             const detailsIntelligence = document.getElementById('details-intelligence');
             if (detailsIntelligence) detailsIntelligence.classList.add('active');
-        }, 4100);
+        }, 3100);
         servicesAnimTimeouts.push(t3);
 
-        // Step 4: Finally, reveal winning zone with highlight
+        // Step 4: Finally, reveal winning zone with highlight (starts immediately after Step 3 transition ends)
         const t4 = setTimeout(() => {
             if (intelligenceCircle) intelligenceCircle.classList.remove('active-circle');
             if (intersectionBadge) {
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 intersectionStatement.style.opacity = '1';
                 intersectionStatement.classList.add('animated');
             }
-        }, 6000);
+        }, 4500);
         servicesAnimTimeouts.push(t4);
     }
 
