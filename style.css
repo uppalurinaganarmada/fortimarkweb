@@ -390,7 +390,8 @@ a {
 }
 
 .accent-text {
-    color: var(--accent);
+    color: #2563eb; /* Vibrant Royal Blue used before */
+    font-weight: 800;
 }
 
 /* Interactive Brand Showcase Section */
@@ -774,7 +775,7 @@ a {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--accent);
+    background: #2563eb;
 }
 
 .btn-glow {
