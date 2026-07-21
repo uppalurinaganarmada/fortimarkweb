@@ -1,16 +1,16 @@
 /* Global Variables & Reset */
 :root {
-    --bg-base: #080c16; /* Rich Deep Midnight Navy */
-    --bg-surface: rgba(14, 21, 38, 0.85); /* Midnight Sapphire Glass */
-    --bg-surface-hover: rgba(22, 33, 56, 0.95);
-    --accent: #3b82f6; /* Royal Sapphire Blue */
-    --accent-rgb: 59, 130, 246;
-    --accent-secondary: #00ff88; /* Vibrant Emerald Accent */
+    --bg-base: #0b1329;
+    --bg-surface: rgba(30, 27, 75, 0.65);
+    --bg-surface-hover: rgba(49, 16, 66, 0.75);
+    --accent: #60a5fa; /* Electric Sapphire Blue */
+    --accent-rgb: 96, 165, 250;
+    --accent-secondary: #34d399; /* Vibrant Mint Emerald */
     --text-primary: #ffffff; /* Crisp Pure White */
-    --text-secondary: #e2e8f0; /* Bright Silver Text */
-    --text-muted: #94a3b8;
-    --border: rgba(255, 255, 255, 0.1);
-    --border-hover: rgba(255, 255, 255, 0.3);
+    --text-secondary: #f1f5f9; /* High contrast bright silver text */
+    --text-muted: #cbd5e1;
+    --border: rgba(255, 255, 255, 0.15);
+    --border-hover: rgba(255, 255, 255, 0.35);
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --font-heading: 'Outfit', sans-serif;
     --font-body: "Candara", "Calibri", "Segoe UI", sans-serif;
@@ -24,7 +24,7 @@
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--bg-base);
+    background: linear-gradient(135deg, #0b1329 0%, #1e1b4b 25%, #2e1045 50%, #112a46 75%, #06382b 100%);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 16px;
@@ -37,10 +37,10 @@ body {
     display: flex;
     flex-direction: column;
     line-height: 1.6;
-    background-color: var(--bg-base);
+    background: transparent;
 }
 
-/* 4K Ultra-High Resolution Rich Luxury Ambient Background System */
+/* 4K Ultra-High Resolution Vibrant Gradient Patterned Background System */
 .chessboard-bg {
     position: fixed;
     top: 0;
@@ -49,32 +49,33 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    background-color: #080c16;
+    background-color: #0b1329;
     background-image: 
-        radial-gradient(circle at 15% 15%, rgba(0, 255, 136, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 25%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(139, 92, 246, 0.16) 0%, transparent 55%),
-        linear-gradient(135deg, rgba(8, 12, 22, 0.6) 0%, rgba(15, 22, 38, 0.5) 100%),
-        url('assets/rich_sapphire_bg.png');
-    background-size: cover, cover, cover, cover, cover;
+        radial-gradient(circle at 10% 20%, rgba(96, 165, 250, 0.35) 0%, transparent 45%),
+        radial-gradient(circle at 90% 25%, rgba(192, 132, 252, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(52, 211, 153, 0.3) 0%, transparent 55%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 2px, transparent 2px, transparent 24px),
+        linear-gradient(135deg, #0b1329 0%, #1e1b4b 25%, #2e1045 50%, #112a46 75%, #06382b 100%),
+        url('assets/vibrant_gradient_bg.png');
+    background-size: cover, cover, cover, 48px 48px, cover, cover;
     background-position: center center;
-    background-repeat: no-repeat;
-    background-blend-mode: screen, screen, overlay, normal, multiply;
-    animation: luxuryAmbientGlow 30s ease-in-out infinite alternate;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat, no-repeat, no-repeat;
+    background-blend-mode: screen, screen, screen, overlay, normal, overlay;
+    animation: luxuryGradientPulse 20s ease-in-out infinite alternate;
     will-change: filter, transform;
 }
 
-@keyframes luxuryAmbientGlow {
+@keyframes luxuryGradientPulse {
     0% {
-        filter: contrast(105%) brightness(98%);
+        filter: contrast(110%) brightness(102%);
         transform: scale(1);
     }
     50% {
-        filter: contrast(112%) brightness(106%);
-        transform: scale(1.03);
+        filter: contrast(120%) brightness(112%);
+        transform: scale(1.02);
     }
     100% {
-        filter: contrast(105%) brightness(100%);
+        filter: contrast(110%) brightness(105%);
         transform: scale(1);
     }
 }
