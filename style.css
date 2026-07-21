@@ -1,16 +1,16 @@
 /* Global Variables & Reset */
 :root {
-    --bg-base: #06070a;
-    --bg-surface: #0c0e14;
-    --bg-surface-hover: #141722;
-    --accent: #2563eb; /* Royal Blue */
-    --accent-rgb: 37, 99, 235;
-    --accent-secondary: #00ff88; /* Emerald green accent */
-    --text-primary: #f3f4f6; /* Pure white text */
-    --text-secondary: #d8dee9; /* Brightened silver gray text for enhanced readability */
-    --text-muted: #8892b0;
-    --border: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.2);
+    --bg-base: #080c16; /* Rich Deep Midnight Navy */
+    --bg-surface: rgba(14, 21, 38, 0.85); /* Midnight Sapphire Glass */
+    --bg-surface-hover: rgba(22, 33, 56, 0.95);
+    --accent: #3b82f6; /* Royal Sapphire Blue */
+    --accent-rgb: 59, 130, 246;
+    --accent-secondary: #00ff88; /* Vibrant Emerald Accent */
+    --text-primary: #ffffff; /* Crisp Pure White */
+    --text-secondary: #e2e8f0; /* Bright Silver Text */
+    --text-muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.3);
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --font-heading: 'Outfit', sans-serif;
     --font-body: "Candara", "Calibri", "Segoe UI", sans-serif;
@@ -37,10 +37,10 @@ body {
     display: flex;
     flex-direction: column;
     line-height: 1.6;
-    background-color: transparent;
+    background-color: var(--bg-base);
 }
 
-/* 4K Ultra-High Resolution Luxury Ambient Background System */
+/* 4K Ultra-High Resolution Rich Luxury Ambient Background System */
 .chessboard-bg {
     position: fixed;
     top: 0;
@@ -49,16 +49,17 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    background-color: #040508;
+    background-color: #080c16;
     background-image: 
-        radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(12, 14, 22, 0.4) 0%, rgba(4, 5, 8, 0.95) 100%),
-        url('assets/dark_luxury_bg.png');
-    background-size: cover, cover, cover, cover;
+        radial-gradient(circle at 15% 15%, rgba(0, 255, 136, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(139, 92, 246, 0.16) 0%, transparent 55%),
+        linear-gradient(135deg, rgba(8, 12, 22, 0.6) 0%, rgba(15, 22, 38, 0.5) 100%),
+        url('assets/rich_sapphire_bg.png');
+    background-size: cover, cover, cover, cover, cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-blend-mode: screen, overlay, normal, multiply;
+    background-blend-mode: screen, screen, overlay, normal, multiply;
     animation: luxuryAmbientGlow 30s ease-in-out infinite alternate;
     will-change: filter, transform;
 }
