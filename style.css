@@ -355,12 +355,17 @@ a {
 /* Left-to-right entry reveal animation for section elements */
 .slide-left-to-right {
     opacity: 0;
-    transform: translate3d(-50px, 0, 0);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    clip-path: inset(0 100% 0 0);
+    transform: translate3d(-30px, 0, 0);
+    transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+                clip-path 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, clip-path, transform;
 }
 
 .slide-left-to-right.animated {
     opacity: 1;
+    clip-path: inset(0 0 0 0);
     transform: translate3d(0, 0, 0);
 }
 
