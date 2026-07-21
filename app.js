@@ -228,10 +228,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Animate out logo & text
+        // Trigger Right-Side Clock Effect (Clockwise Spin Out)
         if (showcaseLogoContainer) {
-            showcaseLogoContainer.style.opacity = '0';
-            showcaseLogoContainer.style.transform = 'scale(0.85) translateY(20px)';
+            showcaseLogoContainer.classList.remove('clock-spin-in');
+            showcaseLogoContainer.classList.add('clock-spin-out');
+        }
+        if (organicWaveBg) {
+            organicWaveBg.classList.remove('wave-clock-sweep');
+            void organicWaveBg.offsetWidth; // trigger reflow
+            organicWaveBg.classList.add('wave-clock-sweep');
         }
 
         setTimeout(() => {
@@ -263,12 +268,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 showcaseLogoImg.setAttribute('style', data.logoStyle);
             }
 
-            // Animate back in
+            // Trigger Right-Side Clock Effect (Clockwise Spin In)
             if (showcaseLogoContainer) {
-                showcaseLogoContainer.style.opacity = '1';
-                showcaseLogoContainer.style.transform = 'scale(1) translateY(0)';
+                showcaseLogoContainer.classList.remove('clock-spin-out');
+                showcaseLogoContainer.classList.add('clock-spin-in');
             }
-        }, 220);
+
+            // Clean up animation classes after completion
+            setTimeout(() => {
+                if (showcaseLogoContainer) showcaseLogoContainer.classList.remove('clock-spin-in');
+                if (organicWaveBg) organicWaveBg.classList.remove('wave-clock-sweep');
+            }, 550);
+        }, 280);
     }
 
     function startAutoShowcase() {
