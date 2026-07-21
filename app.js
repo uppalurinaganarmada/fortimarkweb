@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/bologna_logo_hd.png",
             waveColor: "linear-gradient(135deg, #1c2841, #0f172a)",
             accentColor: "#3b82f6",
-            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         yumm: {
             title: "Yumm Keralam",
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/yumm_logo_hd.png",
             waveColor: "linear-gradient(135deg, #881337, #4c0519)",
             accentColor: "#f43f5e",
-            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         dayone: {
             title: "Day One Cafe",
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/dayone_logo_hd.png",
             waveColor: "linear-gradient(135deg, #2f4a37, #142318)",
             accentColor: "#10b981",
-            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         thaichef: {
             title: "Thai Chef",
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/thaichef_logo_hd.png",
             waveColor: "linear-gradient(135deg, #18181b, #09090b)",
             accentColor: "#eab308",
-            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         flame: {
             title: "Once Upon a Flame",
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/flame_logo_hd.png",
             waveColor: "linear-gradient(135deg, #7c2d12, #451a03)",
             accentColor: "#f97316",
-            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         rajya: {
             title: "Rajya Dvaar",
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/rajya_logo_hd.png",
             waveColor: "linear-gradient(135deg, #581c87, #3b0764)",
             accentColor: "#a855f7",
-            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         },
         alley: {
             title: "Cafe Down The Alley",
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/alley_logo_hd.png",
             waveColor: "linear-gradient(135deg, #0369a1, #075985)",
             accentColor: "#38bdf8",
-            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
         }
     };
 
