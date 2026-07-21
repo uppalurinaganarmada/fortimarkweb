@@ -727,7 +727,7 @@ a {
 .problem-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border);
-    padding: 2rem;
+    padding: 2.25rem 2rem;
     border-radius: 8px;
     transition: var(--transition);
     text-align: center;
@@ -735,18 +735,52 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.problem-card .card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.14; /* Faint to keep text highly readable */
+    transition: opacity 0.5s ease, filter 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Slowly zoom in background continuously when card is revealed */
+.problem-card.animated .card-bg {
+    animation: slowZoomImage 20s infinite alternate linear;
 }
 
 .problem-card:hover {
     border-color: var(--border-hover);
-    background-color: var(--bg-surface-hover);
-    transform: translateY(-2px);
+    background-color: #0d0f17; /* slightly warmer dark hover state */
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(37, 99, 235, 0.15);
+}
+
+.problem-card:hover .card-bg {
+    opacity: 0.35; /* highlights image on hover */
+}
+
+.problem-card .card-content {
+    position: relative;
+    z-index: 2; /* sits on top of bg image */
+    width: 100%;
 }
 
 .problem-card h4 {
     color: var(--text-primary);
     margin-bottom: 0.75rem;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     text-align: center;
 }
 
@@ -755,6 +789,15 @@ a {
     font-size: 0.9rem;
     line-height: 1.5;
     text-align: center;
+}
+
+@keyframes slowZoomImage {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.18);
+    }
 }
 
 .problem-outro {
