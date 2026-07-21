@@ -127,108 +127,184 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. 3D Pop-Out Disney-Style Brand Cards Carousel Interactivity
-    const brandsTrack = document.getElementById('brands-track');
-    const popCards = document.querySelectorAll('.pop-brand-card');
-    const prevBtn = document.getElementById('brand-prev-btn');
-    const nextBtn = document.getElementById('brand-next-btn');
-    const dots = document.querySelectorAll('.carousel-dots .dot');
-    let activeBrandIndex = 0;
-    let carouselTimer = null;
+    // 5. Pinterest-Inspired Interactive Brand Showcase (Smoothies Raisin Style)
+    const brandShowcaseData = {
+        bologna: {
+            title: "Bologna Restaurant",
+            subtitle: "Italian Fine Dining & Specialty Kitchen",
+            description: "High-performing website infrastructure, digital reservation connections, and visual menu storytelling.",
+            url: "https://slateblue-hedgehog-572890.hostingersite.com",
+            logo: "assets/bologna_logo.png",
+            waveColor: "linear-gradient(135deg, #1c2841, #0f172a)",
+            accentColor: "#3b82f6",
+            logoStyle: "max-height: 160px; max-width: 280px;"
+        },
+        yumm: {
+            title: "Yumm Keralam",
+            subtitle: "Authentic Kerala Cuisine & Dining",
+            description: "Full-stack digital presence, search engine positioning, and culinary brand storytelling.",
+            url: "https://yummkeralam.com",
+            logo: "assets/yumm_logo.png",
+            waveColor: "linear-gradient(135deg, #881337, #4c0519)",
+            accentColor: "#f43f5e",
+            logoStyle: "max-height: 180px; max-width: 260px;"
+        },
+        dayone: {
+            title: "Day One Cafe",
+            subtitle: "Artisanal Coffee & Specialty Bistro",
+            description: "AI WhatsApp automation, retention workflows, and social engagement strategy.",
+            url: "https://dayonecafe.com",
+            logo: "assets/dayone_logo.png",
+            waveColor: "linear-gradient(135deg, #2f4a37, #142318)",
+            accentColor: "#10b981",
+            logoStyle: "max-height: 150px; max-width: 280px;"
+        },
+        thaichef: {
+            title: "Thai Chef",
+            subtitle: "Authentic Thai Flavours & Asian Dining",
+            description: "Targeted performance marketing, Google Business optimization, and campaign execution.",
+            url: "https://thaichef.fortimark.co",
+            logo: "assets/thaichef_logo.png",
+            waveColor: "linear-gradient(135deg, #18181b, #09090b)",
+            accentColor: "#eab308",
+            logoStyle: "max-height: 110px; max-width: 260px; background: #06070a; padding: 16px 28px; border-radius: 14px; box-shadow: 0 8px 25px rgba(0,0,0,0.6);"
+        },
+        flame: {
+            title: "Once Upon a Flame",
+            subtitle: "Charcoal & Flame Grill Experience",
+            description: "High-octane reel content, photography, and viral audience engagement campaigns.",
+            url: "https://instagram.com/once_upon_a_flame",
+            logo: "assets/flame_logo.png",
+            waveColor: "linear-gradient(135deg, #7c2d12, #451a03)",
+            accentColor: "#f97316",
+            logoStyle: "max-height: 180px; max-width: 180px; border-radius: 50%;"
+        },
+        rajya: {
+            title: "Rajya Dvaar",
+            subtitle: "Royal Heritage Culinary Experience",
+            description: "Brand positioning, luxury identity, and online reputation management.",
+            url: "https://instagram.com/rajya.dvaar",
+            logo: "assets/rajya_logo.png",
+            waveColor: "linear-gradient(135deg, #581c87, #3b0764)",
+            accentColor: "#a855f7",
+            logoStyle: "max-height: 180px; max-width: 260px;"
+        },
+        alley: {
+            title: "Cafe Down The Alley",
+            subtitle: "Cozy Specialty Cafe & Hangout",
+            description: "Customer acquisition funnels, local discovery SEO, and community engagement.",
+            url: "https://instagram.com/cafedownthealley",
+            logo: "assets/alley_logo.png",
+            waveColor: "linear-gradient(135deg, #0369a1, #075985)",
+            accentColor: "#38bdf8",
+            logoStyle: "max-height: 180px; max-width: 260px;"
+        }
+    };
 
-    function updateCarouselPosition(index) {
-        if (popCards.length === 0 || !brandsTrack) return;
+    const thumbBtns = document.querySelectorAll('.thumb-btn');
+    const showcaseTitle = document.getElementById('showcase-title');
+    const showcaseSub = document.getElementById('showcase-sub');
+    const showcaseDesc = document.getElementById('showcase-desc');
+    const showcaseCta = document.getElementById('showcase-cta');
+    const organicWaveBg = document.getElementById('organic-wave-bg');
+    const showcaseLogoImg = document.getElementById('showcase-logo-img');
+    const showcaseLogoContainer = document.getElementById('showcase-logo-container');
+    
+    let showcaseTimer = null;
+    let currentBrandKeys = Object.keys(brandShowcaseData);
+    let currentShowcaseIdx = 0;
 
-        // Wrap index boundaries
-        if (index < 0) index = popCards.length - 1;
-        if (index >= popCards.length) index = 0;
+    function switchBrandShowcase(key) {
+        const data = brandShowcaseData[key];
+        if (!data) return;
 
-        activeBrandIndex = index;
-
-        popCards.forEach((card, idx) => {
-            if (idx === activeBrandIndex) {
-                card.classList.add('active');
+        // Active thumb button state
+        thumbBtns.forEach(btn => {
+            if (btn.getAttribute('data-brand') === key) {
+                btn.classList.add('active');
+                btn.style.setProperty('--accent', data.accentColor);
             } else {
-                card.classList.remove('active');
+                btn.classList.remove('active');
             }
         });
 
-        dots.forEach((dot, idx) => {
-            if (idx === activeBrandIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
+        // Animate out logo & text
+        if (showcaseLogoContainer) {
+            showcaseLogoContainer.style.opacity = '0';
+            showcaseLogoContainer.style.transform = 'scale(0.85) translateY(20px)';
+        }
+
+        setTimeout(() => {
+            // Update Text Content
+            if (showcaseTitle) {
+                showcaseTitle.textContent = data.title;
+                showcaseTitle.style.color = '#ffffff';
             }
-        });
+            if (showcaseSub) {
+                showcaseSub.textContent = data.subtitle;
+                showcaseSub.style.color = data.accentColor;
+            }
+            if (showcaseDesc) showcaseDesc.textContent = data.description;
+            if (showcaseCta) {
+                showcaseCta.setAttribute('href', data.url);
+                showcaseCta.innerHTML = data.url.includes('instagram') ? 'View Instagram &rarr;' : 'Visit Official Website &rarr;';
+            }
 
-        // Calculate card offset (card width: 240px + gap: 28px = 268px)
-        const cardWidth = popCards[0].offsetWidth || 240;
-        const gap = 28;
-        const offset = activeBrandIndex * (cardWidth + gap);
+            // Update Organic Wave Background Color
+            if (organicWaveBg) {
+                organicWaveBg.style.background = data.waveColor;
+                organicWaveBg.style.boxShadow = `0 20px 50px ${data.accentColor}44`;
+            }
 
-        brandsTrack.style.transform = `translateX(-${offset}px)`;
+            // Update Logo Image
+            if (showcaseLogoImg) {
+                showcaseLogoImg.setAttribute('src', data.logo);
+                showcaseLogoImg.setAttribute('alt', `${data.title} Logo`);
+                showcaseLogoImg.setAttribute('style', data.logoStyle);
+            }
+
+            // Animate back in
+            if (showcaseLogoContainer) {
+                showcaseLogoContainer.style.opacity = '1';
+                showcaseLogoContainer.style.transform = 'scale(1) translateY(0)';
+            }
+        }, 220);
     }
 
-    function startAutoCarousel() {
-        stopAutoCarousel();
-        carouselTimer = setInterval(() => {
-            updateCarouselPosition(activeBrandIndex + 1);
-        }, 4000);
+    function startAutoShowcase() {
+        stopAutoShowcase();
+        showcaseTimer = setInterval(() => {
+            currentShowcaseIdx = (currentShowcaseIdx + 1) % currentBrandKeys.length;
+            switchBrandShowcase(currentBrandKeys[currentShowcaseIdx]);
+        }, 4500);
     }
 
-    function stopAutoCarousel() {
-        if (carouselTimer) {
-            clearInterval(carouselTimer);
-            carouselTimer = null;
+    function stopAutoShowcase() {
+        if (showcaseTimer) {
+            clearInterval(showcaseTimer);
+            showcaseTimer = null;
         }
     }
 
-    if (brandsTrack && popCards.length > 0) {
-        // Prev button click
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                updateCarouselPosition(activeBrandIndex - 1);
-                startAutoCarousel();
-            });
-        }
-
-        // Next button click
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                updateCarouselPosition(activeBrandIndex + 1);
-                startAutoCarousel();
-            });
-        }
-
-        // Dot clicks
-        dots.forEach((dot, idx) => {
-            dot.addEventListener('click', () => {
-                updateCarouselPosition(idx);
-                startAutoCarousel();
-            });
-        });
-
-        // Direct card clicks
-        popCards.forEach((card, idx) => {
-            card.addEventListener('click', (e) => {
-                // If clicking visit link, allow default navigation
-                if (e.target.closest('.pop-visit-btn')) return;
-                
-                updateCarouselPosition(idx);
-                startAutoCarousel();
+    if (thumbBtns.length > 0) {
+        thumbBtns.forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+                currentShowcaseIdx = idx;
+                const brandKey = btn.getAttribute('data-brand');
+                switchBrandShowcase(brandKey);
+                startAutoShowcase();
             });
         });
 
-        // Pause auto-sliding on hover
-        const carouselContainer = document.querySelector('.brands-carousel-container');
-        if (carouselContainer) {
-            carouselContainer.addEventListener('mouseenter', stopAutoCarousel);
-            carouselContainer.addEventListener('mouseleave', startAutoCarousel);
+        const showcaseContainer = document.querySelector('.smoothie-showcase-container');
+        if (showcaseContainer) {
+            showcaseContainer.addEventListener('mouseenter', stopAutoShowcase);
+            showcaseContainer.addEventListener('mouseleave', startAutoShowcase);
         }
 
-        // Initialize position & timer
-        updateCarouselPosition(0);
-        startAutoCarousel();
+        // Initialize with Bologna
+        switchBrandShowcase('bologna');
+        startAutoShowcase();
     }
 
     // 6. Navbar Click Interceptor & Staggered Section Animations
