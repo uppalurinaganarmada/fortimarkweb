@@ -40,33 +40,41 @@ body {
     background-color: transparent;
 }
 
-/* Zooming Chessboard Background Container */
+/* 4K Ultra-High Resolution Luxury Ambient Background System */
 .chessboard-bg {
     position: fixed;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
     pointer-events: none;
-    background-color: #030408;
+    background-color: #040508;
     background-image: 
-        linear-gradient(45deg, #0f111c 25%, transparent 25%), 
-        linear-gradient(-45deg, #0f111c 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #0f111c 75%), 
-        linear-gradient(-45deg, transparent 75%, #0f111c 75%);
-    background-size: 160px 160px;
-    background-position: 0 0, 0 80px, 80px -80px, -80px 0px;
-    animation: chessboardZoom 120s linear infinite alternate;
-    will-change: transform;
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(12, 14, 22, 0.4) 0%, rgba(4, 5, 8, 0.95) 100%),
+        url('assets/dark_luxury_bg.png');
+    background-size: cover, cover, cover, cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-blend-mode: screen, overlay, normal, multiply;
+    animation: luxuryAmbientGlow 30s ease-in-out infinite alternate;
+    will-change: filter, transform;
 }
 
-@keyframes chessboardZoom {
+@keyframes luxuryAmbientGlow {
     0% {
+        filter: contrast(105%) brightness(98%);
         transform: scale(1);
     }
+    50% {
+        filter: contrast(112%) brightness(106%);
+        transform: scale(1.03);
+    }
     100% {
-        transform: scale(1.15);
+        filter: contrast(105%) brightness(100%);
+        transform: scale(1);
     }
 }
 
