@@ -95,10 +95,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Venn Diagram Interactivity
     const vennCircles = document.querySelectorAll('.venn-circle');
     const detailsPanels = document.querySelectorAll('.details-content');
+    let servicesAnimTimeouts = [];
 
     if (vennCircles.length > 0 && detailsPanels.length > 0) {
         vennCircles.forEach(circle => {
             circle.addEventListener('click', () => {
+                // Clear any active automated sequence timeouts
+                servicesAnimTimeouts.forEach(t => clearTimeout(t));
+                servicesAnimTimeouts = [];
+                
+                // Clear active intersection highlight
+                const intersectionBadge = document.querySelector('.venn-intersection');
+                if (intersectionBadge) {
+                    intersectionBadge.classList.remove('active-intersection');
+                }
+
                 vennCircles.forEach(c => c.classList.remove('active-circle'));
                 circle.classList.add('active-circle');
 
@@ -180,6 +191,98 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Navbar Click Interceptor & Staggered Section Animations
     const navLinksList = document.querySelectorAll('.nav-link');
     
+    function animateServicesVenn() {
+        // Clear any active timeouts
+        servicesAnimTimeouts.forEach(t => clearTimeout(t));
+        servicesAnimTimeouts = [];
+
+        const marketingCircle = document.querySelector('.circle-marketing');
+        const developmentCircle = document.querySelector('.circle-development');
+        const intelligenceCircle = document.querySelector('.circle-intelligence');
+        const intersectionBadge = document.querySelector('.venn-intersection');
+        const detailsPanel = document.querySelector('.venn-details-panel');
+        const intersectionStatement = document.querySelector('.intersection-statement');
+
+        const circles = [marketingCircle, developmentCircle, intelligenceCircle];
+        const detailPanels = document.querySelectorAll('.details-content');
+
+        // Reset elements
+        circles.forEach(c => {
+            if (c) {
+                c.classList.remove('animated', 'active-circle');
+                c.style.opacity = '0';
+            }
+        });
+        if (detailsPanel) {
+            detailsPanel.classList.remove('animated');
+            detailsPanel.style.opacity = '0';
+        }
+        if (intersectionBadge) {
+            intersectionBadge.classList.remove('active-intersection');
+            intersectionBadge.style.opacity = '0';
+        }
+        if (intersectionStatement) {
+            intersectionStatement.classList.remove('animated');
+            intersectionStatement.style.opacity = '0';
+        }
+        detailPanels.forEach(p => p.classList.remove('active'));
+
+        // Step 1: Reveal first circle with text
+        const t1 = setTimeout(() => {
+            if (marketingCircle) {
+                marketingCircle.style.opacity = '1';
+                marketingCircle.classList.add('animated', 'active-circle');
+            }
+            if (detailsPanel) {
+                detailsPanel.style.opacity = '1';
+                detailsPanel.classList.add('animated');
+            }
+            const detailsMarketing = document.getElementById('details-marketing');
+            if (detailsMarketing) detailsMarketing.classList.add('active');
+        }, 300);
+        servicesAnimTimeouts.push(t1);
+
+        // Step 2: Reveal second circle with text
+        const t2 = setTimeout(() => {
+            if (marketingCircle) marketingCircle.classList.remove('active-circle');
+            if (developmentCircle) {
+                developmentCircle.style.opacity = '1';
+                developmentCircle.classList.add('animated', 'active-circle');
+            }
+            detailPanels.forEach(p => p.classList.remove('active'));
+            const detailsDevelopment = document.getElementById('details-development');
+            if (detailsDevelopment) detailsDevelopment.classList.add('active');
+        }, 2200);
+        servicesAnimTimeouts.push(t2);
+
+        // Step 3: Reveal third circle with text
+        const t3 = setTimeout(() => {
+            if (developmentCircle) developmentCircle.classList.remove('active-circle');
+            if (intelligenceCircle) {
+                intelligenceCircle.style.opacity = '1';
+                intelligenceCircle.classList.add('animated', 'active-circle');
+            }
+            detailPanels.forEach(p => p.classList.remove('active'));
+            const detailsIntelligence = document.getElementById('details-intelligence');
+            if (detailsIntelligence) detailsIntelligence.classList.add('active');
+        }, 4100);
+        servicesAnimTimeouts.push(t3);
+
+        // Step 4: Finally, reveal winning zone with highlight
+        const t4 = setTimeout(() => {
+            if (intelligenceCircle) intelligenceCircle.classList.remove('active-circle');
+            if (intersectionBadge) {
+                intersectionBadge.style.opacity = '1';
+                intersectionBadge.classList.add('active-intersection');
+            }
+            if (intersectionStatement) {
+                intersectionStatement.style.opacity = '1';
+                intersectionStatement.classList.add('animated');
+            }
+        }, 6000);
+        servicesAnimTimeouts.push(t4);
+    }
+
     function triggerSectionClickAnimation(targetId) {
         const targetSection = document.querySelector(targetId);
         if (!targetSection) return;
@@ -198,8 +301,15 @@ document.addEventListener('DOMContentLoaded', () => {
             animatedTitle.classList.add('animate-heading');
         }
 
-        // Staggered left-to-right slide for elements in the section
-        const slideElements = targetSection.querySelectorAll('.slide-left-to-right');
+        // Staggered left-to-right slide for elements in the section (excluding Venn components handled customly)
+        const slideElements = Array.from(targetSection.querySelectorAll('.slide-left-to-right'))
+            .filter(el => {
+                if (targetId === '#services' || targetId === '#how-we-work' || targetId === '#results') {
+                    // Let custom timed functions handle Venn components
+                    return !el.closest('.venn-wrapper') && !el.closest('.intersection-statement');
+                }
+                return true;
+            });
         
         slideElements.forEach(el => {
             el.classList.remove('animated');
@@ -214,6 +324,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.classList.add('animated');
             }, 100 + idx * 120); // 120ms stagger
         });
+
+        // Trigger custom Venn animation if Services section is accessed
+        if (targetId === '#services') {
+            animateServicesVenn();
+        }
     }
 
     navLinksList.forEach(link => {

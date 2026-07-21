@@ -990,6 +990,15 @@ a {
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 1.2s ease;
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.venn-intersection.active-intersection {
+    opacity: 1;
+    transform: scale(1.1) !important;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.85)) drop-shadow(0 0 30px rgba(0, 255, 136, 0.4));
 }
 
 .intersection-label {
