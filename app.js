@@ -134,70 +134,70 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: "Italian Fine Dining & Specialty Kitchen",
             description: "High-performing website infrastructure, digital reservation connections, and visual menu storytelling.",
             url: "https://slateblue-hedgehog-572890.hostingersite.com",
-            logo: "assets/bologna_logo.png",
+            logo: "assets/bologna_logo_hd.png",
             waveColor: "linear-gradient(135deg, #1c2841, #0f172a)",
             accentColor: "#3b82f6",
-            logoStyle: "max-height: 220px; max-width: 380px;"
+            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
         },
         yumm: {
             title: "Yumm Keralam",
             subtitle: "Authentic Kerala Cuisine & Dining",
             description: "Full-stack digital presence, search engine positioning, and culinary brand storytelling.",
             url: "https://yummkeralam.com",
-            logo: "assets/yumm_web_logo.png",
+            logo: "assets/yumm_logo_hd.png",
             waveColor: "linear-gradient(135deg, #881337, #4c0519)",
             accentColor: "#f43f5e",
-            logoStyle: "max-height: 240px; max-width: 360px;"
+            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
         },
         dayone: {
             title: "Day One Cafe",
             subtitle: "Artisanal Coffee & Specialty Bistro",
             description: "AI WhatsApp automation, retention workflows, and social engagement strategy.",
             url: "https://dayonecafe.com",
-            logo: "assets/dayone_web_logo.png",
+            logo: "assets/dayone_logo_hd.png",
             waveColor: "linear-gradient(135deg, #2f4a37, #142318)",
             accentColor: "#10b981",
-            logoStyle: "max-height: 220px; max-width: 360px;"
+            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
         },
         thaichef: {
             title: "Thai Chef",
             subtitle: "Authentic Thai Flavours & Asian Dining",
             description: "Targeted performance marketing, Google Business optimization, and campaign execution.",
             url: "https://thaichef.fortimark.co",
-            logo: "assets/thaichef_web_logo.png",
+            logo: "assets/thaichef_logo_hd.png",
             waveColor: "linear-gradient(135deg, #18181b, #09090b)",
             accentColor: "#eab308",
-            logoStyle: "max-height: 220px; max-width: 360px;"
+            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
         },
         flame: {
             title: "Once Upon a Flame",
             subtitle: "Charcoal & Flame Grill Experience",
             description: "High-octane reel content, photography, and viral audience engagement campaigns.",
             url: "https://instagram.com/once_upon_a_flame",
-            logo: "assets/flame_logo.png",
+            logo: "assets/flame_logo_hd.png",
             waveColor: "linear-gradient(135deg, #7c2d12, #451a03)",
             accentColor: "#f97316",
-            logoStyle: "max-height: 230px; max-width: 230px; border-radius: 50%;"
+            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
         },
         rajya: {
             title: "Rajya Dvaar",
             subtitle: "Royal Heritage Culinary Experience",
             description: "Brand positioning, luxury identity, and online reputation management.",
             url: "https://instagram.com/rajya.dvaar",
-            logo: "assets/rajya_logo.png",
+            logo: "assets/rajya_logo_hd.png",
             waveColor: "linear-gradient(135deg, #581c87, #3b0764)",
             accentColor: "#a855f7",
-            logoStyle: "max-height: 230px; max-width: 360px;"
+            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
         },
         alley: {
             title: "Cafe Down The Alley",
             subtitle: "Cozy Specialty Cafe & Hangout",
             description: "Customer acquisition funnels, local discovery SEO, and community engagement.",
             url: "https://instagram.com/cafedownthealley",
-            logo: "assets/alley_logo.png",
+            logo: "assets/alley_logo_hd.png",
             waveColor: "linear-gradient(135deg, #0369a1, #075985)",
             accentColor: "#38bdf8",
-            logoStyle: "max-height: 230px; max-width: 360px;"
+            logoStyle: "max-height: 250px; max-width: 250px; border-radius: 50%;"
         }
     };
 
