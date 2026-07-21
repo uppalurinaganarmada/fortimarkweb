@@ -850,20 +850,35 @@ a {
 .problem-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border);
-    padding: 3rem 2rem 2.25rem;
-    border-radius: 140px 140px 24px 24px; /* Signature FLEUR Arch Card */
-    transition: var(--transition);
+    padding: 0;
+    border-radius: 120px 120px 24px 24px; /* Signature Semi-Circle Top Arch Card */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(45, 36, 32, 0.05);
 }
 
-.problem-card .card-bg {
+/* Semi-Circle Top Header Container (Headings inside) */
+.card-semicircle-top {
+    width: 100%;
+    height: 145px;
+    border-radius: 120px 120px 0 0; /* Semi-circle shape on TOP */
+    background-color: #dfcaa8;
+    border-bottom: 1px solid rgba(45, 36, 32, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1.25rem 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.semicircle-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -872,15 +887,47 @@ a {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.14; /* Faint to keep text highly readable */
-    transition: opacity 0.5s ease, filter 0.5s ease;
+    opacity: 0.18;
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1;
     pointer-events: none;
-    will-change: transform;
+}
+
+.card-semicircle-top h4 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    line-height: 1.25;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+/* Card Body Outside Semi-Circle (Text outside) */
+.card-body-outside {
+    padding: 1.5rem 1.5rem 1.75rem;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    background: transparent;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body-outside p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin: 0;
+    transition: color 0.4s ease;
 }
 
 /* Slowly zoom in background continuously when card is revealed */
-.problem-card.animated .card-bg {
+.problem-card.animated .semicircle-bg {
     animation: slowZoomImage 8s infinite alternate ease-in-out;
 }
 
@@ -894,37 +941,32 @@ a {
 .problem-card.animated:nth-child(3) { animation-delay: 4.5s; }
 .problem-card.animated:nth-child(4) { animation-delay: 6.0s; }
 
+/* Pinterest-Inspired Smooth Hover Transition */
 .problem-card:hover {
     animation-play-state: paused !important;
-    border-color: var(--border-hover) !important;
-    background-color: #dfcab9 !important;
-    transform: translateY(-12px) scale(1.06) !important;
-    box-shadow: 0 20px 45px rgba(42, 32, 28, 0.2), 0 0 25px rgba(179, 126, 101, 0.3) !important;
+    border-color: rgba(45, 36, 32, 0.3) !important;
+    background-color: #f0e3d6 !important;
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 20px 45px rgba(45, 36, 32, 0.18), 0 0 25px rgba(179, 126, 101, 0.25) !important;
     z-index: 10;
 }
 
-.problem-card:hover .card-bg {
-    opacity: 0.35; /* highlights image on hover */
+.problem-card:hover .card-semicircle-top {
+    background-color: #d8beaa;
 }
 
-.problem-card .card-content {
-    position: relative;
-    z-index: 2; /* sits on top of bg image */
-    width: 100%;
+.problem-card:hover .semicircle-bg {
+    opacity: 0.4;
+    transform: scale(1.12);
 }
 
-.problem-card h4 {
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
-    text-align: center;
+.problem-card:hover .card-semicircle-top h4 {
+    transform: translateY(-2px);
+    color: #1a1412;
 }
 
-.problem-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    text-align: center;
+.problem-card:hover .card-body-outside p {
+    color: #2d2420;
 }
 
 @keyframes slowZoomImage {
