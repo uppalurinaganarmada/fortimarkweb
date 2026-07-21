@@ -381,16 +381,19 @@ a {
     color: var(--accent);
 }
 
-/* Trust Strip Section with 3D Disney Pop-Out Brand Cards Carousel */
+/* Full-Screen Edge-to-Edge Interactive Brand Showcase */
 .trust-strip {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 3rem 0;
+    overflow: hidden;
 }
 
 .trust-text {
@@ -401,6 +404,7 @@ a {
     font-weight: 700;
     position: relative;
     display: inline-block;
+    margin-bottom: 1.5rem;
 }
 
 .trust-text::before,
@@ -416,20 +420,18 @@ a {
 .trust-text::before { left: -48px; }
 .trust-text::after { right: -48px; }
 
-/* Pinterest-Inspired Smoothie Brand Showcase Container */
+/* Full Screen Showcase Container */
 .smoothie-showcase-container {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 2.5rem;
-    width: 100%;
-    max-width: 1050px;
-    margin: 2rem auto 0;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    padding: 3rem;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    overflow: hidden;
+    gap: 3.5rem;
+    width: 100vw;
+    min-height: 75vh;
+    padding: 4rem 8vw;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
     position: relative;
     align-items: center;
 }
@@ -448,58 +450,58 @@ a {
     color: var(--accent-secondary);
     background: rgba(0, 255, 136, 0.08);
     border: 1px solid rgba(0, 255, 136, 0.2);
-    padding: 0.35rem 0.9rem;
+    padding: 0.4rem 1rem;
     border-radius: 100px;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
 
 .showcase-title {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     font-weight: 800;
     color: var(--text-primary);
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
     transition: color 0.5s ease, transform 0.5s ease;
 }
 
 .showcase-sub {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: var(--accent);
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     transition: color 0.5s ease;
 }
 
 .showcase-desc {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
-    max-width: 440px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2.25rem;
+    max-width: 520px;
 }
 
 .showcase-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.6rem;
+    gap: 0.6rem;
+    padding: 0.85rem 2rem;
     background: #ffffff;
     color: #06070a;
     border-radius: 100px;
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    margin-bottom: 3rem;
     text-decoration: none;
 }
 
 .showcase-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.25);
     background: var(--text-primary);
 }
 
@@ -507,20 +509,20 @@ a {
 .brand-thumbnails-row {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
 .thumb-btn {
-    width: 52px;
-    height: 52px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: #090b12;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
@@ -535,8 +537,8 @@ a {
 }
 
 .thumb-btn:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-3px) scale(1.08);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-4px) scale(1.1);
 }
 
 .thumb-btn:hover img {
@@ -545,21 +547,21 @@ a {
 
 .thumb-btn.active {
     border-color: var(--accent);
-    box-shadow: 0 0 15px var(--accent), inset 0 0 8px var(--accent);
-    transform: translateY(-4px) scale(1.14);
+    box-shadow: 0 0 18px var(--accent), inset 0 0 10px var(--accent);
+    transform: translateY(-5px) scale(1.15);
     background: #0e1220;
 }
 
 .thumb-btn.active img {
     filter: grayscale(0%);
-    transform: scale(1.08);
+    transform: scale(1.1);
 }
 
 /* Right Side: Morphing Organic Wave & 3D Logo Display */
 .showcase-right {
     position: relative;
     width: 100%;
-    height: 380px;
+    height: 480px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -568,13 +570,13 @@ a {
 /* Organic Wave Shape Background */
 .organic-wave-bg {
     position: absolute;
-    width: 320px;
-    height: 320px;
+    width: 440px;
+    height: 440px;
     background: linear-gradient(135deg, #1c2841, #0f172a);
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    animation: organicMorph 12s ease-in-out infinite alternate;
+    animation: organicMorph 14s ease-in-out infinite alternate;
     transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.6);
 }
 
 @keyframes organicMorph {
@@ -584,7 +586,7 @@ a {
     }
     50% {
         border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
-        transform: rotate(90deg) scale(1.04);
+        transform: rotate(90deg) scale(1.05);
     }
     100% {
         border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
@@ -598,9 +600,9 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-    animation: floatingLogo 4s ease-in-out infinite alternate;
+    animation: floatingLogo 4.5s ease-in-out infinite alternate;
 }
 
 @keyframes floatingLogo {

@@ -137,37 +137,37 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/bologna_logo.png",
             waveColor: "linear-gradient(135deg, #1c2841, #0f172a)",
             accentColor: "#3b82f6",
-            logoStyle: "max-height: 160px; max-width: 280px;"
+            logoStyle: "max-height: 220px; max-width: 380px;"
         },
         yumm: {
             title: "Yumm Keralam",
             subtitle: "Authentic Kerala Cuisine & Dining",
             description: "Full-stack digital presence, search engine positioning, and culinary brand storytelling.",
             url: "https://yummkeralam.com",
-            logo: "assets/yumm_logo.png",
+            logo: "assets/yumm_web_logo.png",
             waveColor: "linear-gradient(135deg, #881337, #4c0519)",
             accentColor: "#f43f5e",
-            logoStyle: "max-height: 180px; max-width: 260px;"
+            logoStyle: "max-height: 240px; max-width: 360px;"
         },
         dayone: {
             title: "Day One Cafe",
             subtitle: "Artisanal Coffee & Specialty Bistro",
             description: "AI WhatsApp automation, retention workflows, and social engagement strategy.",
             url: "https://dayonecafe.com",
-            logo: "assets/dayone_logo.png",
+            logo: "assets/dayone_web_logo.png",
             waveColor: "linear-gradient(135deg, #2f4a37, #142318)",
             accentColor: "#10b981",
-            logoStyle: "max-height: 150px; max-width: 280px;"
+            logoStyle: "max-height: 220px; max-width: 360px;"
         },
         thaichef: {
             title: "Thai Chef",
             subtitle: "Authentic Thai Flavours & Asian Dining",
             description: "Targeted performance marketing, Google Business optimization, and campaign execution.",
             url: "https://thaichef.fortimark.co",
-            logo: "assets/thaichef_logo.png",
+            logo: "assets/thaichef_web_logo.png",
             waveColor: "linear-gradient(135deg, #18181b, #09090b)",
             accentColor: "#eab308",
-            logoStyle: "max-height: 110px; max-width: 260px; background: #06070a; padding: 16px 28px; border-radius: 14px; box-shadow: 0 8px 25px rgba(0,0,0,0.6);"
+            logoStyle: "max-height: 220px; max-width: 360px;"
         },
         flame: {
             title: "Once Upon a Flame",
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/flame_logo.png",
             waveColor: "linear-gradient(135deg, #7c2d12, #451a03)",
             accentColor: "#f97316",
-            logoStyle: "max-height: 180px; max-width: 180px; border-radius: 50%;"
+            logoStyle: "max-height: 230px; max-width: 230px; border-radius: 50%;"
         },
         rajya: {
             title: "Rajya Dvaar",
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/rajya_logo.png",
             waveColor: "linear-gradient(135deg, #581c87, #3b0764)",
             accentColor: "#a855f7",
-            logoStyle: "max-height: 180px; max-width: 260px;"
+            logoStyle: "max-height: 230px; max-width: 360px;"
         },
         alley: {
             title: "Cafe Down The Alley",
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logo: "assets/alley_logo.png",
             waveColor: "linear-gradient(135deg, #0369a1, #075985)",
             accentColor: "#38bdf8",
-            logoStyle: "max-height: 180px; max-width: 260px;"
+            logoStyle: "max-height: 230px; max-width: 360px;"
         }
     };
 
