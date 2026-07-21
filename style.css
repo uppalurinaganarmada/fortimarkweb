@@ -865,7 +865,7 @@ a {
 /* Semi-Circle Top Header Container (Headings inside) */
 .card-semicircle-top {
     width: 100%;
-    height: 145px;
+    height: 155px;
     border-radius: 120px 120px 0 0; /* Semi-circle shape on TOP */
     background-color: #dfcaa8;
     border-bottom: 1px solid rgba(45, 36, 32, 0.1);
@@ -893,16 +893,53 @@ a {
     pointer-events: none;
 }
 
+/* Semi-Circle Top Arc SVG Dial (Pinterest Rotating Wheel) */
+.semicircle-arc-svg {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 12px);
+    z-index: 2;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.arc-progress {
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease;
+}
+
+.arc-indicator-dot {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), fill 0.4s ease;
+    transform-origin: 100px 95px; /* Center of the semi-circle arc */
+}
+
+.semicircle-heading-container {
+    position: relative;
+    z-index: 3;
+    padding: 0 1rem;
+    text-align: center;
+}
+
 .card-semicircle-top h4 {
     font-family: var(--font-heading);
     font-size: 1.15rem;
     font-weight: 800;
     color: var(--text-primary);
-    position: relative;
-    z-index: 2;
     margin: 0;
     line-height: 1.25;
     transition: transform 0.4s ease, color 0.4s ease;
+}
+
+/* On Card Hover: Rotating Arc Slider Animation (0deg to 180deg Sweep) */
+.problem-card:hover .arc-progress {
+    stroke-dashoffset: 0;
+    stroke: #8c5a45;
+}
+
+.problem-card:hover .arc-indicator-dot {
+    transform: rotate(180deg);
+    fill: #8c5a45;
 }
 
 /* Card Body Outside Semi-Circle (Text outside) */
