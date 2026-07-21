@@ -1267,7 +1267,7 @@ a {
     }
     10% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(1.25rem);
     }
     55% {
         transform: translateX(calc(var(--title-width, 280px) + 2.75rem));
@@ -1464,7 +1464,7 @@ a {
         }
         10% {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0.75rem);
         }
         55% {
             transform: translateX(calc(var(--title-width, 200px) + 2.0rem));
