@@ -468,21 +468,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentGlobalIndex = 0;
     let isGlobalTransitioning = false;
 
-    function updateDebug(msg) {
-        const dbg = document.getElementById('slider-debug-panel');
-        if (dbg) {
-            dbg.innerHTML += "<br>" + msg;
-            dbg.scrollTop = dbg.scrollHeight;
-        }
-    }
-
     function goToGlobalSlide(index) {
         console.log("goToGlobalSlide called with index:", index, "isGlobalTransitioning:", isGlobalTransitioning);
-        updateDebug(`goToGlobalSlide(${index}) called. transitioning: ${isGlobalTransitioning}`);
         
         if (index < 0 || index >= slideIds.length || isGlobalTransitioning) {
             console.log("goToGlobalSlide rejected/returned early.");
-            updateDebug(`[Rejected] Index bounds or already transitioning.`);
             return;
         }
         isGlobalTransitioning = true;
@@ -493,9 +483,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (globalWrapper) {
                 globalWrapper.style.transform = `translateX(-${index * 100}vw)`;
                 console.log("Wrapper transform applied: translateX(-" + (index * 100) + "vw)");
-                updateDebug(`[CSS] translate applied: translateX(-${index * 100}vw)`);
-            } else {
-                updateDebug(`[ERROR] global-slider-wrapper not found!`);
             }
 
             // Active class handling for fade and scaling transitions
@@ -504,7 +491,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     slide.classList.add('active-slide');
                     const targetId = slideIds[idx];
                     console.log("Activating slide:", targetId);
-                    updateDebug(`[Slide] Activating: ${targetId}`);
                     triggerSectionClickAnimation(targetId);
                 } else {
                     slide.classList.remove('active-slide');
@@ -525,12 +511,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error("Error during slide transition:", error);
-            updateDebug(`[Error] ${error.message}`);
         } finally {
             setTimeout(() => {
                 isGlobalTransitioning = false;
                 console.log("isGlobalTransitioning set to false.");
-                updateDebug(`Transition lock cleared.`);
             }, 850); // Matches transition duration in style.css
         }
     }
@@ -540,11 +524,9 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             console.log("Navbar link clicked:", href);
-            updateDebug(`[Nav Click] ${href}`);
             if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const targetIdx = slideIds.indexOf(href);
-                updateDebug(`[Nav Target] Index: ${targetIdx}`);
                 if (targetIdx !== -1) {
                     goToGlobalSlide(targetIdx);
                 }
