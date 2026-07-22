@@ -310,8 +310,8 @@ a {
     opacity: 0;
     transform: translate3d(0, 0, -200px) scale(0.2);
     animation: netflixZoomIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    /* Soft royal blue ambient glow behind blue rook symbol */
-    filter: drop-shadow(0 15px 35px rgba(37, 99, 235, 0.55));
+    /* Soft dark ambient shadow behind black rook symbol */
+    filter: drop-shadow(0 15px 30px rgba(45, 36, 32, 0.25));
 }
 
 .logo-name-reveal {
@@ -336,7 +336,7 @@ a {
     0% {
         opacity: 0;
         transform: translate3d(0, 0, -300px) scale(0.1);
-        filter: drop-shadow(0 0 0 rgba(37, 99, 235, 0)) blur(10px);
+        filter: drop-shadow(0 0 0 rgba(45, 36, 32, 0)) blur(10px);
     }
     35% {
         opacity: 1;
@@ -344,12 +344,12 @@ a {
     }
     75% {
         transform: translate3d(0, 0, 40px) scale(1.1);
-        filter: drop-shadow(0 15px 40px rgba(37, 99, 235, 0.7));
+        filter: drop-shadow(0 15px 40px rgba(45, 36, 32, 0.35));
     }
     100% {
         opacity: 1;
         transform: translate3d(0, 0, 0) scale(1);
-        filter: drop-shadow(0 15px 35px rgba(37, 99, 235, 0.45));
+        filter: drop-shadow(0 15px 30px rgba(45, 36, 32, 0.25));
     }
 }
 
@@ -850,122 +850,60 @@ a {
 .problem-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border);
-    padding: 0;
-    border-radius: 120px 120px 24px 24px; /* Signature Semi-Circle Top Arch Card */
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 7rem 1.75rem 2.25rem; /* Large top padding to make space for the overlapping image */
+    border-radius: 24px; /* Premium rounded rectangular base */
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(45, 36, 32, 0.05);
+    overflow: visible; /* Crucial to let the image overlap/pop out of the top! */
+    box-shadow: 0 10px 30px rgba(45, 36, 32, 0.04);
 }
 
-/* Semi-Circle Top Header Container (Headings inside) */
-.card-semicircle-top {
-    width: 100%;
-    height: 155px;
-    border-radius: 120px 120px 0 0; /* Semi-circle shape on TOP */
-    background-color: #dfcaa8;
-    border-bottom: 1px solid rgba(45, 36, 32, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem 1.25rem 1rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.semicircle-bg {
+/* Overlapping Popout Image Container on Top */
+.popout-image-container {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -55px; /* Offset to float outside the card top boundary */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    z-index: 10;
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+}
+
+.popout-image {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.18;
-    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 1;
-    pointer-events: none;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(45, 36, 32, 0.15));
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Semi-Circle Top Arc SVG Dial (Pinterest Rotating Wheel) */
-.semicircle-arc-svg {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    width: calc(100% - 16px);
-    height: calc(100% - 12px);
-    z-index: 2;
-    pointer-events: none;
-    overflow: visible;
+.card-inner-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.arc-progress {
-    transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease;
-}
-
-.arc-indicator-dot {
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), fill 0.4s ease;
-    transform-origin: 100px 95px; /* Center of the semi-circle arc */
-}
-
-.semicircle-heading-container {
-    position: relative;
-    z-index: 3;
-    padding: 0 1rem;
-    text-align: center;
-}
-
-.card-semicircle-top h4 {
+.card-inner-content h4 {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: var(--text-primary);
-    margin: 0;
+    margin-bottom: 0.75rem;
     line-height: 1.25;
-    transition: transform 0.4s ease, color 0.4s ease;
 }
 
-/* On Card Hover: Rotating Arc Slider Animation (0deg to 180deg Sweep) */
-.problem-card:hover .arc-progress {
-    stroke-dashoffset: 0;
-    stroke: #8c5a45;
-}
-
-.problem-card:hover .arc-indicator-dot {
-    transform: rotate(180deg);
-    fill: #8c5a45;
-}
-
-/* Card Body Outside Semi-Circle (Text outside) */
-.card-body-outside {
-    padding: 1.5rem 1.5rem 1.75rem;
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-    background: transparent;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card-body-outside p {
+.card-inner-content p {
     color: var(--text-secondary);
     font-size: 0.92rem;
     line-height: 1.55;
     margin: 0;
-    transition: color 0.4s ease;
-}
-
-/* Slowly zoom in background continuously when card is revealed */
-.problem-card.animated .semicircle-bg {
-    animation: slowZoomImage 8s infinite alternate ease-in-out;
 }
 
 /* Staggered autonomous floating & zooming for problem cards */
@@ -978,32 +916,19 @@ a {
 .problem-card.animated:nth-child(3) { animation-delay: 4.5s; }
 .problem-card.animated:nth-child(4) { animation-delay: 6.0s; }
 
-/* Pinterest-Inspired Smooth Hover Transition */
+/* Pinterest-Inspired Hover Transition: Popout Character scales and floats */
 .problem-card:hover {
     animation-play-state: paused !important;
-    border-color: rgba(45, 36, 32, 0.3) !important;
-    background-color: #f0e3d6 !important;
-    transform: translateY(-10px) scale(1.03) !important;
-    box-shadow: 0 20px 45px rgba(45, 36, 32, 0.18), 0 0 25px rgba(179, 126, 101, 0.25) !important;
-    z-index: 10;
+    border-color: rgba(45, 36, 32, 0.25) !important;
+    background-color: #eee1d6 !important;
+    transform: translateY(-8px) !important;
+    box-shadow: 0 25px 50px rgba(45, 36, 32, 0.12), 0 0 25px rgba(179, 126, 101, 0.15) !important;
+    z-index: 15;
 }
 
-.problem-card:hover .card-semicircle-top {
-    background-color: #d8beaa;
-}
-
-.problem-card:hover .semicircle-bg {
-    opacity: 0.4;
-    transform: scale(1.12);
-}
-
-.problem-card:hover .card-semicircle-top h4 {
-    transform: translateY(-2px);
-    color: #1a1412;
-}
-
-.problem-card:hover .card-body-outside p {
-    color: #2d2420;
+.problem-card:hover .popout-image-container {
+    transform: translateX(-50%) translateY(-15px) scale(1.1);
+    filter: drop-shadow(0 20px 30px rgba(45, 36, 32, 0.25));
 }
 
 @keyframes slowZoomImage {
