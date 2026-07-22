@@ -460,7 +460,6 @@ document.addEventListener('DOMContentLoaded', () => {
             animateServicesVenn();
         }
     }
-
     // Slide index mapper
     const slideIds = ['#hero', '#services', '#problem', '#how-we-work', '#results'];
     const globalWrapper = document.querySelector('.global-slider-wrapper');
@@ -468,8 +467,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentGlobalIndex = 0;
     let isGlobalTransitioning = false;
 
+    let globalTransitionTimeout = null;
+    let transitionDirection = null; // 'next' or 'prev'
+
+    function cancelTransitionTimer() {
+        if (globalTransitionTimeout) {
+            clearTimeout(globalTransitionTimeout);
+            globalTransitionTimeout = null;
+            transitionDirection = null;
+            console.log("Accidental transition timer cancelled.");
+        }
+    }
+
     function goToGlobalSlide(index) {
         console.log("goToGlobalSlide called with index:", index, "isGlobalTransitioning:", isGlobalTransitioning);
+        cancelTransitionTimer();
         
         if (index < 0 || index >= slideIds.length || isGlobalTransitioning) {
             console.log("goToGlobalSlide rejected/returned early.");
@@ -543,31 +555,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Elite Throttled Wheel / Scroll event listener for smooth slide transitions
+    // Elite Throttled Wheel / Scroll event listener with 2s snaper transition on bounds
     let lastGlobalScrollTime = 0;
     window.addEventListener('wheel', (e) => {
         const now = Date.now();
-        if (now - lastGlobalScrollTime < 1100) return; // Debounce to allow slide transition to complete
+        if (now - lastGlobalScrollTime < 1100) {
+            cancelTransitionTimer();
+            return;
+        }
         
         const activeSlide = document.querySelector('.global-slide.active-slide');
         if (!activeSlide) return;
         
-        // Check if user reached scroll bounds of the active slide viewport
-        const isAtBottom = Math.abs(activeSlide.scrollHeight - activeSlide.clientHeight - activeSlide.scrollTop) < 8;
-        const isAtTop = activeSlide.scrollTop === 0;
+        const remainingScrollBottom = activeSlide.scrollHeight - activeSlide.clientHeight - activeSlide.scrollTop;
+        const isAtBottom = remainingScrollBottom < 15;
+        const isAtTop = activeSlide.scrollTop < 10;
 
-        if (e.deltaY > 35 && isAtBottom) {
-            // Scroll down: Go to next slide
+        if (e.deltaY > 20 && isAtBottom) {
+            // User scrolls down at bottom limit
             if (currentGlobalIndex < slideIds.length - 1) {
-                lastGlobalScrollTime = now;
-                goToGlobalSlide(currentGlobalIndex + 1);
+                if (transitionDirection !== 'next') {
+                    cancelTransitionTimer();
+                    transitionDirection = 'next';
+                    console.log("At bottom. Snapping to next tab in 2s...");
+                    globalTransitionTimeout = setTimeout(() => {
+                        lastGlobalScrollTime = Date.now();
+                        goToGlobalSlide(currentGlobalIndex + 1);
+                        cancelTransitionTimer();
+                    }, 2000);
+                }
+            } else {
+                cancelTransitionTimer();
             }
-        } else if (e.deltaY < -35 && isAtTop) {
-            // Scroll up: Go to previous slide
+        } else if (e.deltaY < -20 && isAtTop) {
+            // User scrolls up at top limit
             if (currentGlobalIndex > 0) {
-                lastGlobalScrollTime = now;
-                goToGlobalSlide(currentGlobalIndex - 1);
+                if (transitionDirection !== 'prev') {
+                    cancelTransitionTimer();
+                    transitionDirection = 'prev';
+                    console.log("At top. Snapping to prev tab in 2s...");
+                    globalTransitionTimeout = setTimeout(() => {
+                        lastGlobalScrollTime = Date.now();
+                        goToGlobalSlide(currentGlobalIndex - 1);
+                        cancelTransitionTimer();
+                    }, 2000);
+                }
+            } else {
+                cancelTransitionTimer();
             }
+        } else {
+            // Cancel transition timer if scrolling inside bounds
+            cancelTransitionTimer();
         }
     }, { passive: true });
 
