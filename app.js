@@ -419,6 +419,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Ensure targeted section is visible
         targetSection.classList.add('visible');
+        targetSection.querySelectorAll('.fade-in').forEach(el => {
+            el.classList.add('visible');
+        });
 
         // Update width variables
         updateTitleWidths();
@@ -506,6 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     triggerSectionClickAnimation(targetId);
                 } else {
                     slide.classList.remove('active-slide');
+                    slide.querySelectorAll('.fade-in').forEach(el => el.classList.remove('visible'));
                 }
             });
 
