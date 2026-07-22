@@ -847,111 +847,85 @@ a {
     max-width: 800px;
 }
 
-.problem-card {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border);
-    padding: 7rem 1.75rem 2.25rem; /* Large top padding to make space for the overlapping image */
-    border-radius: 24px; /* Premium rounded rectangular base */
-    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    text-align: center;
+/* Premium Cardless Floating Problem Layout */
+.problem-grid-cardless {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem 3rem;
+    width: 100%;
+    max-width: 900px;
+    margin: 3rem auto 2rem;
+}
+
+.problem-item-cardless {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     position: relative;
-    overflow: visible; /* Crucial to let the image overlap/pop out of the top! */
-    box-shadow: 0 10px 30px rgba(45, 36, 32, 0.04);
+    padding: 1.5rem;
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Overlapping Popout Image Container on Top */
-.popout-image-container {
-    position: absolute;
-    top: -55px; /* Offset to float outside the card top boundary */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 140px;
-    height: 140px;
-    z-index: 10;
-    pointer-events: none;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
-}
-
-.popout-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(45, 36, 32, 0.15));
+.problem-image-wrapper {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+    position: relative;
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card-inner-content {
+.problem-illustration {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(45, 36, 32, 0.12));
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+}
+
+.problem-text-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.card-inner-content h4 {
+.problem-text-wrapper h4 {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 800;
     color: var(--text-primary);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     line-height: 1.25;
+    transition: color 0.35s ease;
 }
 
-.card-inner-content p {
+.problem-text-wrapper p {
     color: var(--text-secondary);
-    font-size: 0.92rem;
-    line-height: 1.55;
+    font-size: 0.95rem;
+    line-height: 1.6;
     margin: 0;
+    transition: color 0.35s ease;
 }
 
-/* Staggered autonomous floating & zooming for problem cards */
-.problem-card.animated {
-    animation: cardFloatZoom 6s infinite ease-in-out;
+/* Hover transitions: pop-out character behavior from reference pin */
+.problem-item-cardless:hover .problem-image-wrapper {
+    transform: translateY(-15px) scale(1.1);
 }
 
-.problem-card.animated:nth-child(1) { animation-delay: 1.5s; }
-.problem-card.animated:nth-child(2) { animation-delay: 3.0s; }
-.problem-card.animated:nth-child(3) { animation-delay: 4.5s; }
-.problem-card.animated:nth-child(4) { animation-delay: 6.0s; }
-
-/* Pinterest-Inspired Hover Transition: Popout Character scales and floats */
-.problem-card:hover {
-    animation-play-state: paused !important;
-    border-color: rgba(45, 36, 32, 0.25) !important;
-    background-color: #eee1d6 !important;
-    transform: translateY(-8px) !important;
-    box-shadow: 0 25px 50px rgba(45, 36, 32, 0.12), 0 0 25px rgba(179, 126, 101, 0.15) !important;
-    z-index: 15;
+.problem-item-cardless:hover .problem-illustration {
+    filter: drop-shadow(0 25px 40px rgba(179, 126, 101, 0.28));
 }
 
-.problem-card:hover .popout-image-container {
-    transform: translateX(-50%) translateY(-15px) scale(1.1);
-    filter: drop-shadow(0 20px 30px rgba(45, 36, 32, 0.25));
+.problem-item-cardless:hover .problem-text-wrapper h4 {
+    color: var(--accent-secondary);
 }
 
-@keyframes slowZoomImage {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.18); }
-}
-
-@keyframes cardFloatZoom {
-    0% {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 4px 20px rgba(42, 32, 28, 0.1);
-        border-color: var(--border);
-    }
-    50% {
-        transform: translateY(-10px) scale(1.04);
-        box-shadow: 0 20px 40px rgba(179, 126, 101, 0.2), 0 0 15px rgba(179, 126, 101, 0.15);
-        border-color: rgba(179, 126, 101, 0.4);
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 4px 20px rgba(42, 32, 28, 0.1);
-        border-color: var(--border);
-    }
+.problem-item-cardless:hover .problem-text-wrapper p {
+    color: var(--text-primary);
 }
 
 .problem-outro {
