@@ -1747,163 +1747,273 @@ a {
     /* 1. Prevent internal scrolling on desktop */
     .global-slide {
         overflow-y: hidden !important;
-        padding: 5.5rem 2rem 1.5rem !important; /* Save space for sticky header */
+        padding: 5rem 2rem 1.5rem !important; /* Save space for sticky header */
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
     }
 
-    /* Center Our Services vertically and horizontally */
-    #services .section-content {
+    /* Core Section Typography & Spacing Reductions */
+    .section-content {
         margin: 0 auto !important;
-        height: 100% !important;
+        width: 100% !important;
+        max-width: 1100px !important;
+        gap: 0.65rem !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        max-width: 1100px !important;
-        gap: 1rem !important;
     }
 
-    /* 2. Slide 1 (Our Services) Venn side-by-side layout on desktop */
+    .section-title {
+        font-size: 1.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .lead-text {
+        font-size: 0.92rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .badge-accent {
+        margin-bottom: 0.15rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Slide 0: Hero Section Adjustments */
+    .hero-section .hero-container {
+        gap: 1.25rem !important;
+    }
+
+    .hero-title {
+        font-size: 2.2rem !important;
+        margin-bottom: 2rem !important;
+        line-height: 1.35 !important;
+    }
+
+    .netflix-logo-container {
+        transform: scale(0.85) !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Slide 1: Our Services (Venn Diagram) */
+    #services .section-content {
+        gap: 0.5rem !important;
+        height: 100% !important;
+    }
+
     .venn-wrapper {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 4.5rem !important;
-        margin-top: 1rem !important;
-        margin-bottom: 1rem !important;
+        gap: 3.5rem !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
         width: 100% !important;
     }
 
-    /* Compact Venn sizing on desktop to prevent screen overflow */
+    /* Compact Venn sizing on desktop */
     .venn-diagram {
-        width: 420px !important;
-        height: 420px !important;
+        width: 360px !important;
+        height: 360px !important;
         flex-shrink: 0 !important;
         margin: 0 !important;
     }
 
     .venn-circle {
-        width: 250px !important;
-        height: 250px !important;
+        width: 220px !important;
+        height: 220px !important;
     }
 
     .circle-marketing {
-        top: 10px !important;
-        left: 85px !important;
-        padding-top: 2.2rem !important;
+        top: 5px !important;
+        left: 70px !important;
+        padding-top: 1.75rem !important;
     }
 
     .circle-development {
-        bottom: 10px !important;
-        left: 10px !important;
-        padding-bottom: 2.2rem !important;
-        padding-left: 2.5rem !important;
+        bottom: 5px !important;
+        left: 5px !important;
+        padding-bottom: 1.75rem !important;
+        padding-left: 2rem !important;
     }
 
     .circle-intelligence {
-        bottom: 10px !important;
-        right: 10px !important;
-        padding-bottom: 2.2rem !important;
-        padding-right: 2.5rem !important;
+        bottom: 5px !important;
+        right: 5px !important;
+        padding-bottom: 1.75rem !important;
+        padding-right: 2rem !important;
     }
 
     .circle-title {
-        font-size: 0.95rem !important;
-        line-height: 1.3 !important;
+        font-size: 0.85rem !important;
+        line-height: 1.25 !important;
     }
 
     .circle-desc {
-        display: none !important; /* Hide descriptions inside Venn circles on desktop to save space */
+        display: none !important; /* Hide descriptions inside circles on desktop to save space */
     }
 
     .venn-intersection {
-        top: 170px !important;
-        left: 170px !important;
-        width: 80px !important;
-        height: 80px !important;
+        top: 145px !important;
+        left: 145px !important;
+        width: 70px !important;
+        height: 70px !important;
     }
 
     .intersection-label {
-        font-size: 8px !important;
+        font-size: 7px !important;
     }
 
-    /* Intersection statement under the Venn diagram */
+    /* Venn Details Panel override */
+    .venn-details-panel {
+        max-width: 420px !important;
+        margin: 0 !important;
+    }
+
+    .venn-details-panel h3 {
+        font-size: 1.15rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    .details-sub {
+        font-size: 0.82rem !important;
+        margin-bottom: 0.45rem !important;
+    }
+
+    .details-tags {
+        gap: 0.35rem !important;
+    }
+
+    .details-tags span {
+        font-size: 0.68rem !important;
+        padding: 0.2rem 0.55rem !important;
+    }
+
+    /* Intersection statement */
     .intersection-statement {
-        margin: 1.5rem auto 0 !important;
+        margin: 0.5rem auto 0 !important;
+        font-size: 0.82rem !important;
+        line-height: 1.4 !important;
     }
 
     /* Slide 2: Partners (Showcase) height optimization */
     #partners .section-content {
-        margin: 0 auto !important;
         height: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
+        gap: 0.5rem !important;
     }
 
     .trust-strip {
         margin-top: 0 !important;
         width: 100% !important;
-        max-width: 1000px !important;
+        max-width: 900px !important;
+    }
+
+    .trust-text {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .trust-title {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .smoothie-showcase-container {
-        min-height: 400px !important;
-        gap: 2rem !important;
+        min-height: 320px !important;
+        gap: 1.5rem !important;
     }
 
     .showcase-left-logo {
-        height: 380px !important;
+        height: 300px !important;
     }
 
     .fixed-circle-bg {
-        width: 340px !important;
-        height: 340px !important;
+        width: 280px !important;
+        height: 280px !important;
     }
 
     .showcase-logo-display {
-        width: 340px !important;
-        height: 340px !important;
+        width: 280px !important;
+        height: 280px !important;
+    }
+
+    .showcase-badge {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.75rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .showcase-title {
-        font-size: 2.2rem !important;
-        margin-bottom: 0.25rem !important;
+        font-size: 1.8rem !important;
+        margin-bottom: 0.15rem !important;
+    }
+
+    .showcase-sub {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .showcase-desc {
-        margin-bottom: 1.5rem !important;
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .showcase-cta {
+        padding: 0.6rem 1.25rem !important;
+        font-size: 0.75rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .thumb-btn {
+        width: 42px !important;
+        height: 42px !important;
+        padding: 6px !important;
     }
 
     /* Slide 3: The Problem card grid height optimization */
     #problem .section-content {
         height: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        gap: 1.5rem !important;
+        gap: 1rem !important;
     }
 
     .problem-layout {
-        margin-top: 1.5rem !important;
-        gap: 1.5rem !important;
+        margin-top: 0.5rem !important;
+        gap: 1rem !important;
+    }
+
+    .problem-card {
+        padding: 0.85rem 1.15rem !important;
+        gap: 0.65rem !important;
+    }
+
+    .problem-illustration-wrapper {
+        height: 110px !important;
+    }
+
+    .problem-text-wrapper h4 {
+        font-size: 1.05rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    .problem-text-wrapper p {
+        font-size: 0.82rem !important;
+        line-height: 1.35 !important;
     }
 
     .problem-outro {
-        margin-top: 1.5rem !important;
+        margin-top: 0.5rem !important;
+        font-size: 0.82rem !important;
     }
 
     /* Slide 4: Process Timeline layout horizontal on desktop */
     #how-we-work .section-content {
         height: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
+        gap: 0.75rem !important;
     }
 
     .timeline {
@@ -1911,34 +2021,89 @@ a {
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: flex-start !important;
-        gap: 2.5rem !important;
+        gap: 2rem !important;
         max-width: 1100px !important;
-        margin-top: 2rem !important;
+        margin-top: 1rem !important;
     }
 
     .timeline-item {
         margin-bottom: 0 !important;
         flex: 1 !important;
+        gap: 0.35rem !important;
+    }
+
+    .timeline-number {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.35rem !important;
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.05rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    .timeline-content p {
+        font-size: 0.82rem !important;
+        line-height: 1.35 !important;
+    }
+
+    .process-statement-card {
+        padding: 0.65rem 1.25rem !important;
+        margin-bottom: 0.25rem !important;
+        font-size: 0.82rem !important;
     }
 
     /* Slide 5: Results outcomes height optimization */
     #results .section-content {
         height: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
+        gap: 0.75rem !important;
     }
 
     .results-grid {
-        margin-top: 1.5rem !important;
-        gap: 1.5rem !important;
+        margin-top: 0.5rem !important;
+        gap: 1rem !important;
+    }
+
+    .chess-square-box {
+        height: 80px !important;
+        padding: 0.65rem !important;
+    }
+
+    .result-number {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.1rem !important;
+    }
+
+    .result-text {
+        font-size: 0.82rem !important;
     }
 
     .results-statement {
-        margin-top: 1.5rem !important;
+        margin-top: 0.5rem !important;
+    }
+
+    .punchline-text {
+        font-size: 1.05rem !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    .btn-glow {
+        padding: 0.65rem 1.25rem !important;
+        font-size: 0.78rem !important;
     }
 
     .bottom-footer {
-        margin-top: 2rem !important;
+        margin-top: 1rem !important;
+        padding: 0.75rem 0 !important;
+    }
+
+    .footer-brand {
+        font-size: 0.8rem !important;
+    }
+
+    .footer-copy {
+        font-size: 0.68rem !important;
     }
 }
