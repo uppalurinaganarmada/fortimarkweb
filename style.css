@@ -2061,33 +2061,39 @@ a {
         font-size: 0.82rem !important;
     }
 
-    /* Slide 5: Results outcomes height optimization */
+    /* Slide 6: Results outcomes height optimization */
     #results .section-content {
-        height: 100% !important;
-        gap: 0.75rem !important;
+        height: auto !important;
+        gap: 0.5rem !important;
     }
 
-    .results-grid {
-        margin-top: 0.5rem !important;
-        gap: 1rem !important;
+    .results-chess-column {
+        grid-template-columns: 80px 240px !important;
+        grid-auto-rows: 48px !important;
+        margin: 0.75rem auto 1.25rem !important;
+        border-width: 3px !important;
+        border-radius: 8px !important;
+    }
+
+    .results-chess-column > div:nth-child(10) { 
+        border-bottom-right-radius: 4px !important; 
     }
 
     .chess-square-box {
-        height: 80px !important;
-        padding: 0.65rem !important;
+        padding: 0 1rem !important;
     }
 
-    .result-number {
-        font-size: 1.6rem !important;
-        margin-bottom: 0.1rem !important;
+    .soldier-coin {
+        width: 32px !important;
+        height: 32px !important;
     }
 
     .result-text {
-        font-size: 0.82rem !important;
+        font-size: 0.8rem !important;
     }
 
     .results-statement {
-        margin-top: 0.5rem !important;
+        margin-top: 0.25rem !important;
     }
 
     .punchline-text {
