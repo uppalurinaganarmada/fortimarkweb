@@ -461,62 +461,113 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Slide index mapper
+    const slideIds = ['#hero', '#services', '#problem', '#how-we-work', '#results'];
+    const globalWrapper = document.querySelector('.global-slider-wrapper');
+    const globalSlides = document.querySelectorAll('.global-slide');
+    let currentGlobalIndex = 0;
+    let isGlobalTransitioning = false;
+
+    function goToGlobalSlide(index) {
+        if (index < 0 || index >= slideIds.length || isGlobalTransitioning) return;
+        isGlobalTransitioning = true;
+        currentGlobalIndex = index;
+
+        // Slide wrapper calculation
+        if (globalWrapper) {
+            globalWrapper.style.transform = `translateX(-${index * 100}vw)`;
+        }
+
+        // Active class handling for fade and scaling transitions
+        globalSlides.forEach((slide, idx) => {
+            if (idx === index) {
+                slide.classList.add('active-slide');
+                // Trigger inner entrance animations for elements inside slide
+                const targetId = slideIds[idx];
+                triggerSectionClickAnimation(targetId);
+            } else {
+                slide.classList.remove('active-slide');
+            }
+        });
+
+        // Update active class on navbar links
+        const targetId = slideIds[index];
+        navLinksList.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === targetId) {
+                link.classList.add('active-link');
+                link.style.color = 'var(--text-primary)';
+            } else {
+                link.classList.remove('active-link');
+                link.style.color = '';
+            }
+        });
+
+        setTimeout(() => {
+            isGlobalTransitioning = false;
+        }, 850); // Matches transition duration in style.css
+    }
+
+    // Navbar click Interceptor
     navLinksList.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (href && href.startsWith('#')) {
                 e.preventDefault();
-                const targetSection = document.querySelector(href);
-                if (targetSection) {
-                    // Smoothly scroll to target with offset to prevent fixed navbar overlap
-                    const headerHeight = document.querySelector('.top-bar').offsetHeight || 80;
-                    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight - 30;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Active style highlight in navbar links
-                    navLinksList.forEach(l => l.style.color = '');
-                    link.style.color = 'var(--text-primary)';
-                    
-                    // Play custom staggered entrance animation
-                    triggerSectionClickAnimation(href);
+                const targetIdx = slideIds.indexOf(href);
+                if (targetIdx !== -1) {
+                    goToGlobalSlide(targetIdx);
                 }
             }
         });
     });
 
-    // 7. Intersection Observer for Scroll Fade-In Animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    if ('IntersectionObserver' in window) {
-        const fadeObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Trigger animations for specific sections when they enter viewport
-                    const sectionId = entry.target.id;
-                    if (['problem', 'services', 'how-we-work', 'results'].includes(sectionId)) {
-                        triggerSectionClickAnimation(`#${sectionId}`);
-                    }
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        fadeElements.forEach(element => {
-            fadeObserver.observe(element);
-        });
-    } else {
-        fadeElements.forEach(element => {
-            element.classList.add('visible');
+    // Brand logo click to go back to slide 0 (Hero)
+    const brandLogoBtn = document.getElementById('logo');
+    if (brandLogoBtn) {
+        brandLogoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToGlobalSlide(0);
         });
     }
+
+    // Elite Throttled Wheel / Scroll event listener for smooth slide transitions
+    let lastGlobalScrollTime = 0;
+    window.addEventListener('wheel', (e) => {
+        const now = Date.now();
+        if (now - lastGlobalScrollTime < 1100) return; // Debounce to allow slide transition to complete
+        
+        const activeSlide = document.querySelector('.global-slide.active-slide');
+        if (!activeSlide) return;
+        
+        // Check if user reached scroll bounds of the active slide viewport
+        const isAtBottom = Math.abs(activeSlide.scrollHeight - activeSlide.clientHeight - activeSlide.scrollTop) < 8;
+        const isAtTop = activeSlide.scrollTop === 0;
+
+        if (e.deltaY > 35 && isAtBottom) {
+            // Scroll down: Go to next slide
+            if (currentGlobalIndex < slideIds.length - 1) {
+                lastGlobalScrollTime = now;
+                goToGlobalSlide(currentGlobalIndex + 1);
+            }
+        } else if (e.deltaY < -35 && isAtTop) {
+            // Scroll up: Go to previous slide
+            if (currentGlobalIndex > 0) {
+                lastGlobalScrollTime = now;
+                goToGlobalSlide(currentGlobalIndex - 1);
+            }
+        }
+    }, { passive: true });
+
+    // Keyboard Arrow Keys support
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+            if (currentGlobalIndex < slideIds.length - 1) goToGlobalSlide(currentGlobalIndex + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            if (currentGlobalIndex > 0) goToGlobalSlide(currentGlobalIndex - 1);
+        }
+    });
+
+    // Initialize the slides animations
+    goToGlobalSlide(0);
 });

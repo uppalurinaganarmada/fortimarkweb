@@ -51,23 +51,25 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main>
-        
-        <!-- Hero Section -->
-        <section class="hero-section" id="hero">
+    <!-- Main Content Container with Cinematic Horizontal Slider -->
+    <main class="global-slider-viewport">
+        <div class="global-slider-wrapper">
             
-            <div class="hero-container">
-                <!-- Cinematic Netflix-Style Zoom Logo -->
-                <div class="netflix-logo-container">
-                    <img src="assets/logo_black.png" alt="Fortimark Logo" class="netflix-logo-rook">
-                    <div class="logo-name-reveal" id="logo-name">FORTIMARK</div>
+            <!-- Slide 0: Hero Section -->
+            <section class="global-slide active-slide hero-section" id="hero">
+                <div class="hero-container">
+                    <!-- Cinematic Netflix-Style Zoom Logo -->
+                    <div class="netflix-logo-container">
+                        <img src="assets/logo_black.png" alt="Fortimark Logo" class="netflix-logo-rook">
+                        <div class="logo-name-reveal" id="logo-name">FORTIMARK</div>
+                    </div>
+                    <h1 class="hero-title title-delayed-fade" style="margin-bottom: 6rem;">Marketing Isn't Broken. <br><span class="accent-text">It's Just Disconnected.</span></h1>
                 </div>
-                <h1 class="hero-title title-delayed-fade" style="margin-bottom: 6rem;">Marketing Isn't Broken. <br><span class="accent-text">It's Just Disconnected.</span></h1>
-                
-                <!-- Our Services Section (Venn Diagram relocated here) -->
-                <div class="services-hero-wrapper fade-in" id="services" style="width: 100%; margin-bottom: 0;">
-                    <span class="badge-accent" style="display: block; margin-bottom: 1rem;">Our Services</span>
+            </section>
+            
+            <!-- Slide 1: Our Services Section -->
+            <section class="global-slide section-container" id="services">
+                <div class="section-content">
                     <h2 class="section-title animated-title slide-right-card">
                         <span class="title-coin-wrapper">
                             <svg class="title-coin-svg" viewBox="0 0 45 45">
@@ -227,11 +229,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- 1. THE PROBLEM SECTION -->
-        <section class="section-container fade-in" id="problem">
+            </section>
+        
+            <!-- Slide 2: The Problem Section -->
+            <section class="global-slide section-container" id="problem">
             <div class="section-content">
                 <span class="badge-accent">The Problem</span>
                 <h2 class="section-title animated-title slide-up-card">
@@ -300,8 +301,8 @@
             </div>
         </section>
 
-        <!-- 2. HOW WE WORK SECTION -->
-        <section class="section-container fade-in" id="how-we-work">
+            <!-- Slide 3: How We Work Section -->
+            <section class="global-slide section-container" id="how-we-work">
             <div class="section-content">
                 <span class="badge-accent">The Process</span>
                 <h2 class="section-title animated-title slide-down-card">
@@ -384,8 +385,8 @@
             </div>
         </section>
 
-        <!-- 3. RESULTS SECTION -->
-        <section class="section-container fade-in" id="results">
+            <!-- Slide 4: Results Section -->
+            <section class="global-slide section-container" id="results">
             <div class="section-content">
                 <span class="badge-accent">The Outcome</span>
                 <h2 class="section-title animated-title slide-left-card">
@@ -517,25 +518,25 @@
                     <p class="punchline-text">Because that's what marketing should do.</p>
                     <a href="mailto:team@fortimark.co" class="btn-glow">Connect Your Growth Engine</a>
                 </div>
+                <!-- Simple Footer included inside the final slide -->
+                <footer class="bottom-footer" style="margin-top: 4rem; width: 100%;">
+                    <div class="footer-container">
+                        <div class="footer-left">
+                            <p class="footer-brand">FORTIMARK.STUDIO</p>
+                            <p class="footer-copy">© 2026 Fortimark. All rights reserved.</p>
+                        </div>
+                        <div class="footer-right">
+                            <div class="footer-link-group">
+                                <a href="mailto:team@fortimark.co">team@fortimark.co</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </section>
 
-    </main>
-
-    <!-- Simple Footer -->
-    <footer class="bottom-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <p class="footer-brand">FORTIMARK.STUDIO</p>
-                <p class="footer-copy">© 2026 Fortimark. All rights reserved.</p>
-            </div>
-            <div class="footer-right">
-                <div class="footer-link-group">
-                    <a href="mailto:team@fortimark.co">team@fortimark.co</a>
-                </div>
-            </div>
         </div>
-    </footer>
+    </main>
 
     <!-- App Script -->
     <script src="app.js"></script>

@@ -24,23 +24,16 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-    background: linear-gradient(135deg, #f5ebe2 0%, #eee1d6 35%, #e4cebe 70%, #ebd9cb 100%);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.6;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Lock default vertical scrolling */
     background: var(--bg-base);
     color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
 }
 
 /* 4K Ultra-High Resolution FLEUR Nude & Sand Luxury Backdrop */
@@ -76,11 +69,77 @@ body {
         filter: contrast(104%) brightness(102%);
         transform: scale(1.015);
     }
-    100% {
-        filter: contrast(100%) brightness(100%);
-        transform: scale(1);
-    }
 }
+
+/* Global Horizontal Slider Framework */
+.global-slider-viewport {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.global-slider-wrapper {
+    display: flex;
+    width: 500vw; /* 5 slides * 100vw */
+    height: 100%;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.global-slide {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    overflow-y: auto; /* Allow vertical scroll within each slide */
+    overflow-x: hidden;
+    padding: 7rem 2rem 4rem; /* Top padding accommodates sticky nav header */
+    position: relative;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.85s ease;
+    opacity: 0.45;
+    filter: blur(4px) scale(0.95);
+    background-color: var(--bg-base);
+}
+
+.global-slide.active-slide {
+    opacity: 1;
+    filter: blur(0) scale(1);
+}
+
+/* Custom internal scrollbars for each horizontal slide wrapper */
+.global-slide::-webkit-scrollbar {
+    width: 6px;
+}
+.global-slide::-webkit-scrollbar-track {
+    background: transparent;
+}
+.global-slide::-webkit-scrollbar-thumb {
+    background: rgba(45, 36, 32, 0.2);
+    border-radius: 3px;
+}
+.global-slide::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Specific Section Adjustments for Slider Layout */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem !important; /* Center Hero Slide */
+}
+
+.hero-section .hero-container {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
