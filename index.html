@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Local Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Local Stylesheet with Cache Busting -->
+    <link rel="stylesheet" href="style.css?v=1.0.1">
 </head>
 <body>
     <!-- Slow Zooming Chessboard Background -->
@@ -538,7 +538,12 @@
         </div>
     </main>
 
-    <!-- App Script -->
-    <script src="app.js"></script>
+    <!-- Diagnostics Debug Panel -->
+    <div id="slider-debug-panel" style="position: fixed; bottom: 15px; left: 15px; z-index: 10000; background: rgba(45, 36, 32, 0.95); color: #ffffff; border: 1px solid rgba(179, 126, 101, 0.4); padding: 12px 16px; border-radius: 8px; font-family: monospace; font-size: 11px; max-height: 200px; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.35); min-width: 250px; pointer-events: none; transition: opacity 0.3s ease;">
+        [System Diagnostics Loaded]
+    </div>
+
+    <!-- App Script with Cache Busting -->
+    <script src="app.js?v=1.0.1"></script>
 </body>
 </html>
