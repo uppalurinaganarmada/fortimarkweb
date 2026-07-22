@@ -83,7 +83,7 @@ html, body {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important; /* Prevent vertical wrapping */
-    width: 600vw !important; /* 6 slides * 100vw */
+    width: 500vw !important; /* 5 slides * 100vw */
     height: 100% !important;
     transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
@@ -1744,9 +1744,9 @@ a {
    Desktop Viewport Height & Centering Optimizations
    ========================================================================== */
 @media (min-width: 969px) {
-    /* 1. Prevent internal scrolling on desktop */
+    /* 1. Prevent internal scrolling on desktop, allow auto-scroll for overflowing text */
     .global-slide {
-        overflow-y: hidden !important;
+        overflow-y: auto !important;
         padding: 5rem 2rem 1.5rem !important; /* Save space for sticky header */
         display: flex !important;
         flex-direction: column !important;
@@ -1900,11 +1900,7 @@ a {
         line-height: 1.4 !important;
     }
 
-    /* Slide 2: Partners (Showcase) height optimization */
-    #partners .section-content {
-        height: 100% !important;
-        gap: 0.5rem !important;
-    }
+
 
     .trust-strip {
         margin-top: 0 !important;

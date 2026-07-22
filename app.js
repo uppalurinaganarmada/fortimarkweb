@@ -462,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Slide index mapper
-    const slideIds = ['#hero', '#services', '#partners', '#problem', '#how-we-work', '#results'];
+    const slideIds = ['#hero', '#services', '#problem', '#how-we-work', '#results'];
     const globalWrapper = document.querySelector('.global-slider-wrapper');
     const globalSlides = document.querySelectorAll('.global-slide');
     let currentGlobalIndex = 0;
