@@ -681,8 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pinterest-Style Problem Transition Slider Handler
     const probTrack = document.getElementById('problem-illustrations-track');
     const probItems = document.querySelectorAll('.illustration-slide-item');
-    const probPrevBtn = document.getElementById('prob-btn-prev');
-    const probNextBtn = document.getElementById('prob-btn-next');
+    const probDotsContainer = document.getElementById('problem-slider-dots');
     const probSlideIndex = document.getElementById('problem-slide-index');
     const probSlideTitle = document.getElementById('problem-slide-title');
     const probSlideDesc = document.getElementById('problem-slide-desc');
@@ -711,6 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentProbIdx = 0;
+    let probAutoplayInterval = null;
 
     function updateProblemSlider(index) {
         if (index < 0 || index >= problemData.length) return;
@@ -724,6 +724,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.remove('active');
             }
         });
+
+        // Update pagination dots active state
+        if (probDotsContainer) {
+            const dots = probDotsContainer.querySelectorAll('.prob-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
 
         // Calculate translation offset to center the active item
         const activeItem = probItems[index];
@@ -751,20 +763,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 infoBox.style.transform = 'translate3d(0, 0, 0)';
             }, 250);
         }
-
-        // Disable/enable controls
-        if (probPrevBtn) probPrevBtn.disabled = (index === 0);
-        if (probNextBtn) probNextBtn.disabled = (index === problemData.length - 1);
     }
 
-    if (probPrevBtn && probNextBtn) {
-        probPrevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (currentProbIdx > 0) updateProblemSlider(currentProbIdx - 1);
-        });
-        probNextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (currentProbIdx < problemData.length - 1) updateProblemSlider(currentProbIdx + 1);
+    function startProbAutoplay() {
+        stopProbAutoplay();
+        probAutoplayInterval = setInterval(() => {
+            let nextIdx = currentProbIdx + 1;
+            if (nextIdx >= problemData.length) {
+                nextIdx = 0; // Loop back
+            }
+            updateProblemSlider(nextIdx);
+        }, 4000); // Cycle every 4s
+    }
+
+    function stopProbAutoplay() {
+        if (probAutoplayInterval) {
+            clearInterval(probAutoplayInterval);
+            probAutoplayInterval = null;
+        }
+    }
+
+    // Connect pagination dots listeners
+    if (probDotsContainer) {
+        const dots = probDotsContainer.querySelectorAll('.prob-dot');
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateProblemSlider(idx);
+                // Pause autoplay on user interaction for 8 seconds before resuming
+                stopProbAutoplay();
+                setTimeout(startProbAutoplay, 8000);
+            });
         });
 
         // Allow tapping directly on the slide items to jump to them
@@ -772,6 +801,8 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', (e) => {
                 e.stopPropagation();
                 updateProblemSlider(idx);
+                stopProbAutoplay();
+                setTimeout(startProbAutoplay, 8000);
             });
         });
 
@@ -783,6 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Wait briefly for layout render to get accurate offsets
         setTimeout(() => {
             updateProblemSlider(0);
+            startProbAutoplay();
         }, 150);
     }
 
