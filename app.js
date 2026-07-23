@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let servicesAnimTimeouts = [];
+    let servicesTourTimeouts = [];
     
     // Dynamic Heading Text Width Calculation for Chess Coin Sweep Bounds
     function updateTitleWidths() {
@@ -138,38 +140,96 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Venn Diagram Interactivity
-    const vennCircles = document.querySelectorAll('.venn-circle');
+    // 4. 3D Pop-Up Chessboard Interactivity & Full-Screen Modal
+    const chessSquares = document.querySelectorAll('.chess-board-square');
     const detailsPanels = document.querySelectorAll('.details-content');
-    let servicesAnimTimeouts = [];
 
-    if (vennCircles.length > 0 && detailsPanels.length > 0) {
-        vennCircles.forEach(circle => {
-            circle.addEventListener('click', () => {
-                // Clear any active automated sequence timeouts
-                servicesAnimTimeouts.forEach(t => clearTimeout(t));
-                servicesAnimTimeouts = [];
-                
-                // Clear active intersection highlight
-                const intersectionBadge = document.querySelector('.venn-intersection');
-                if (intersectionBadge) {
-                    intersectionBadge.classList.remove('active-intersection');
-                }
+    if (chessSquares.length > 0 && detailsPanels.length > 0) {
+        chessSquares.forEach(square => {
+            square.addEventListener('click', () => {
+                // Cancel the automated guided tour sequence timeouts
+                servicesTourTimeouts.forEach(t => clearTimeout(t));
+                servicesTourTimeouts = [];
 
-                vennCircles.forEach(c => c.classList.remove('active-circle'));
-                circle.classList.add('active-circle');
+                // Remove active classes
+                chessSquares.forEach(s => s.classList.remove('active'));
+                detailsPanels.forEach(panel => panel.classList.remove('active'));
 
-                const targetKey = circle.getAttribute('data-target');
+                // Add active class to clicked square
+                square.classList.add('active');
 
-                detailsPanels.forEach(panel => {
-                    panel.classList.remove('active');
-                });
-
+                // Activate corresponding details panel
+                const targetKey = square.getAttribute('data-target');
                 const activePanel = document.getElementById(`details-${targetKey}`);
                 if (activePanel) {
                     activePanel.classList.add('active');
                 }
+
+                // POP OPEN THE FULL SCREEN BLURRED MODAL
+                const servicesModal = document.getElementById('services-modal');
+                if (servicesModal) {
+                    const modalTitle = document.getElementById('modal-service-title');
+                    const modalSubtitle = document.getElementById('modal-service-subtitle');
+                    const modalTags = document.getElementById('modal-tags-container');
+                    const modalGlassCoin = document.getElementById('modal-glass-coin');
+
+                    if (activePanel) {
+                        const h3 = activePanel.querySelector('h3');
+                        const sub = activePanel.querySelector('.details-sub');
+                        const tags = Array.from(activePanel.querySelectorAll('.details-tags span')).map(s => s.textContent);
+
+                        if (modalTitle) modalTitle.textContent = h3 ? h3.textContent : '';
+                        if (modalSubtitle) modalSubtitle.textContent = sub ? sub.textContent : '';
+                        
+                        if (modalTags) {
+                            modalTags.innerHTML = '';
+                            tags.forEach(tagText => {
+                                const span = document.createElement('span');
+                                span.textContent = tagText;
+                                modalTags.appendChild(span);
+                            });
+                        }
+                    }
+
+                    if (modalGlassCoin) {
+                        const originalSvg = square.querySelector('.glass-chess-piece svg');
+                        if (originalSvg) {
+                            modalGlassCoin.innerHTML = originalSvg.outerHTML;
+                        }
+                    }
+
+                    // Activate modal
+                    servicesModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Lock background scroll
+                }
             });
+        });
+    }
+
+    // Close modal handlers
+    const servicesModalObj = document.getElementById('services-modal');
+    const modalCloseBtn = document.getElementById('services-modal-close');
+    if (servicesModalObj && modalCloseBtn) {
+        const closeModal = () => {
+            servicesModalObj.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        modalCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeModal();
+        });
+
+        servicesModalObj.addEventListener('click', (e) => {
+            if (e.target === servicesModalObj) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && servicesModalObj.classList.contains('active')) {
+                closeModal();
+            }
         });
     }
 
@@ -367,96 +427,102 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Navbar Click Interceptor & Staggered Section Animations
     const navLinksList = document.querySelectorAll('.nav-link');
     
-    function animateServicesVenn() {
+    function animateServicesChessboard() {
         // Clear any active timeouts
         servicesAnimTimeouts.forEach(t => clearTimeout(t));
         servicesAnimTimeouts = [];
+        servicesTourTimeouts.forEach(t => clearTimeout(t));
+        servicesTourTimeouts = [];
 
-        const marketingCircle = document.querySelector('.circle-marketing');
-        const developmentCircle = document.querySelector('.circle-development');
-        const intelligenceCircle = document.querySelector('.circle-intelligence');
-        const intersectionBadge = document.querySelector('.venn-intersection');
+        const chessSquares = document.querySelectorAll('.chess-board-square');
+        const detailsPanels = document.querySelectorAll('.details-content');
         const detailsPanel = document.querySelector('.venn-details-panel');
         const intersectionStatement = document.querySelector('.intersection-statement');
-
-        const circles = [marketingCircle, developmentCircle, intelligenceCircle];
-        const detailPanels = document.querySelectorAll('.details-content');
+        const perspectiveContainer = document.querySelector('.services-perspective-container');
 
         // Reset elements
-        circles.forEach(c => {
-            if (c) {
-                c.classList.remove('animated', 'active-circle');
-                c.style.opacity = '0';
-            }
+        chessSquares.forEach(s => {
+            s.classList.remove('active', 'animated');
+            s.style.opacity = '0';
+            s.style.transform = 'translateZ(-60px) scale(0.8)';
         });
+        detailsPanels.forEach(p => p.classList.remove('active'));
         if (detailsPanel) {
             detailsPanel.classList.remove('animated');
             detailsPanel.style.opacity = '0';
-        }
-        if (intersectionBadge) {
-            intersectionBadge.classList.remove('active-intersection');
-            intersectionBadge.style.opacity = '0';
+            detailsPanel.style.transform = 'translate3d(20px, 0, 0)';
+            detailsPanel.style.transition = 'opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
         }
         if (intersectionStatement) {
             intersectionStatement.classList.remove('animated');
             intersectionStatement.style.opacity = '0';
         }
-        detailPanels.forEach(p => p.classList.remove('active'));
+        if (perspectiveContainer) {
+            perspectiveContainer.style.opacity = '0';
+            perspectiveContainer.style.transform = 'translate3d(-20px, 0, 0)';
+            perspectiveContainer.style.transition = 'opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
+        }
 
-        // Step 1: Reveal first circle with text
-        const t1 = setTimeout(() => {
-            if (marketingCircle) {
-                marketingCircle.style.opacity = '1';
-                marketingCircle.classList.add('animated', 'active-circle');
+        // Fade in container immediately
+        setTimeout(() => {
+            if (perspectiveContainer) {
+                perspectiveContainer.style.opacity = '1';
+                perspectiveContainer.style.transform = 'translate3d(0, 0, 0)';
             }
+        }, 50);
+
+        // Staggered chessboard squares popup
+        chessSquares.forEach((square, idx) => {
+            const t = setTimeout(() => {
+                square.style.opacity = '1';
+                square.style.transform = ''; // reset to default CSS transform (flat/tilted)
+                square.classList.add('animated');
+            }, 100 + idx * 180);
+            servicesAnimTimeouts.push(t);
+        });
+
+        // Reveal details panel
+        const tPanel = setTimeout(() => {
             if (detailsPanel) {
                 detailsPanel.style.opacity = '1';
+                detailsPanel.style.transform = 'translate3d(0, 0, 0)';
                 detailsPanel.classList.add('animated');
-            }
-            const detailsMarketing = document.getElementById('details-marketing');
-            if (detailsMarketing) detailsMarketing.classList.add('active');
-        }, 300);
-        servicesAnimTimeouts.push(t1);
-
-        // Step 2: Reveal second circle with text (starts immediately after Step 1 transition ends)
-        const t2 = setTimeout(() => {
-            if (marketingCircle) marketingCircle.classList.remove('active-circle');
-            if (developmentCircle) {
-                developmentCircle.style.opacity = '1';
-                developmentCircle.classList.add('animated', 'active-circle');
-            }
-            detailPanels.forEach(p => p.classList.remove('active'));
-            const detailsDevelopment = document.getElementById('details-development');
-            if (detailsDevelopment) detailsDevelopment.classList.add('active');
-        }, 1700);
-        servicesAnimTimeouts.push(t2);
-
-        // Step 3: Reveal third circle with text (starts immediately after Step 2 transition ends)
-        const t3 = setTimeout(() => {
-            if (developmentCircle) developmentCircle.classList.remove('active-circle');
-            if (intelligenceCircle) {
-                intelligenceCircle.style.opacity = '1';
-                intelligenceCircle.classList.add('animated', 'active-circle');
-            }
-            detailPanels.forEach(p => p.classList.remove('active'));
-            const detailsIntelligence = document.getElementById('details-intelligence');
-            if (detailsIntelligence) detailsIntelligence.classList.add('active');
-        }, 3100);
-        servicesAnimTimeouts.push(t3);
-
-        // Step 4: Finally, reveal winning zone with highlight (starts immediately after Step 3 transition ends)
-        const t4 = setTimeout(() => {
-            if (intelligenceCircle) intelligenceCircle.classList.remove('active-circle');
-            if (intersectionBadge) {
-                intersectionBadge.style.opacity = '1';
-                intersectionBadge.classList.add('active-intersection');
             }
             if (intersectionStatement) {
                 intersectionStatement.style.opacity = '1';
                 intersectionStatement.classList.add('animated');
             }
-        }, 4500);
-        servicesAnimTimeouts.push(t4);
+        }, 1100);
+        servicesAnimTimeouts.push(tPanel);
+
+        // Guided Tour sequence: pop glass coins out one by one, showing info in the cards beside them
+        chessSquares.forEach((square, idx) => {
+            const tTour = setTimeout(() => {
+                // Remove active classes
+                chessSquares.forEach(s => s.classList.remove('active'));
+                detailsPanels.forEach(p => p.classList.remove('active'));
+
+                // Highlight current square and its detail card
+                square.classList.add('active');
+                const targetKey = square.getAttribute('data-target');
+                const activePanel = document.getElementById(`details-${targetKey}`);
+                if (activePanel) {
+                    activePanel.classList.add('active');
+                }
+            }, 1300 + idx * 2500); // 2.5 seconds per service highlight
+            servicesTourTimeouts.push(tTour);
+        });
+
+        // Settle back on the first capability at the end of the sequence
+        const tLoop = setTimeout(() => {
+            chessSquares.forEach(s => s.classList.remove('active'));
+            detailsPanels.forEach(p => p.classList.remove('active'));
+
+            if (chessSquares[0]) chessSquares[0].classList.add('active');
+            const detailsDigital = document.getElementById('details-digital-presence');
+            if (detailsDigital) detailsDigital.classList.add('active');
+        }, 1300 + chessSquares.length * 2500);
+        servicesTourTimeouts.push(tLoop);
     }
 
     function triggerSectionClickAnimation(targetId) {
@@ -504,9 +570,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100 + idx * 120); // 120ms stagger
         });
 
-        // Trigger custom Venn animation if Services section is accessed
+        // Trigger custom Chessboard animation if Services section is accessed
         if (targetId === '#services') {
-            animateServicesVenn();
+            animateServicesChessboard();
         }
     }
     // Slide index mapper
