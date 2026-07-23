@@ -1127,16 +1127,17 @@ a {
 
 .coverflow-card {
     position: absolute;
-    width: 210px; /* Compact width on mobile */
-    height: 280px; /* Compact height on mobile */
+    width: 200px; /* Slightly narrower for folding overlap */
+    height: 290px; /* Taller on mobile to fit long description text */
     border-radius: 20px;
     background-size: cover;
     background-position: center;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-    padding: 1.5rem;
+    padding: 1.15rem; /* Tighten padding to maximize text space */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* Stack items with small gaps instead of far ends */
+    gap: 0.85rem;
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.12);
     cursor: pointer;
@@ -1153,7 +1154,7 @@ a {
 
 .card-number {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 1.8rem; /* Scale down slightly for space */
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
@@ -1162,20 +1163,23 @@ a {
 
 .card-text {
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
 .card-text h3 {
     font-family: var(--font-heading);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 800;
     color: #ffffff;
-    margin: 0 0 0.4rem;
+    margin: 0;
 }
 
 .card-text p {
-    font-size: 0.8rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.9);
     margin: 0;
 }
 
@@ -2237,22 +2241,26 @@ a {
     }
 
     .coverflow-card {
-        width: 270px !important;
-        height: 350px !important;
-        padding: 2rem !important;
+        width: 250px !important; /* Slightly narrower to fold better */
+        height: 360px !important;
+        padding: 1.5rem !important; /* Compact padding for text visibility */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        gap: 1rem !important;
     }
 
     .card-number {
-        font-size: 2.5rem !important;
+        font-size: 2.2rem !important;
     }
 
     .card-text h3 {
-        font-size: 1.55rem !important;
+        font-size: 1.45rem !important;
     }
 
     .card-text p {
-        font-size: 0.88rem !important;
-        line-height: 1.45 !important;
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
     }
 
     .process-statement-card {

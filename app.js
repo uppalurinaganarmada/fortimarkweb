@@ -831,10 +831,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCfIdx = centerIndex;
 
         const isMobile = window.innerWidth < 768;
-        const xOffset = isMobile ? 85 : 140;
-        const centerSpread = isMobile ? 40 : 65;
-        const zOffset = isMobile ? 70 : 100;
-        const rotationAngle = isMobile ? 25 : 40;
+        const xOffset = isMobile ? 65 : 95;            // Tighter horizontal step spacing
+        const centerSpread = isMobile ? 25 : 45;       // Keeps background cards tucked closely behind center
+        const zOffset = isMobile ? 70 : 110;           // Deeper perspective offset
+        const rotationAngle = isMobile ? 45 : 60;      // Sharper 3D folding rotation
 
         cfCards.forEach((card, idx) => {
             const diff = idx - centerIndex;
@@ -856,7 +856,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (diff === 0) {
                 tx = 0;
-                tz = 40;
+                tz = 60; // Pull active card slightly more forward
                 ry = 0;
                 scale = 1.05;
                 opacity = 1;
@@ -866,15 +866,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tz = -Math.abs(diff) * zOffset;
                 ry = rotationAngle;
                 scale = 0.85;
-                opacity = Math.max(0.2, 0.75 - Math.abs(diff) * 0.15);
-                blur = Math.min(6, Math.abs(diff) * 2);
+                opacity = Math.max(0.15, 0.65 - Math.abs(diff) * 0.15); // Fade background cards a bit more
+                blur = Math.min(5, Math.abs(diff) * 1.5);
             } else {
                 tx = diff * xOffset + centerSpread;
                 tz = -Math.abs(diff) * zOffset;
                 ry = -rotationAngle;
                 scale = 0.85;
-                opacity = Math.max(0.2, 0.75 - Math.abs(diff) * 0.15);
-                blur = Math.min(6, Math.abs(diff) * 2);
+                opacity = Math.max(0.15, 0.65 - Math.abs(diff) * 0.15);
+                blur = Math.min(5, Math.abs(diff) * 1.5);
             }
 
             card.style.transform = `translate3d(${tx}px, ${ty}px, ${tz}px) rotateY(${ry}deg) scale(${scale})`;
