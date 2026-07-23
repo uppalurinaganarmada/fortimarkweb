@@ -678,6 +678,114 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Pinterest-Style Problem Transition Slider Handler
+    const probTrack = document.getElementById('problem-illustrations-track');
+    const probItems = document.querySelectorAll('.illustration-slide-item');
+    const probPrevBtn = document.getElementById('prob-btn-prev');
+    const probNextBtn = document.getElementById('prob-btn-next');
+    const probSlideIndex = document.getElementById('problem-slide-index');
+    const probSlideTitle = document.getElementById('problem-slide-title');
+    const probSlideDesc = document.getElementById('problem-slide-desc');
+
+    const problemData = [
+        {
+            index: "01 / 04",
+            title: "Content vs Visibility",
+            desc: "Some have exceptional content but weak visibility."
+        },
+        {
+            index: "02 / 04",
+            title: "Search vs Story",
+            desc: "Some rank well online but fail to tell a compelling story."
+        },
+        {
+            index: "03 / 04",
+            title: "Ads vs Retention",
+            desc: "Some spend heavily on advertising but lack retention systems."
+        },
+        {
+            index: "04 / 04",
+            title: "CX vs Tech",
+            desc: "Some have incredible customer experiences but outdated digital infrastructure."
+        }
+    ];
+
+    let currentProbIdx = 0;
+
+    function updateProblemSlider(index) {
+        if (index < 0 || index >= problemData.length) return;
+        currentProbIdx = index;
+
+        // Update active class on illustration items
+        probItems.forEach((item, idx) => {
+            if (idx === index) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+
+        // Calculate translation offset to center the active item
+        const activeItem = probItems[index];
+        if (activeItem && probTrack) {
+            const wrapper = probTrack.parentElement;
+            if (wrapper) {
+                const wrapperWidth = wrapper.offsetWidth;
+                const itemCenter = activeItem.offsetLeft + activeItem.offsetWidth / 2;
+                const offset = wrapperWidth / 2 - itemCenter;
+                probTrack.style.transform = `translate3d(${offset}px, -50%, 0)`;
+                console.log(`Problem slider shifted: index ${index}, offset ${offset}px`);
+            }
+        }
+
+        // Fade out text, update content, and fade back in
+        const infoBox = document.querySelector('.problem-slider-info-box');
+        if (infoBox && probSlideIndex && probSlideTitle && probSlideDesc) {
+            infoBox.style.opacity = 0;
+            infoBox.style.transform = 'translate3d(-20px, 0, 0)';
+            setTimeout(() => {
+                probSlideIndex.textContent = problemData[index].index;
+                probSlideTitle.textContent = problemData[index].title;
+                probSlideDesc.textContent = problemData[index].desc;
+                infoBox.style.opacity = 1;
+                infoBox.style.transform = 'translate3d(0, 0, 0)';
+            }, 250);
+        }
+
+        // Disable/enable controls
+        if (probPrevBtn) probPrevBtn.disabled = (index === 0);
+        if (probNextBtn) probNextBtn.disabled = (index === problemData.length - 1);
+    }
+
+    if (probPrevBtn && probNextBtn) {
+        probPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentProbIdx > 0) updateProblemSlider(currentProbIdx - 1);
+        });
+        probNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentProbIdx < problemData.length - 1) updateProblemSlider(currentProbIdx + 1);
+        });
+
+        // Allow tapping directly on the slide items to jump to them
+        probItems.forEach((item, idx) => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateProblemSlider(idx);
+            });
+        });
+
+        // Initialize on load and resize
+        window.addEventListener('resize', () => {
+            updateProblemSlider(currentProbIdx);
+        });
+        
+        // Wait briefly for layout render to get accurate offsets
+        setTimeout(() => {
+            updateProblemSlider(0);
+        }, 150);
+    }
+
     // Initialize the slides animations
     goToGlobalSlide(0);
 });

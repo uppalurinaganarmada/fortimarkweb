@@ -268,41 +268,52 @@
                     One thing became clear: <strong>Most brands are doing something right. Very few are doing everything together.</strong>
                 </p>
                 
-                <div class="problem-grid-cardless">
-                    <div class="problem-item-cardless slide-left-to-right">
-                        <div class="problem-image-wrapper">
-                            <img src="assets/problem_content_visibility_pop.png" alt="Content vs Visibility" class="problem-illustration">
+                <!-- Pinterest-Style Problem Transition Slider -->
+                <div class="problem-slider-container slide-left-to-right">
+                    <!-- LEFT PANEL: Text Description & Controls -->
+                    <div class="problem-slider-left">
+                        <div class="problem-slider-info-box">
+                            <span class="problem-index" id="problem-slide-index">01 / 04</span>
+                            <h3 class="problem-slide-title" id="problem-slide-title">Content vs Visibility</h3>
+                            <p class="problem-slide-desc" id="problem-slide-desc">Some have exceptional content but weak visibility.</p>
                         </div>
-                        <div class="problem-text-wrapper">
-                            <h4>Content vs Visibility</h4>
-                            <p>Some have exceptional content but weak visibility.</p>
-                        </div>
-                    </div>
-                    <div class="problem-item-cardless slide-left-to-right">
-                        <div class="problem-image-wrapper">
-                            <img src="assets/problem_search_story_pop.png" alt="Search vs Story" class="problem-illustration">
-                        </div>
-                        <div class="problem-text-wrapper">
-                            <h4>Search vs Story</h4>
-                            <p>Some rank well online but fail to tell a compelling story.</p>
-                        </div>
-                    </div>
-                    <div class="problem-item-cardless slide-left-to-right">
-                        <div class="problem-image-wrapper">
-                            <img src="assets/problem_ads_retention_pop.png" alt="Ads vs Retention" class="problem-illustration">
-                        </div>
-                        <div class="problem-text-wrapper">
-                            <h4>Ads vs Retention</h4>
-                            <p>Some spend heavily on advertising but lack retention systems.</p>
+                        
+                        <!-- Circular border minimal navigation buttons -->
+                        <div class="problem-slider-controls">
+                            <button class="prob-control-btn btn-prev" id="prob-btn-prev" aria-label="Previous problem">
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="prob-control-btn btn-next" id="prob-btn-next" aria-label="Next problem">
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
-                    <div class="problem-item-cardless slide-left-to-right">
-                        <div class="problem-image-wrapper">
-                            <img src="assets/problem_cx_tech_pop.png" alt="CX vs Tech" class="problem-illustration">
-                        </div>
-                        <div class="problem-text-wrapper">
-                            <h4>CX vs Tech</h4>
-                            <p>Some have incredible customer experiences but outdated digital infrastructure.</p>
+                    
+                    <!-- RIGHT PANEL: 3D Floating Illustrations -->
+                    <div class="problem-slider-right">
+                        <div class="problem-illustrations-track-wrapper">
+                            <div class="problem-illustrations-track" id="problem-illustrations-track">
+                                <!-- Card 1 -->
+                                <div class="illustration-slide-item active" data-index="0">
+                                    <img src="assets/problem_content_visibility_pop.png" alt="Content vs Visibility" class="floating-3d-icon" style="animation-delay: 0s;">
+                                </div>
+                                <!-- Card 2 -->
+                                <div class="illustration-slide-item" data-index="1">
+                                    <img src="assets/problem_search_story_pop.png" alt="Search vs Story" class="floating-3d-icon" style="animation-delay: 1.5s;">
+                                </div>
+                                <!-- Card 3 -->
+                                <div class="illustration-slide-item" data-index="2">
+                                    <img src="assets/problem_ads_retention_pop.png" alt="Ads vs Retention" class="floating-3d-icon" style="animation-delay: 3s;">
+                                </div>
+                                <!-- Card 4 -->
+                                <div class="illustration-slide-item" data-index="3">
+                                    <img src="assets/problem_cx_tech_pop.png" alt="CX vs Tech" class="floating-3d-icon" style="animation-delay: 4.5s;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
