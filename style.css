@@ -767,10 +767,9 @@ a {
 }
 
 .thumb-btn img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important; /* Ensures the square images scale and fill the circle */
-    border-radius: 50% !important; /* Keeps the image bounds circular */
+    width: 80% !important;
+    height: 80% !important;
+    object-fit: contain !important; /* Contain so rectangular/square logos don't get cropped */
     filter: grayscale(30%);
     transition: filter 0.4s ease, transform 0.4s ease;
 }
