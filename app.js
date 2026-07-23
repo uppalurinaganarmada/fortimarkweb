@@ -575,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isAtBottom = remainingScrollBottom < 15;
         const isAtTop = activeSlide.scrollTop < 10;
 
-        if (e.deltaY > 20 && isAtBottom) {
+        if (e.deltaY > 2 && isAtBottom) {
             // User scrolls down at bottom limit
             if (currentGlobalIndex < slideIds.length - 1) {
                 if (transitionDirection !== 'next') {
@@ -588,10 +588,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         cancelTransitionTimer();
                     }, 1000);
                 }
-            } else {
-                cancelTransitionTimer();
             }
-        } else if (e.deltaY < -20 && isAtTop) {
+        } else if (e.deltaY < -2 && isAtTop) {
             // User scrolls up at top limit
             if (currentGlobalIndex > 0) {
                 if (transitionDirection !== 'prev') {
@@ -604,12 +602,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         cancelTransitionTimer();
                     }, 1000);
                 }
-            } else {
-                cancelTransitionTimer();
             }
         } else {
-            // Cancel transition timer if scrolling inside bounds
-            cancelTransitionTimer();
+            // Cancel transition timer ONLY if user reverses direction or scroll is mid-content
+            if (transitionDirection === 'next' && (e.deltaY < -2 || !isAtBottom)) {
+                cancelTransitionTimer();
+            } else if (transitionDirection === 'prev' && (e.deltaY > 2 || !isAtTop)) {
+                cancelTransitionTimer();
+            }
         }
     }, { passive: true });
 

@@ -1232,8 +1232,8 @@ a {
 /* Intersection center badge */
 .venn-intersection {
     position: absolute;
-    top: 220px;
-    left: 215px;
+    top: 210px;
+    left: 185px;
     width: 90px;
     height: 90px;
     z-index: 12;
@@ -1944,7 +1944,7 @@ a {
     }
 
     .venn-intersection {
-        top: 145px !important;
+        top: 150px !important;
         left: 145px !important;
         width: 70px !important;
         height: 70px !important;
