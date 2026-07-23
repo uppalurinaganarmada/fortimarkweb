@@ -722,6 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (transitionDirection === 'prev' && (e.deltaY > 2 || !isAtTop)) {
                 cancelTransitionTimer();
             }
+        }
     }, { passive: true });
 
     // Touch Swipe Support for mobile phone scrolling/swiping
