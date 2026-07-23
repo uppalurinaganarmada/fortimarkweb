@@ -723,28 +723,30 @@ a {
 .thumb-btn {
     width: 56px;
     height: 56px;
-    border-radius: 50%;
-    background: #e8d7ca;
-    border: 2px solid rgba(42, 32, 28, 0.15);
+    border-radius: 50% !important;
+    background: #ffffff !important; /* Premium light white background */
+    border: 1px solid rgba(45, 36, 32, 0.15) !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 9px;
+    padding: 0 !important; /* Remove inset padding so logos fill the circular container */
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
+    overflow: hidden !important; /* Clips any square corner overlaps */
 }
 
 .thumb-btn img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Ensures the square images scale and fill the circle */
+    border-radius: 50% !important; /* Keeps the image bounds circular */
     filter: grayscale(30%);
     transition: filter 0.4s ease, transform 0.4s ease;
 }
 
 .thumb-btn:hover {
-    border-color: rgba(42, 32, 28, 0.4);
+    border-color: rgba(42, 32, 28, 0.45) !important;
     transform: translateY(-4px) scale(1.1);
 }
 
@@ -753,15 +755,15 @@ a {
 }
 
 .thumb-btn.active {
-    border-color: var(--accent);
-    box-shadow: 0 0 18px rgba(179, 126, 101, 0.5), inset 0 0 10px rgba(179, 126, 101, 0.3);
-    transform: translateY(-5px) scale(1.15);
-    background: #dfcab9;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 15px rgba(179, 126, 101, 0.4) !important;
+    transform: translateY(-5px) scale(1.15) !important;
+    background: #ffffff !important;
 }
 
 .thumb-btn.active img {
     filter: grayscale(0%);
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 /* ==========================================================================
@@ -874,7 +876,7 @@ a {
     background-color: var(--accent);
     color: var(--text-primary);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 6px 20px rgba(179, 126, 101, 0.45);
 }
 
 /* ==========================================================================
@@ -1521,7 +1523,7 @@ a {
 .contact-input-field:focus {
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 10px rgba(179, 126, 101, 0.25);
 }
 
 .contact-submit-btn {
@@ -1540,7 +1542,7 @@ a {
 .contact-submit-btn:hover {
     background-color: var(--accent);
     color: #ffffff;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 20px rgba(179, 126, 101, 0.45);
     transform: translateY(-1px);
 }
 
@@ -1702,11 +1704,9 @@ a {
     }
     55% {
         transform: translateX(calc(var(--title-width, 280px) + 5.25rem));
-        filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.8));
     }
     70% {
         transform: translateX(calc(var(--title-width, 280px) + 5.25rem));
-        filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.8));
     }
     90% {
         transform: translateX(0);
@@ -1714,7 +1714,6 @@ a {
     100% {
         opacity: 1;
         transform: translateX(0);
-        filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4));
     }
 }
 
@@ -1874,11 +1873,9 @@ a {
         }
         55% {
             transform: translateX(calc(var(--title-width, 200px) + 3.5rem));
-            filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
         }
         70% {
             transform: translateX(calc(var(--title-width, 200px) + 3.5rem));
-            filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
         }
         90% {
             transform: translateX(0);
@@ -1886,7 +1883,6 @@ a {
         100% {
             opacity: 1;
             transform: translateX(0);
-            filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.4));
         }
     }
 }
