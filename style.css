@@ -1850,6 +1850,9 @@ a {
     }
 
     .chessboard-isometric {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-rows: repeat(3, 1fr) !important;
         transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) !important;
         max-width: 100% !important;
         width: 100% !important;
@@ -1857,6 +1860,62 @@ a {
         border: 3px solid rgba(42, 32, 28, 0.1) !important;
         gap: 0.75rem !important;
         padding: 0.75rem !important;
+    }
+
+    /* Mobile alternating chessboard pattern overrides */
+    .chessboard-isometric > .chess-board-square:nth-child(1) { background-color: #f5ece5 !important; color: #2d2420 !important; border-color: rgba(45, 36, 32, 0.1) !important; }
+    .chessboard-isometric > .chess-board-square:nth-child(2) { background-color: #382a23 !important; color: #f5ece5 !important; border-color: rgba(255, 255, 255, 0.05) !important; }
+    .chessboard-isometric > .chess-board-square:nth-child(3) { background-color: #382a23 !important; color: #f5ece5 !important; border-color: rgba(255, 255, 255, 0.05) !important; }
+    .chessboard-isometric > .chess-board-square:nth-child(4) { background-color: #f5ece5 !important; color: #2d2420 !important; border-color: rgba(45, 36, 32, 0.1) !important; }
+    .chessboard-isometric > .chess-board-square:nth-child(5) { background-color: #f5ece5 !important; color: #2d2420 !important; border-color: rgba(45, 36, 32, 0.1) !important; }
+    .chessboard-isometric > .chess-board-square:nth-child(6) { background-color: #382a23 !important; color: #f5ece5 !important; border-color: rgba(255, 255, 255, 0.05) !important; }
+
+    /* Hover/Active states on mobile alternating chessboard */
+    .chessboard-isometric > .chess-board-square:nth-child(1):hover,
+    .chessboard-isometric > .chess-board-square:nth-child(1).active,
+    .chessboard-isometric > .chess-board-square:nth-child(4):hover,
+    .chessboard-isometric > .chess-board-square:nth-child(4).active,
+    .chessboard-isometric > .chess-board-square:nth-child(5):hover,
+    .chessboard-isometric > .chess-board-square:nth-child(5).active {
+        background-color: #ffffff !important;
+    }
+
+    .chessboard-isometric > .chess-board-square:nth-child(2):hover,
+    .chessboard-isometric > .chess-board-square:nth-child(2).active,
+    .chessboard-isometric > .chess-board-square:nth-child(3):hover,
+    .chessboard-isometric > .chess-board-square:nth-child(3).active,
+    .chessboard-isometric > .chess-board-square:nth-child(6):hover,
+    .chessboard-isometric > .chess-board-square:nth-child(6).active {
+        background-color: #4a382f !important;
+    }
+
+    /* Keep correct stroke colors on mobile glass pieces */
+    .chessboard-isometric > .chess-board-square:nth-child(1) .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square:nth-child(1) .glass-chess-piece svg circle,
+    .chessboard-isometric > .chess-board-square:nth-child(4) .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square:nth-child(4) .glass-chess-piece svg circle,
+    .chessboard-isometric > .chess-board-square:nth-child(5) .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square:nth-child(5) .glass-chess-piece svg circle {
+        fill: rgba(45, 36, 32, 0.05) !important;
+        stroke: rgba(45, 36, 32, 0.3) !important;
+    }
+
+    .chessboard-isometric > .chess-board-square:nth-child(2) .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square:nth-child(2) .glass-chess-piece svg circle,
+    .chessboard-isometric > .chess-board-square:nth-child(3) .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square:nth-child(3) .glass-chess-piece svg circle,
+    .chessboard-isometric > .chess-board-square:nth-child(6) .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square:nth-child(6) .glass-chess-piece svg circle {
+        fill: rgba(255, 255, 255, 0.1) !important;
+        stroke: rgba(255, 255, 255, 0.45) !important;
+    }
+
+    .chessboard-isometric > .chess-board-square:hover .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square:hover .glass-chess-piece svg circle,
+    .chessboard-isometric > .chess-board-square.active .glass-chess-piece svg path,
+    .chessboard-isometric > .chess-board-square.active .glass-chess-piece svg circle {
+        fill: rgba(179, 126, 101, 0.22) !important;
+        stroke: rgba(179, 126, 101, 0.9) !important;
     }
 
     .chess-board-square {
@@ -2002,12 +2061,17 @@ a {
     }
     
     .showcase-left-logo {
-        height: 280px;
+        height: 250px;
     }
     
-    .organic-wave-bg {
-        width: 250px;
-        height: 250px;
+    .fixed-circle-bg {
+        width: 240px !important;
+        height: 240px !important;
+    }
+
+    .showcase-logo-display {
+        width: 240px !important;
+        height: 240px !important;
     }
     
     .showcase-title {
@@ -2630,8 +2694,10 @@ a {
 /* Mobile responsiveness for modal */
 @media (max-width: 768px) {
     .services-modal-container {
-        padding: 3rem 2rem;
+        padding: 2rem 1.25rem;
         max-width: 480px;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
     .services-modal-layout {
