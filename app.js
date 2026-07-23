@@ -818,6 +818,131 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }
 
+    // 3D Cover Flow Process Slider Handler
+    const cfTrack = document.getElementById('process-coverflow-track');
+    const cfCards = document.querySelectorAll('.coverflow-card');
+    const cfDotsContainer = document.getElementById('process-coverflow-dots');
+    
+    let currentCfIdx = 0;
+    let cfAutoplayInterval = null;
+
+    function updateCoverflow(centerIndex) {
+        if (centerIndex < 0 || centerIndex >= cfCards.length) return;
+        currentCfIdx = centerIndex;
+
+        const isMobile = window.innerWidth < 768;
+        const xOffset = isMobile ? 85 : 140;
+        const centerSpread = isMobile ? 40 : 65;
+        const zOffset = isMobile ? 70 : 100;
+        const rotationAngle = isMobile ? 25 : 40;
+
+        cfCards.forEach((card, idx) => {
+            const diff = idx - centerIndex;
+            
+            if (diff === 0) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+
+            let tx = 0;
+            let ty = 0;
+            let tz = 0;
+            let ry = 0;
+            let scale = 1;
+            let opacity = 1;
+            let blur = 0;
+            let zIndex = 10 - Math.abs(diff);
+
+            if (diff === 0) {
+                tx = 0;
+                tz = 40;
+                ry = 0;
+                scale = 1.05;
+                opacity = 1;
+                blur = 0;
+            } else if (diff < 0) {
+                tx = diff * xOffset - centerSpread;
+                tz = -Math.abs(diff) * zOffset;
+                ry = rotationAngle;
+                scale = 0.85;
+                opacity = Math.max(0.2, 0.75 - Math.abs(diff) * 0.15);
+                blur = Math.min(6, Math.abs(diff) * 2);
+            } else {
+                tx = diff * xOffset + centerSpread;
+                tz = -Math.abs(diff) * zOffset;
+                ry = -rotationAngle;
+                scale = 0.85;
+                opacity = Math.max(0.2, 0.75 - Math.abs(diff) * 0.15);
+                blur = Math.min(6, Math.abs(diff) * 2);
+            }
+
+            card.style.transform = `translate3d(${tx}px, ${ty}px, ${tz}px) rotateY(${ry}deg) scale(${scale})`;
+            card.style.opacity = opacity;
+            card.style.filter = blur > 0 ? `blur(${blur}px)` : 'none';
+            card.style.zIndex = zIndex;
+        });
+
+        if (cfDotsContainer) {
+            const dots = cfDotsContainer.querySelectorAll('.cf-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === centerIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+    }
+
+    function startCfAutoplay() {
+        stopCfAutoplay();
+        cfAutoplayInterval = setInterval(() => {
+            let nextIdx = currentCfIdx + 1;
+            if (nextIdx >= cfCards.length) nextIdx = 0;
+            updateCoverflow(nextIdx);
+        }, 5000);
+    }
+
+    function stopCfAutoplay() {
+        if (cfAutoplayInterval) {
+            clearInterval(cfAutoplayInterval);
+            cfAutoplayInterval = null;
+        }
+    }
+
+    if (cfCards.length && cfTrack) {
+        if (cfDotsContainer) {
+            const dots = cfDotsContainer.querySelectorAll('.cf-dot');
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateCoverflow(idx);
+                    stopCfAutoplay();
+                    setTimeout(startCfAutoplay, 10000);
+                });
+            });
+        }
+
+        cfCards.forEach((card, idx) => {
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateCoverflow(idx);
+                stopCfAutoplay();
+                setTimeout(startCfAutoplay, 10000);
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            updateCoverflow(currentCfIdx);
+        });
+
+        setTimeout(() => {
+            updateCoverflow(0);
+            startCfAutoplay();
+        }, 150);
+    }
+
     // Initialize the slides animations
     goToGlobalSlide(0);
 });

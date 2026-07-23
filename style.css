@@ -1100,81 +1100,112 @@ a {
     max-width: 800px;
 }
 
-.timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding-left: 0;
-    border-left: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* 3D Cover Flow Carousel (Mobile Default) */
+.coverflow-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
+    margin: 1.5rem auto 1rem;
+    position: relative;
+    perspective: 1200px; /* 3D depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding: 1rem 0;
 }
 
-.timeline-item:last-child {
-    margin-bottom: 0;
-}
-
-.timeline-number {
-    position: static;
-    margin-bottom: 1.2rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
+.coverflow-track {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    font-weight: 700;
-    transition: var(--transition);
+    position: relative;
+    width: 100%;
+    height: 300px; /* Smaller height on mobile */
+    transform-style: preserve-3d;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.timeline-content {
-    transition: var(--transition);
-    text-align: center;
+.coverflow-card {
+    position: absolute;
+    width: 210px; /* Compact width on mobile */
+    height: 280px; /* Compact height on mobile */
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    will-change: transform, opacity, filter, z-index;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease;
+}
+
+.coverflow-card.active {
+    box-shadow: 0 15px 35px rgba(179, 126, 101, 0.4);
+}
+
+.card-number {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    text-align: left;
+}
+
+.card-text {
+    text-align: left;
+}
+
+.card-text h3 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 0.4rem;
+}
+
+.card-text p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+}
+
+.coverflow-dots {
+    display: flex;
+    gap: 0.65rem;
+    margin-top: 1.25rem;
+    justify-content: center;
     align-items: center;
 }
 
-.timeline-item:hover .timeline-number {
-    border-color: var(--text-primary);
-    color: var(--text-primary);
-    background-color: var(--bg-surface-hover);
+.cf-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(45, 36, 32, 0.25);
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: width, background-color, transform;
 }
 
-.timeline-content h3 {
-    font-size: 1.35rem;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-    text-align: center;
+.cf-dot:hover {
+    background-color: rgba(45, 36, 32, 0.55);
+    transform: scale(1.2);
 }
 
-.timeline-item:hover .timeline-content h3 {
-    color: var(--text-primary);
-}
-
-.timeline-content p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    max-width: 600px;
-    text-align: center;
+.cf-dot.active {
+    background-color: var(--accent);
+    width: 26px; /* Active dots are wide pill shapes */
+    border-radius: 5px;
 }
 
 .process-outro {
@@ -2196,37 +2227,32 @@ a {
         gap: 0.75rem !important;
     }
 
-    .timeline {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: flex-start !important;
-        gap: 2rem !important;
-        max-width: 1100px !important;
-        margin-top: 1rem !important;
+    .coverflow-container {
+        margin: 1rem auto 0 !important;
+        padding: 1rem 0 !important;
     }
 
-    .timeline-item {
-        margin-bottom: 0 !important;
-        flex: 1 !important;
-        gap: 0.35rem !important;
+    .coverflow-track {
+        height: 380px !important;
     }
 
-    .timeline-number {
-        font-size: 1.4rem !important;
-        margin-bottom: 0.35rem !important;
-        width: 2rem !important;
-        height: 2rem !important;
+    .coverflow-card {
+        width: 270px !important;
+        height: 350px !important;
+        padding: 2rem !important;
     }
 
-    .timeline-content h3 {
-        font-size: 1.05rem !important;
-        margin-bottom: 0.2rem !important;
+    .card-number {
+        font-size: 2.5rem !important;
     }
 
-    .timeline-content p {
-        font-size: 0.82rem !important;
-        line-height: 1.35 !important;
+    .card-text h3 {
+        font-size: 1.55rem !important;
+    }
+
+    .card-text p {
+        font-size: 0.88rem !important;
+        line-height: 1.45 !important;
     }
 
     .process-statement-card {
