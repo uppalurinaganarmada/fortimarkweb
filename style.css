@@ -71,37 +71,42 @@ html, body {
     }
 }
 
-/* Global Horizontal Slider Framework */
+/* Global Vertical Card Stack Slider Framework */
 .global-slider-viewport {
     width: 100vw !important;
     height: 100vh !important;
     overflow: hidden !important;
     position: relative !important;
+    z-index: 10 !important;
 }
 
 .global-slider-wrapper {
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Prevent vertical wrapping */
-    width: 600vw !important; /* 6 slides * 100vw */
-    height: 100% !important;
+    flex-direction: column !important; /* Stack vertically */
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    height: 600vh !important; /* 6 slides * 100vh */
     transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
 }
 
 .global-slide {
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 92vw !important;
+    height: 85vh !important;
+    margin: 10vh auto 5vh !important; /* Centered card with 10vh top space for navigation bar */
     flex-shrink: 0 !important; /* Prevent compression */
     flex-grow: 0 !important;
     overflow-y: auto !important; /* Allow internal scroll */
     overflow-x: hidden !important;
-    padding: 7rem 2rem 4rem !important; /* Accommodate navigation bar */
+    padding: 3rem 2.5rem !important; /* Clean layout inside cards */
     position: relative !important;
     box-sizing: border-box !important;
+    border-radius: 30px !important;
+    border: 1px solid rgba(45, 36, 32, 0.15) !important;
+    box-shadow: 0 25px 60px rgba(45, 36, 32, 0.12), 0 0 1px rgba(45, 36, 32, 0.2) !important;
     transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
                 filter 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                opacity 0.85s ease;
+                opacity 0.85s ease !important;
     opacity: 0.25; /* Sleek inactive opacity */
     filter: blur(5px) scale(0.96); /* Elegant transition states */
     background-color: var(--bg-base);
@@ -112,7 +117,7 @@ html, body {
     filter: blur(0) scale(1) !important;
 }
 
-/* Custom internal scrollbars for each horizontal slide wrapper */
+/* Custom internal scrollbars for each slide card */
 .global-slide::-webkit-scrollbar {
     width: 6px;
 }
@@ -763,23 +768,35 @@ a {
    Section Containers (FLEUR Alternating Color Blocks)
    ========================================================================== */
 .section-container {
-    padding: 5rem 2rem 8rem;
+    padding: 3rem 2rem 5rem;
     display: flex;
     justify-content: center;
     border-top: 1px solid var(--border);
     transition: background-color 0.4s ease;
 }
 
+#hero {
+    background-color: #f5ebe2 !important; /* FLEUR Soft Warm Alabaster */
+}
+
+#services {
+    background-color: #ffffff !important; /* FLEUR Pure Porcelain White */
+}
+
+#clients {
+    background-color: #f5ebe2 !important; /* FLEUR Soft Warm Alabaster */
+}
+
 #problem {
-    background-color: #f5ebe2; /* FLEUR Soft Warm Alabaster */
+    background-color: #ffffff !important; /* FLEUR Pure Porcelain White */
 }
 
 #how-we-work {
-    background-color: #ffffff; /* FLEUR Pure Porcelain White Block */
+    background-color: #ebdcd0 !important; /* FLEUR Sand Tan */
 }
 
 #results {
-    background-color: #dfc7b5; /* Signature FLEUR Warm Tan Block */
+    background-color: #dfc7b5 !important; /* Signature FLEUR Warm Tan */
     color: #2d2420;
 }
 
@@ -1404,6 +1421,79 @@ a {
     color: var(--text-primary);
 }
 
+.contact-prompt-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.details-contact-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem auto 0;
+    max-width: 420px;
+    width: 100%;
+}
+
+.contact-input-field {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(42, 32, 28, 0.25);
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.contact-input-field:focus {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
+}
+
+.contact-submit-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--text-primary);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-submit-btn:hover {
+    background-color: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+.contact-form-status-msg {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    height: 16px;
+}
+
+.contact-form-status-msg.success {
+    color: #10b981;
+}
+
+.contact-form-status-msg.error {
+    color: #ef4444;
+}
+
 /* Simple Footer Styling */
 .bottom-footer {
     border-top: 1px solid var(--border);
@@ -1747,7 +1837,7 @@ a {
     /* 1. Prevent internal scrolling on desktop, allow auto-scroll for overflowing text */
     .global-slide {
         overflow-y: auto !important;
-        padding: 5.5rem 2rem 2rem !important; /* Space for sticky header */
+        padding: 3rem 3rem 2.5rem !important; /* Elegant compact card padding */
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -2101,9 +2191,24 @@ a {
         margin-bottom: 0.35rem !important;
     }
 
-    .btn-glow {
-        padding: 0.65rem 1.25rem !important;
+    .details-contact-form {
+        max-width: 360px !important;
+        margin-top: 0.5rem !important;
+    }
+
+    .contact-input-field {
+        padding: 0.55rem 0.85rem !important;
         font-size: 0.78rem !important;
+    }
+
+    .contact-submit-btn {
+        padding: 0.55rem 1.25rem !important;
+        font-size: 0.78rem !important;
+    }
+
+    .contact-prompt-text {
+        font-size: 0.85rem !important;
+        margin-top: 0.5rem !important;
     }
 
     .bottom-footer {
