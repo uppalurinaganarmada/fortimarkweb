@@ -581,12 +581,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (transitionDirection !== 'next') {
                     cancelTransitionTimer();
                     transitionDirection = 'next';
-                    console.log("At bottom. Snapping to next tab in 2s...");
+                    console.log("At bottom. Snapping to next tab in 1s...");
                     globalTransitionTimeout = setTimeout(() => {
                         lastGlobalScrollTime = Date.now();
                         goToGlobalSlide(currentGlobalIndex + 1);
                         cancelTransitionTimer();
-                    }, 2000);
+                    }, 1000);
                 }
             } else {
                 cancelTransitionTimer();
@@ -597,12 +597,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (transitionDirection !== 'prev') {
                     cancelTransitionTimer();
                     transitionDirection = 'prev';
-                    console.log("At top. Snapping to prev tab in 2s...");
+                    console.log("At top. Snapping to prev tab in 1s...");
                     globalTransitionTimeout = setTimeout(() => {
                         lastGlobalScrollTime = Date.now();
                         goToGlobalSlide(currentGlobalIndex - 1);
                         cancelTransitionTimer();
-                    }, 2000);
+                    }, 1000);
                 }
             } else {
                 cancelTransitionTimer();

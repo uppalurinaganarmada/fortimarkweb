@@ -437,9 +437,9 @@ a {
     opacity: 0;
     clip-path: inset(0 100% 0 0);
     transform: translate3d(-30px, 0, 0);
-    transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
-                clip-path 1.4s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1),
+                clip-path 1.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, clip-path, transform;
 }
 
@@ -1581,18 +1581,13 @@ a {
     will-change: transform, opacity;
 }
 
-/* Individual entry slide directions (larger distances for clear visibility) */
-.animated-title.slide-up-card {
-    transform: translate3d(0, 160px, 0);
-}
-.animated-title.slide-right-card {
-    transform: translate3d(-240px, 0, 0);
-}
-.animated-title.slide-down-card {
-    transform: translate3d(0, -160px, 0);
-}
+/* Individual entry slide directions (all mapped to start from left for consistent left-to-right slow entry) */
+.animated-title.slide-up-card,
+.animated-title.slide-right-card,
+.animated-title.slide-down-card,
 .animated-title.slide-left-card {
-    transform: translate3d(240px, 0, 0);
+    transform: translate3d(-120px, 0, 0);
+    transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 /* Active transition state */
