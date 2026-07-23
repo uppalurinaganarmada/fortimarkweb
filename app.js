@@ -22,31 +22,77 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTitleWidths();
     window.addEventListener('resize', updateTitleWidths);
 
-    // 1. Loading Screen Animation Fadeout
+    // 1. Morphing Intro Loader Animation Sequence
     const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            loader.style.visibility = 'hidden';
-        }, 1200);
-    }
-
-    // 1b. Cinematic Logo Text Reveal & Headline Reveal Timeline
+    const introLogoIcon = document.getElementById('intro-logo-icon');
+    const introLogoText = document.getElementById('intro-logo-text');
+    const introLogoGroup = document.getElementById('intro-logo-group');
+    const targetNavLogo = document.getElementById('logo');
     const heroTitle = document.querySelector('.hero-title');
     const logoName = document.getElementById('logo-name');
-    
-    if (heroTitle) {
-        // 1. Reveal the name "FORTIMARK" as the logo zoom is completing (1.5 seconds)
-        if (logoName) {
-            setTimeout(() => {
-                logoName.classList.add('visible');
-            }, 1500);
-        }
 
-        // 2. Reveal the main headline after the logo text finishes its fade-in (2.5 seconds)
+    if (loader && introLogoIcon && introLogoText && introLogoGroup && targetNavLogo) {
+        // Step 1: Reveal logo icon (100ms)
         setTimeout(() => {
-            heroTitle.classList.add('title-fade-in');
-        }, 2500); 
+            introLogoIcon.classList.add('reveal');
+        }, 100);
+
+        // Step 2: Reveal logo text "FORTIMARK" (1000ms)
+        setTimeout(() => {
+            introLogoText.classList.add('reveal');
+        }, 1000);
+
+        // Step 3: Morph transition to top header navigation logo (2400ms)
+        setTimeout(() => {
+            const targetRect = targetNavLogo.getBoundingClientRect();
+            const groupRect = introLogoGroup.getBoundingClientRect();
+
+            // Calculate scale and delta coordinates based on top-left origin alignment
+            const scaleFactor = targetRect.height / groupRect.height;
+            const dx = targetRect.left - groupRect.left;
+            const dy = targetRect.top - groupRect.top;
+
+            introLogoGroup.style.transformOrigin = 'top left';
+            introLogoGroup.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${scaleFactor})`;
+        }, 2400);
+
+        // Step 4: Hide loader, show actual nav logo and start hero content reveal (3600ms)
+        setTimeout(() => {
+            // Show the actual navigation logo
+            targetNavLogo.classList.add('reveal');
+            
+            // Fade out the loader screen overlay and intro group
+            loader.style.opacity = '0';
+            loader.style.pointerEvents = 'none';
+            introLogoGroup.style.opacity = '0';
+
+            // Start hero animations
+            if (logoName) {
+                logoName.classList.add('visible');
+            }
+            if (heroTitle) {
+                heroTitle.classList.add('title-fade-in');
+            }
+
+            // Cleanup loader element after transition completes
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 900);
+        }, 3600);
+    } else {
+        // Fallback if elements don't exist
+        if (loader) {
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+            }, 1200);
+        }
+        if (heroTitle) {
+            setTimeout(() => {
+                if (logoName) logoName.classList.add('visible');
+                heroTitle.classList.add('title-fade-in');
+            }, 2000);
+        }
     }
 
 
