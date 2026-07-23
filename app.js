@@ -233,7 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Pinterest-Inspired Interactive Brand Showcase (Smoothies Raisin Style)
     const brandShowcaseData = {
         bologna: {
             title: "Bologna Restaurant",
@@ -243,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #1c2841, #0f172a)",
             accentColor: "#1d4ed8",
             titleColor: "#1d4ed8",
-            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
         },
         yumm: {
             title: "Yumm Keralam",
@@ -253,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #881337, #4c0519)",
             accentColor: "#be123c",
             titleColor: "#be123c",
-            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
         },
         dayone: {
             title: "Day One Cafe",
@@ -263,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #2f4a37, #142318)",
             accentColor: "#047857",
             titleColor: "#047857",
-            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
         },
         thaichef: {
             title: "Thai Chef",
@@ -273,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #18181b, #09090b)",
             accentColor: "#b45309",
             titleColor: "#b45309",
-            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
         },
         flame: {
             title: "Once Upon a Flame",
@@ -283,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #7c2d12, #451a03)",
             accentColor: "#c2410c",
             titleColor: "#c2410c",
-            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
         },
         rajya: {
             title: "Rajya Dvaar",
@@ -293,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #581c87, #3b0764)",
             accentColor: "#6d28d9",
             titleColor: "#6d28d9",
-            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
         },
         alley: {
             title: "Cafe Down The Alley",
@@ -303,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #0369a1, #075985)",
             accentColor: "#0284c7",
             titleColor: "#0284c7",
-            logoStyle: "width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
         }
     };
 
