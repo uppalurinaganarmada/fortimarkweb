@@ -722,6 +722,67 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (transitionDirection === 'prev' && (e.deltaY > 2 || !isAtTop)) {
                 cancelTransitionTimer();
             }
+    }, { passive: true });
+
+    // Touch Swipe Support for mobile phone scrolling/swiping
+    let touchStartY = 0;
+    let touchStartX = 0;
+    
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+        if (isGlobalTransitioning) return;
+
+        const touchEndY = e.changedTouches[0].clientY;
+        const touchEndX = e.changedTouches[0].clientX;
+
+        const diffY = touchEndY - touchStartY;
+        const diffX = touchEndX - touchStartX;
+
+        // Check if vertical swipe is dominant
+        if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 40) {
+            // Ignore swipe inside scrollable modal
+            if (e.target.closest('.services-modal-container') || e.target.closest('.services-modal-overlay')) {
+                return;
+            }
+
+            const activeSlide = document.querySelector('.global-slide.active-slide');
+            if (!activeSlide) return;
+
+            const remainingScrollBottom = activeSlide.scrollHeight - activeSlide.clientHeight - activeSlide.scrollTop;
+            const isAtBottom = remainingScrollBottom < 15;
+            const isAtTop = activeSlide.scrollTop < 10;
+
+            if (diffY < 0 && isAtBottom) {
+                // Swipe Up -> scroll down -> go to next slide
+                if (currentGlobalIndex < slideIds.length - 1) {
+                    goToGlobalSlide(currentGlobalIndex + 1);
+                }
+            } else if (diffY > 0 && isAtTop) {
+                // Swipe Down -> scroll up -> go to previous slide
+                if (currentGlobalIndex > 0) {
+                    goToGlobalSlide(currentGlobalIndex - 1);
+                }
+            }
+        } else if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+            // Horizontal Swiping support
+            if (e.target.closest('.services-modal-container') || e.target.closest('.services-modal-overlay') || e.target.closest('.coverflow-container')) {
+                return; // Let modal/coverflow swipe normally
+            }
+            if (diffX < 0) {
+                // Swipe Left -> next
+                if (currentGlobalIndex < slideIds.length - 1) {
+                    goToGlobalSlide(currentGlobalIndex + 1);
+                }
+            } else if (diffX > 0) {
+                // Swipe Right -> prev
+                if (currentGlobalIndex > 0) {
+                    goToGlobalSlide(currentGlobalIndex - 1);
+                }
+            }
         }
     }, { passive: true });
 
