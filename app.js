@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #1c2841, #0f172a)",
             accentColor: "#1d4ed8",
             titleColor: "#1d4ed8",
-            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover;"
         },
         yumm: {
             title: "Yumm Keralam",
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #881337, #4c0519)",
             accentColor: "#be123c",
             titleColor: "#be123c",
-            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover;"
         },
         dayone: {
             title: "Day One Cafe",
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #2f4a37, #142318)",
             accentColor: "#047857",
             titleColor: "#047857",
-            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover;"
         },
         thaichef: {
             title: "Thai Chef",
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #18181b, #09090b)",
             accentColor: "#b45309",
             titleColor: "#b45309",
-            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover;"
         },
         flame: {
             title: "Once Upon a Flame",
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #7c2d12, #451a03)",
             accentColor: "#c2410c",
             titleColor: "#c2410c",
-            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover;"
         },
         rajya: {
             title: "Rajya Dvaar",
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #581c87, #3b0764)",
             accentColor: "#6d28d9",
             titleColor: "#6d28d9",
-            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover;"
         },
         alley: {
             title: "Cafe Down The Alley",
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waveColor: "linear-gradient(135deg, #0369a1, #075985)",
             accentColor: "#0284c7",
             titleColor: "#0284c7",
-            logoStyle: "width: 75%; height: 75%; object-fit: contain;"
+            logoStyle: "width: 100%; height: 100%; object-fit: cover;"
         }
     };
 
@@ -580,6 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const globalSlides = document.querySelectorAll('.global-slide');
     let currentGlobalIndex = 0;
     let isGlobalTransitioning = false;
+    let lastGlobalScrollTime = 0;
 
     let globalTransitionTimeout = null;
     let transitionDirection = null; // 'next' or 'prev'
@@ -603,6 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         isGlobalTransitioning = true;
         currentGlobalIndex = index;
+        lastGlobalScrollTime = Date.now();
 
         try {
             // Slide wrapper calculation
@@ -671,7 +673,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Elite Throttled Wheel / Scroll event listener with 2s snaper transition on bounds
-    let lastGlobalScrollTime = 0;
     window.addEventListener('wheel', (e) => {
         const now = Date.now();
         if (now - lastGlobalScrollTime < 1100) {
@@ -735,6 +736,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('touchend', (e) => {
         if (isGlobalTransitioning) return;
+        
+        const now = Date.now();
+        if (now - lastGlobalScrollTime < 1100) {
+            return;
+        }
 
         const touchEndY = e.changedTouches[0].clientY;
         const touchEndX = e.changedTouches[0].clientX;

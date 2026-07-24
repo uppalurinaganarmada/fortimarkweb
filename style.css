@@ -91,27 +91,27 @@ html, body {
 }
 
 .global-slide {
-    width: 92vw !important;
-    height: 85vh !important;
-    margin: 10vh auto 5vh !important; /* Centered card with 10vh top space for navigation bar */
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
     flex-shrink: 0 !important; /* Prevent compression */
     flex-grow: 0 !important;
     overflow-y: auto !important; /* Allow internal scroll */
     overflow-x: hidden !important;
     -ms-overflow-style: none !important;  /* IE and Edge */
     scrollbar-width: none !important;  /* Firefox */
-    padding: 3rem 2.5rem !important; /* Clean layout inside cards */
+    padding: 100px 3rem 4rem !important; /* Ample top padding for header */
     position: relative !important;
     box-sizing: border-box !important;
-    border-radius: 30px !important;
-    border: 1px solid rgba(45, 36, 32, 0.15) !important;
-    box-shadow: 0 25px 60px rgba(45, 36, 32, 0.12), 0 0 1px rgba(45, 36, 32, 0.2) !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
     transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
                 filter 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
                 opacity 0.85s ease !important;
     opacity: 0.25; /* Sleek inactive opacity */
     filter: blur(5px) scale(0.96); /* Elegant transition states */
-    background-color: var(--bg-base);
+    background-color: transparent !important; /* Let the global body background show through */
 }
 
 .global-slide.active-slide {
@@ -1825,11 +1825,11 @@ a {
 @media (max-width: 968px) {
     /* Global Mobile Slide Centering & Padding Reductions */
     .global-slide {
-        padding: 1.5rem 1rem !important;
+        padding: 85px 1.5rem 3rem !important; /* Space for fixed header */
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        justify-content: center !important;
+        justify-content: flex-start !important; /* Prevents flexbox top-clipping scroll bugs */
         text-align: center !important;
     }
 
@@ -2202,7 +2202,7 @@ a {
     /* 1. Prevent internal scrolling on desktop, allow auto-scroll for overflowing text */
     .global-slide {
         overflow-y: auto !important;
-        padding: 3rem 3rem 2.5rem !important; /* Elegant compact card padding */
+        padding: 100px 3rem 4rem !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -2559,7 +2559,12 @@ a {
     }
 
     .results-statement {
-        margin-top: 0.25rem !important;
+        margin-top: 1.5rem !important;
+        padding: 2.5rem 1.25rem 2rem !important;
+        border-radius: 60px 60px 16px 16px !important;
+        width: calc(100% - 2rem) !important;
+        max-width: 360px !important;
+        box-sizing: border-box !important;
     }
 
     .punchline-text {
