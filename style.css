@@ -3075,3 +3075,61 @@ a {
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
                 opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
+
+
+/* ==========================================================================
+   3D Floating Particle Ribbon Background (Pinterest 1098385796613366295)
+   ========================================================================== */
+.bg-ribbon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3; /* Fixed background layer */
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.75;
+}
+
+.ribbon-svg {
+    position: absolute;
+    width: 150vw;
+    height: 70vh;
+    left: -25vw;
+    will-change: transform;
+}
+
+.ribbon-1 {
+    top: 5vh;
+    animation: flowRibbon1 16s ease-in-out infinite alternate;
+}
+
+.ribbon-2 {
+    top: 35vh;
+    animation: flowRibbon2 22s ease-in-out infinite alternate;
+}
+
+@keyframes flowRibbon1 {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translateY(-45px) rotate(3.5deg) scale(1.08);
+    }
+    100% {
+        transform: translateY(35px) rotate(-2.5deg) scale(0.95);
+    }
+}
+
+@keyframes flowRibbon2 {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translateY(55px) rotate(-4.5deg) scale(1.06);
+    }
+    100% {
+        transform: translateY(-35px) rotate(2.5deg) scale(0.97);
+    }
+}

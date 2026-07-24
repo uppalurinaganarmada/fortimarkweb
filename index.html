@@ -18,6 +18,32 @@
     <link rel="stylesheet" href="style.css?v=1.0.1">
 </head>
 <body>
+    <!-- 3D Floating Particle Ribbon Background (Pinterest Reference 1098385796613366295) -->
+    <div class="bg-ribbon-container">
+        <svg class="ribbon-svg ribbon-1" viewBox="0 0 1440 600" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ribbonGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#e17055" stop-opacity="0.45" />
+                    <stop offset="50%" stop-color="#d63031" stop-opacity="0.3" />
+                    <stop offset="100%" stop-color="#fdcb6e" stop-opacity="0.4" />
+                </linearGradient>
+            </defs>
+            <path d="M 0,300 C 300,100 600,500 900,200 C 1200,-100 1350,400 1440,300 L 1440,600 L 0,600 Z" fill="url(#ribbonGrad1)" />
+            <path d="M 0,250 C 350,450 650,50 950,350 C 1250,550 1380,150 1440,250" fill="none" stroke="url(#ribbonGrad1)" stroke-width="3" stroke-dasharray="6,8" opacity="0.85" />
+        </svg>
+        
+        <svg class="ribbon-svg ribbon-2" viewBox="0 0 1440 600" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ribbonGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#e67e22" stop-opacity="0.35" />
+                    <stop offset="50%" stop-color="#e17055" stop-opacity="0.4" />
+                    <stop offset="100%" stop-color="#b37e65" stop-opacity="0.3" />
+                </linearGradient>
+            </defs>
+            <path d="M 0,150 C 400,450 700,50 1100,350 C 1300,500 1400,200 1440,150 L 1440,600 L 0,600 Z" fill="url(#ribbonGrad2)" />
+            <path d="M 0,180 C 380,50 680,480 1080,180 C 1280,30 1390,380 1440,200" fill="none" stroke="url(#ribbonGrad2)" stroke-width="4" stroke-dasharray="8,12" opacity="0.75" />
+        </svg>
+    </div>
     <!-- Fixed Ambient Background Animations Layer -->
     <div class="bg-ambient-layer">
         <!-- Soft glowing light leaks -->
