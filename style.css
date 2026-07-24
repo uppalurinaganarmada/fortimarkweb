@@ -836,7 +836,7 @@ a {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
     text-align: center;
 }
@@ -1574,12 +1574,12 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
     background: #e8d7ca;
     border-radius: 200px 200px 24px 24px; /* Signature FLEUR Upward Arch Card */
-    padding: 5rem 3rem 4rem;
-    margin: 4rem auto 0;
+    padding: 4rem 3rem 3rem;
+    margin: 2.5rem auto !important;
     max-width: 750px;
     box-shadow: 0 15px 40px rgba(45, 36, 32, 0.08);
     border: 1px solid rgba(45, 36, 32, 0.1);
@@ -2559,7 +2559,7 @@ a {
     }
 
     .results-statement {
-        margin-top: 1.5rem !important;
+        margin: 1.5rem auto !important; /* Center horizontally with auto */
         padding: 2.5rem 1.25rem 2rem !important;
         border-radius: 60px 60px 16px 16px !important;
         width: calc(100% - 2rem) !important;
