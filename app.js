@@ -801,62 +801,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Results Contact Form Submission Handler
-    const contactForm = document.getElementById('contact-form');
-    const contactStatus = document.getElementById('contact-form-status');
-
-    if (contactForm && contactStatus) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const emailInput = document.getElementById('contact-email');
-            if (!emailInput) return;
-
-            const emailValue = emailInput.value.trim();
-            if (!emailValue) return;
-
-            // Update button status UI
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            contactStatus.className = 'contact-form-status-msg';
-            contactStatus.textContent = '';
-
-            // Post request to FormSubmit Ajax
-            fetch('https://formsubmit.co/ajax/team@fortimark.co', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: emailValue,
-                    _subject: 'New Landing Page Lead from Fortimark.Studio!',
-                    message: `Visitor has requested more details. Email: ${emailValue}`
-                })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success === 'true' || data.success === true) {
-                    contactStatus.className = 'contact-form-status-msg success';
-                    contactStatus.textContent = 'Thank you! We will get in touch shortly.';
-                    emailInput.value = '';
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(err => {
-                console.log("FormSubmit Error:", err);
-                contactStatus.className = 'contact-form-status-msg error';
-                contactStatus.textContent = 'Failed to send. Please try again or email team@fortimark.co directly.';
-            })
-            .finally(() => {
-                submitBtn.textContent = originalBtnText;
-                submitBtn.disabled = false;
-            });
-        });
-    }
-
     // Pinterest-Style Problem Transition Slider Handler
     const probTrack = document.getElementById('problem-illustrations-track');
     const probItems = document.querySelectorAll('.illustration-slide-item');
