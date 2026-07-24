@@ -675,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Elite Throttled Wheel / Scroll event listener with 2s snaper transition on bounds
     window.addEventListener('wheel', (e) => {
         const now = Date.now();
-        if (now - lastGlobalScrollTime < 1100) {
+        if (now - lastGlobalScrollTime < 1500) {
             cancelTransitionTimer();
             return;
         }
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isGlobalTransitioning) return;
         
         const now = Date.now();
-        if (now - lastGlobalScrollTime < 1100) {
+        if (now - lastGlobalScrollTime < 1500) {
             return;
         }
 
@@ -763,14 +763,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const isAtTop = activeSlide.scrollTop < 10;
 
             if (diffY < 0 && isAtBottom) {
-                // Swipe Up -> scroll down -> go to next slide
+                // Swipe Up -> scroll down -> go to next slide with 1s gap
                 if (currentGlobalIndex < slideIds.length - 1) {
-                    goToGlobalSlide(currentGlobalIndex + 1);
+                    if (transitionDirection !== 'next') {
+                        cancelTransitionTimer();
+                        transitionDirection = 'next';
+                        console.log("At bottom. Swiping to next tab in 1s...");
+                        globalTransitionTimeout = setTimeout(() => {
+                            goToGlobalSlide(currentGlobalIndex + 1);
+                            cancelTransitionTimer();
+                        }, 1000);
+                    }
                 }
             } else if (diffY > 0 && isAtTop) {
-                // Swipe Down -> scroll up -> go to previous slide
+                // Swipe Down -> scroll up -> go to previous slide with 1s gap
                 if (currentGlobalIndex > 0) {
-                    goToGlobalSlide(currentGlobalIndex - 1);
+                    if (transitionDirection !== 'prev') {
+                        cancelTransitionTimer();
+                        transitionDirection = 'prev';
+                        console.log("At top. Swiping to prev tab in 1s...");
+                        globalTransitionTimeout = setTimeout(() => {
+                            goToGlobalSlide(currentGlobalIndex - 1);
+                            cancelTransitionTimer();
+                        }, 1000);
+                    }
                 }
             }
         } else if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {

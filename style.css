@@ -188,12 +188,31 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--bg-base); /* Porcelain sand tan */
+    background-color: #000000 !important; /* Pure black to blend with eclipse video */
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.9s ease;
+    overflow: hidden;
+}
+
+.loader-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.loader-screen .intro-logo-text {
+    color: #ffffff !important;
 }
 
 .intro-logo-group {
@@ -201,6 +220,7 @@ a {
     align-items: center;
     gap: 1.25rem;
     position: relative;
+    z-index: 2 !important;
     transform-origin: center center;
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
 }
