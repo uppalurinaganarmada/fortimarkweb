@@ -2415,7 +2415,7 @@ a {
 
     /* Slide 2: The Problem grid layout height optimization */
     #problem .section-content {
-        height: 100% !important;
+        height: auto !important;
         gap: 0.75rem !important;
     }
 
@@ -2486,7 +2486,7 @@ a {
 
     /* Slide 4: Process Timeline layout horizontal on desktop */
     #how-we-work .section-content {
-        height: 100% !important;
+        height: auto !important;
         gap: 0.75rem !important;
     }
 
@@ -2821,4 +2821,155 @@ a {
         font-size: 0.75rem;
         padding: 0.45rem 0.95rem;
     }
+}
+
+/* ==========================================================================
+   Fixed Ambient Background Animations Layer
+   ========================================================================== */
+.bg-ambient-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2; /* Behind slide containers */
+    pointer-events: none;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+/* Ambient light leaks / glowing blobs */
+.ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    mix-blend-mode: soft-light;
+    will-change: transform, opacity;
+}
+
+.glow-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, #e8d7ca 0%, transparent 70%);
+    animation: driftGlow1 25s infinite alternate ease-in-out;
+}
+
+.glow-2 {
+    bottom: -15%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, #b37e65 0%, transparent 70%);
+    animation: driftGlow2 35s infinite alternate ease-in-out;
+}
+
+.glow-3 {
+    top: 40%;
+    left: 50%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, #ebdcd0 0%, transparent 70%);
+    animation: driftGlow3 30s infinite alternate ease-in-out;
+}
+
+/* Floating line-art vector icons */
+.floating-vector {
+    position: absolute;
+    color: rgba(45, 36, 32, 0.045); /* Subtle brand outline */
+    will-change: transform, opacity;
+}
+
+.floating-vector svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Specific elements positioning and speed */
+.item-1 {
+    top: 15%;
+    left: 8%;
+    width: 60px;
+    height: 60px;
+    animation: floatDrift1 28s infinite linear;
+}
+
+.item-2 {
+    top: 65%;
+    left: 5%;
+    width: 80px;
+    height: 80px;
+    animation: floatDrift2 36s infinite linear;
+}
+
+.item-3 {
+    top: 10%;
+    right: 12%;
+    width: 50px;
+    height: 50px;
+    animation: floatDrift3 24s infinite linear;
+}
+
+.item-4 {
+    top: 45%;
+    right: 8%;
+    width: 90px;
+    height: 90px;
+    animation: floatDrift1 42s infinite linear;
+}
+
+.item-5 {
+    bottom: 12%;
+    left: 45%;
+    width: 40px;
+    height: 40px;
+    animation: floatDrift3 32s infinite linear;
+}
+
+.item-6 {
+    top: 40%;
+    left: 45%;
+    width: 75px;
+    height: 75px;
+    animation: floatDrift2 50s infinite linear;
+}
+
+/* Keyframe animations */
+@keyframes driftGlow1 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(10vw, 15vh) scale(1.15); opacity: 0.2; }
+    100% { transform: translate(-5vw, -5vh) scale(0.95); }
+}
+
+@keyframes driftGlow2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-15vw, -10vh) scale(0.9); opacity: 0.12; }
+    100% { transform: translate(5vw, 10vh) scale(1.1); }
+}
+
+@keyframes driftGlow3 {
+    0% { transform: translate(0, 0) scale(0.9); }
+    50% { transform: translate(12vw, -12vh) scale(1.15); opacity: 0.18; }
+    100% { transform: translate(-10vw, 10vh) scale(1); }
+}
+
+@keyframes floatDrift1 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(40px, -80px) rotate(180deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes floatDrift2 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-50px, 60px) rotate(-180deg); }
+    100% { transform: translate(0, 0) rotate(-360deg); }
+}
+
+@keyframes floatDrift3 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(60px, 50px) rotate(180deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
 }
