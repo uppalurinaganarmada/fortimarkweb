@@ -18,64 +18,41 @@
     <link rel="stylesheet" href="style.css?v=1.0.1">
 </head>
 <body>
-    <!-- 3D Floating Particle Ribbon Background (Pinterest Reference 1098385796613366295) -->
+        <!-- 3D Floating Particle Ribbon Background (Pinterest 1098385796613366295) -->
     <div class="bg-ribbon-container">
         <svg class="ribbon-svg ribbon-1" viewBox="0 0 1440 600" preserveAspectRatio="none">
             <defs>
                 <linearGradient id="ribbonGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#e17055" stop-opacity="0.45" />
-                    <stop offset="50%" stop-color="#d63031" stop-opacity="0.3" />
-                    <stop offset="100%" stop-color="#fdcb6e" stop-opacity="0.4" />
+                    <stop offset="0%" stop-color="#e17055" stop-opacity="0.65" />
+                    <stop offset="50%" stop-color="#d63031" stop-opacity="0.5" />
+                    <stop offset="100%" stop-color="#fdcb6e" stop-opacity="0.6" />
                 </linearGradient>
             </defs>
             <path d="M 0,300 C 300,100 600,500 900,200 C 1200,-100 1350,400 1440,300 L 1440,600 L 0,600 Z" fill="url(#ribbonGrad1)" />
-            <path d="M 0,250 C 350,450 650,50 950,350 C 1250,550 1380,150 1440,250" fill="none" stroke="url(#ribbonGrad1)" stroke-width="3" stroke-dasharray="6,8" opacity="0.85" />
+            <path d="M 0,250 C 350,450 650,50 950,350 C 1250,550 1380,150 1440,250" fill="none" stroke="url(#ribbonGrad1)" stroke-width="4" stroke-dasharray="6,8" opacity="0.95" />
         </svg>
         
         <svg class="ribbon-svg ribbon-2" viewBox="0 0 1440 600" preserveAspectRatio="none">
             <defs>
                 <linearGradient id="ribbonGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#e67e22" stop-opacity="0.35" />
-                    <stop offset="50%" stop-color="#e17055" stop-opacity="0.4" />
-                    <stop offset="100%" stop-color="#b37e65" stop-opacity="0.3" />
+                    <stop offset="0%" stop-color="#e67e22" stop-opacity="0.55" />
+                    <stop offset="50%" stop-color="#e17055" stop-opacity="0.6" />
+                    <stop offset="100%" stop-color="#b37e65" stop-opacity="0.5" />
                 </linearGradient>
             </defs>
             <path d="M 0,150 C 400,450 700,50 1100,350 C 1300,500 1400,200 1440,150 L 1440,600 L 0,600 Z" fill="url(#ribbonGrad2)" />
-            <path d="M 0,180 C 380,50 680,480 1080,180 C 1280,30 1390,380 1440,200" fill="none" stroke="url(#ribbonGrad2)" stroke-width="4" stroke-dasharray="8,12" opacity="0.75" />
+            <path d="M 0,180 C 380,50 680,480 1080,180 C 1280,30 1390,380 1440,200" fill="none" stroke="url(#ribbonGrad2)" stroke-width="5" stroke-dasharray="8,12" opacity="0.9" />
         </svg>
-    </div>
-    <!-- Fixed Ambient Background Animations Layer -->
-    <div class="bg-ambient-layer">
-        <!-- Soft glowing light leaks -->
-        <div class="ambient-glow glow-1"></div>
-        <div class="ambient-glow glow-2"></div>
-        <div class="ambient-glow glow-3"></div>
-        
-        <!-- Floating outline elements -->
-        <div class="floating-vector item-1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M7 7l10 10M7 17L17 7"/></svg>
-        </div>
-        <div class="floating-vector item-2">
-            <svg viewBox="0 0 45 45" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M22.5 9c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 8c-3.5 0-6.5 2-8 5h16c-1.5-3-4.5-5-8-5zm-9 9c0 4 3 7 7 7h4c4 0 7-3 7-7H13.5zm-2 9h22v3H11.5z" />
-            </svg>
-        </div>
-        <div class="floating-vector item-3">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/></svg>
-        </div>
-        <div class="floating-vector item-4">
-            <svg viewBox="0 0 45 45" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M 22,10 C 22,10 19,11 16,15 C 13,19 13,24 16,28 C 18,30 21,30 23,28 C 24,27 25,25 25,23 C 25,21 24,20 22,20 C 18,20 15,23 15,23 M 22,10 C 24,11 27,13 29,17 C 31,21 31,26 29,30 C 27,33 22,34 18,32 C 16,31 15,29 15,29 M 15,35 L 30,35 L 30,38 L 15,38 z" />
-            </svg>
-        </div>
-        <div class="floating-vector item-5">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M7 7l10 10M7 17L17 7"/></svg>
-        </div>
-        <div class="floating-vector item-6">
-            <svg viewBox="0 0 45 45" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M 9,39 L 36,39 L 36,36 L 9,36 L 9,39 z M 12,36 L 12,32 L 33,32 L 33,36 L 12,36 z M 11,14 L 11,9 L 15,9 L 15,11 L 20,11 L 20,9 L 25,9 L 25,11 L 30,11 L 30,9 L 34,9 L 34,14 M 34,14 L 31,17 L 14,17 L 11,14 M 31,17 L 31,32 L 14,32 L 14,17" />
-            </svg>
-        </div>
+
+        <svg class="ribbon-svg ribbon-3" viewBox="0 0 1440 600" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ribbonGrad3" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ff9f43" stop-opacity="0.7" />
+                    <stop offset="100%" stop-color="#ee5253" stop-opacity="0.5" />
+                </linearGradient>
+            </defs>
+            <path d="M 0,400 C 450,150 750,550 1150,250 C 1350,100 1420,450 1440,350" fill="none" stroke="url(#ribbonGrad3)" stroke-width="6" stroke-dasharray="10,14" opacity="0.95" />
+        </svg>
     </div>
     <!-- Liquid Transition Overlay (Transition 3) -->
     <div class="transition-overlay" id="transition-overlay">
