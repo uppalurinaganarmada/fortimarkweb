@@ -34,39 +34,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoName = document.getElementById('logo-name');
 
     if (loader && introLogoIcon && introLogoText && introLogoGroup && targetNavLogo) {
-        // Step 1: Reveal logo icon (100ms)
+        // Step 1: Reveal logo icon (200ms)
         setTimeout(() => {
             introLogoIcon.classList.add('reveal');
-        }, 100);
+        }, 200);
 
-        // Step 2: Reveal logo text "FORTIMARK" (1000ms)
+        // Step 2: Reveal logo text "FORTIMARK" slowly (2000ms)
+        // This coordinates with the slow 2.2s css reveal transition while the 2nd circle/ring forms
         setTimeout(() => {
             introLogoText.classList.add('reveal');
-        }, 1000);
+        }, 2000);
 
-        // Step 3: Morph transition to top header navigation logo (2400ms)
+        // Step 3: The whole logo and text moves up vertically (5000ms)
+        // Triggers once the slow 2nd circle formation completes
         setTimeout(() => {
-            const targetRect = targetNavLogo.getBoundingClientRect();
-            const groupRect = introLogoGroup.getBoundingClientRect();
+            introLogoGroup.classList.add('slide-up-out');
+        }, 5000);
 
-            // Calculate scale and delta coordinates based on top-left origin alignment
-            const scaleFactor = targetRect.height / groupRect.height;
-            const dx = targetRect.left - groupRect.left;
-            const dy = targetRect.top - groupRect.top;
-
-            introLogoGroup.style.transformOrigin = 'top left';
-            introLogoGroup.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${scaleFactor})`;
-        }, 2400);
-
-        // Step 4: Hide loader, show actual nav logo and start hero content reveal (3600ms)
+        // Step 4: Hide loader, show header navigation and start hero content reveal (6000ms)
         setTimeout(() => {
             // Show the actual navigation logo
             targetNavLogo.classList.add('reveal');
             
-            // Fade out the loader screen overlay and intro group
+            // Fade out the loader screen overlay
             loader.style.opacity = '0';
             loader.style.pointerEvents = 'none';
-            introLogoGroup.style.opacity = '0';
 
             // Start hero animations
             if (logoName) {
@@ -80,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 loader.style.display = 'none';
             }, 900);
-        }, 3600);
+        }, 6000);
     } else {
         // Fallback if elements don't exist
         if (loader) {
@@ -603,48 +595,83 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         isGlobalTransitioning = true;
-        currentGlobalIndex = index;
-        lastGlobalScrollTime = Date.now();
-
-        try {
-            // Slide wrapper calculation
+        
+        const targetSlide = globalSlides[index];
+        const overlay = document.getElementById('transition-overlay');
+        
+        if (overlay && targetSlide) {
+            // Get exact background color of the target slide dynamically (white or cream)
+            const targetColor = window.getComputedStyle(targetSlide).backgroundColor || '#f5ebe2';
+            const blobs = overlay.querySelectorAll('.transition-blob');
+            blobs.forEach(b => {
+                b.style.backgroundColor = targetColor;
+            });
+            
+            // Step 1: Start the liquid blob overlay animation
+            overlay.classList.remove('fade-out');
+            overlay.classList.add('animating');
+            
+            // Step 2: Swap the slide content underneath while fully covered (500ms)
+            setTimeout(() => {
+                currentGlobalIndex = index;
+                lastGlobalScrollTime = Date.now();
+                
+                if (globalWrapper) {
+                    globalWrapper.style.transform = `translateY(-${index * 100}vh)`;
+                }
+                
+                globalSlides.forEach((slide, idx) => {
+                    if (idx === index) {
+                        slide.classList.add('active-slide');
+                        const targetId = slideIds[idx];
+                        triggerSectionClickAnimation(targetId);
+                    } else {
+                        slide.classList.remove('active-slide');
+                        slide.querySelectorAll('.fade-in').forEach(el => el.classList.remove('visible'));
+                    }
+                });
+                
+                // Update active class on navbar links
+                const targetId = slideIds[index];
+                navLinksList.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === targetId) {
+                        link.classList.add('active-link');
+                        link.style.color = 'var(--text-primary)';
+                    } else {
+                        link.classList.remove('active-link');
+                        link.style.color = '';
+                    }
+                });
+            }, 500);
+            
+            // Step 3: Fade out and scale up the blobs (900ms)
+            setTimeout(() => {
+                overlay.classList.add('fade-out');
+            }, 900);
+            
+            // Step 4: End transition and cleanup (1450ms)
+            setTimeout(() => {
+                overlay.classList.remove('animating', 'fade-out');
+                isGlobalTransitioning = false;
+            }, 1450);
+            
+        } else {
+            // Fallback if overlay elements are missing
+            currentGlobalIndex = index;
+            lastGlobalScrollTime = Date.now();
             if (globalWrapper) {
                 globalWrapper.style.transform = `translateY(-${index * 100}vh)`;
-                console.log("Wrapper transform applied: translateY(-" + (index * 100) + "vh)");
             }
-
-            // Active class handling for fade and scaling transitions
             globalSlides.forEach((slide, idx) => {
                 if (idx === index) {
                     slide.classList.add('active-slide');
-                    const targetId = slideIds[idx];
-                    console.log("Activating slide:", targetId);
-                    triggerSectionClickAnimation(targetId);
+                    triggerSectionClickAnimation(slideIds[idx]);
                 } else {
                     slide.classList.remove('active-slide');
-                    slide.querySelectorAll('.fade-in').forEach(el => el.classList.remove('visible'));
                 }
             });
-
-            // Update active class on navbar links
-            const targetId = slideIds[index];
-            navLinksList.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === targetId) {
-                    link.classList.add('active-link');
-                    link.style.color = 'var(--text-primary)';
-                } else {
-                    link.classList.remove('active-link');
-                    link.style.color = '';
-                }
-            });
-        } catch (error) {
-            console.error("Error during slide transition:", error);
-        } finally {
-            setTimeout(() => {
-                isGlobalTransitioning = false;
-                console.log("isGlobalTransitioning set to false.");
-            }, 850); // Matches transition duration in style.css
+            isGlobalTransitioning = false;
         }
     }
 
