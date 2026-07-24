@@ -610,7 +610,7 @@ a {
     width: 280px !important;
     height: 280px !important;
     border-radius: 50% !important;
-    background: #ffffff !important;
+    background: transparent !important;
     overflow: hidden !important;
     display: flex;
     align-items: center;
