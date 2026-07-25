@@ -561,6 +561,162 @@ body{
   }
 }
 
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
+  }
+}
+
 </style>
 
 <style id="phase1-upgrade">
@@ -723,6 +879,162 @@ body{
   100% {
     background-position: 0% 100%;
     filter: hue-rotate(0deg);
+  }
+}
+
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
   }
 }
 
@@ -895,6 +1207,162 @@ body{
   }
 }
 
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
+  }
+}
+
 </style>
 
 <style id="phase3-upgrade">
@@ -1061,6 +1529,162 @@ body{
   100% {
     background-position: 0% 100%;
     filter: hue-rotate(0deg);
+  }
+}
+
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
   }
 }
 
@@ -1237,6 +1861,162 @@ body{
   100% {
     background-position: 0% 100%;
     filter: hue-rotate(0deg);
+  }
+}
+
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
   }
 }
 
@@ -1420,6 +2200,162 @@ body{
   }
 }
 
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
+  }
+}
+
 </style>
 
 <style id="phase5">
@@ -1575,6 +2511,162 @@ body{
   100% {
     background-position: 0% 100%;
     filter: hue-rotate(0deg);
+  }
+}
+
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
   }
 }
 
@@ -1778,6 +2870,162 @@ body{
   100% {
     background-position: 0% 100%;
     filter: hue-rotate(0deg);
+  }
+}
+
+
+/* ==========================================================================
+   PERFECT MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout & Containers */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  .wrap {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Typography Scaling */
+  h1.hero-title {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 1. Services 3D Coverflow Mobile Adjustments */
+  .pin-coverflow-container {
+    height: 440px !important;
+  }
+  
+  .pin-coverflow-card {
+    width: 88vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 380px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  .cf-title {
+    font-size: 1.35rem !important;
+  }
+
+  .cf-task-list li {
+    font-size: 0.8rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Stack Mobile Adjustments */
+  .pin-vstack-container {
+    height: 350px !important;
+  }
+
+  .pin-vstack-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.4rem 1.4rem !important;
+  }
+
+  .vstack-title {
+    font-size: 1.4rem !important;
+  }
+
+  .vstack-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 3. Problem Section Mobile Vertical Stack */
+  .pin-problem-track {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .pin-problem-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 180px !important;
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .problem-statement {
+    padding: 1.6rem !important;
+    font-size: 1.1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* 4. Process Step Slider Mobile Adjustments */
+  .pin-process-stage {
+    max-width: 100% !important;
+  }
+
+  .pin-process-card {
+    flex-direction: column !important;
+    padding: 1.6rem 1.4rem !important;
+    min-height: 220px !important;
+  }
+
+  .proc-title {
+    font-size: 1.5rem !important;
+  }
+
+  .proc-desc {
+    font-size: 0.85rem !important;
+  }
+
+  .proc-large-num {
+    font-size: 2.8rem !important;
+    align-self: flex-start !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Adjustments */
+  .pin-diagonal-container {
+    height: 350px !important;
+  }
+
+  .pin-diag-card {
+    width: 88vw !important;
+    max-width: 330px !important;
+    height: auto !important;
+    min-height: 240px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  .diag-name {
+    font-size: 1.45rem !important;
+  }
+
+  .diag-desc {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
+    width: 92vw !important;
+    padding: 1.25rem 1.1rem !important;
   }
 }
 
