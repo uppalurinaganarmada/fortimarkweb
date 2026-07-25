@@ -103,7 +103,15 @@
   .mobile-menu.open a:nth-child(5){ transition-delay:.25s; }
   .mobile-menu.open a:nth-child(6){ transition-delay:.3s; }
 
-  /* ---------- HERO ---------- */
+  
+.section {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: var(--bg);
+}
+
+/* ---------- HERO ---------- */
   .hero{
     position:relative; min-height:100svh; display:flex; flex-direction:column; justify-content:center;
     padding-top:140px; padding-bottom:80px; z-index:1;
@@ -407,6 +415,152 @@
     header, .hero, .section, .cta-section, footer{ opacity:1; transform:none; transition:none; }
     .preloader{ transition:none; }
   }
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 
 <style id="phase1-upgrade">
@@ -426,6 +580,152 @@ header{background:rgba(18,15,13,.58)!important;backdrop-filter:blur(18px)!import
 .hero{min-height:100svh!important}
 .hero-title{max-width:11ch!important}
 .btn-primary{border-radius:999px!important}
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 
 
@@ -449,6 +749,152 @@ border-radius:18px;transition:.35s}
 .metric p{margin-top:8px;color:var(--ivory-dim)}
 .fade-up{opacity:1;transform:translateY(40px);transition:.8s}
 .fade-up.show{opacity:1;transform:none}
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 
 <style id="phase3-upgrade">
@@ -472,6 +918,152 @@ border-radius:18px;transition:.35s}
 .side-card h4{font:600 1.6rem var(--serif);margin-bottom:12px}
 .side-card p{color:var(--ivory-dim);line-height:1.75}
 @media(max-width:900px){.editorial-grid{grid-template-columns:1fr}}
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 
 <style id="phase4-upgrade">
@@ -502,6 +1094,152 @@ border-radius:18px;transition:.35s}
 .quote-card{padding:42px}
 .cta-panel{padding:60px 30px}
 }
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 
 <style id="phase4-fixes">
@@ -536,6 +1274,152 @@ align-items:flex-end;
 position:relative!important;
 background:none!important;
 }
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 
 <style id="phase5">
@@ -548,6 +1432,152 @@ section{padding-top:8rem!important;padding-bottom:8rem!important}
 header nav a{position:relative}
 header nav a:after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:currentColor;transition:.35s}
 header nav a:hover:after{width:100%}
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 
 <style id="phase5-responsive-patch">
@@ -605,6 +1635,152 @@ header nav a:hover:after{width:100%}
     padding:16px 20px!important;
   }
 }
+
+
+/* ==========================================================================
+   ALL 5 CUSTOM PINTEREST SECTION ROTATOR ANIMATIONS
+   ========================================================================== */
+
+/* --- 1. SERVICES 3D COVERFLOW (pin/633387) --- */
+.pin-coverflow-stage {
+  width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center;
+}
+.pin-coverflow-container {
+  width: 100%; height: 460px; position: relative; perspective: 1100px; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;
+}
+.pin-coverflow-card {
+  position: absolute; width: 340px; height: 430px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease; user-select: none;
+}
+.pin-coverflow-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.cf-num-badge { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--brass-bright); line-height: 1; }
+.cf-role-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 0.2rem; }
+.cf-title { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: var(--ivory); line-height: 1.25; margin: 0.5rem 0; }
+.cf-task-list { list-style: none; padding: 0; margin: 0; }
+.cf-task-list li { font-size: 0.82rem; color: var(--ivory-dim); margin-bottom: 0.35rem; position: relative; padding-left: 1.1rem; }
+.cf-task-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); }
+.cf-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+.cf-dots, .vstack-dots, .diag-dots { display: flex; gap: 0.6rem; align-items: center; }
+.cf-dot, .vstack-dot, .diag-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(204, 133, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+.cf-dot.active, .vstack-dot.active, .diag-dot.active { width: 24px; border-radius: 12px; background: var(--brass-bright); }
+
+/* --- 2. BRANDS 3D VERTICAL STACK (pin/589127) --- */
+.pin-vstack-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-vstack-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: flex-end; }
+.pin-vstack-card {
+  position: absolute; width: 440px; height: 260px; background: linear-gradient(145deg, #1e1916 0%, #130f0d 100%);
+  border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease, border-color 0.4s ease;
+}
+.pin-vstack-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.vstack-card-header { display: flex; justify-content: space-between; align-items: center; }
+.vstack-logo { height: 32px; width: auto; object-fit: contain; }
+.vstack-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); background: rgba(204, 133, 98, 0.12); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(204, 133, 98, 0.3); }
+.vstack-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ivory); margin-top: 0.4rem; }
+.vstack-subtitle { font-size: 0.84rem; color: var(--brass); margin-bottom: 0.3rem; }
+.vstack-desc { font-size: 0.85rem; color: var(--ivory-dim); line-height: 1.5; }
+.vstack-link-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--brass-bright); text-decoration: none; margin-top: 0.4rem; transition: color 0.2s ease; }
+.vstack-link-btn:hover { color: var(--ivory); }
+.vstack-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+
+/* --- 3. PROBLEM LINEAR FOCUS BLUR (pin/1073897) --- */
+.pin-problem-stage { width: 100%; margin-top: 2rem; display: flex; justify-content: center; }
+.pin-problem-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1150px; justify-content: center; }
+.pin-problem-card {
+  flex: 1; min-width: 240px; height: 220px; background: linear-gradient(150deg, #241b16 0%, #171210 100%);
+  border: 1px solid rgba(204, 133, 98, 0.2); border-radius: 20px; padding: 1.8rem 1.6rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; filter: blur(4px); opacity: 0.5; transform: scale(0.94); transition: all 0.5s ease;
+}
+.pin-problem-card.active, .pin-problem-card:hover { flex: 1.2; filter: blur(0px); opacity: 1; transform: scale(1.02); border-color: var(--brass-bright); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85); z-index: 10; }
+.prob-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--brass-bright); }
+.prob-title { font-family: var(--serif); font-size: 1.45rem; color: var(--ivory); }
+.prob-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+
+/* --- 4. PROCESS STEP SLIDER (pin/754564) --- */
+.pin-process-stage { width: 100%; max-width: 900px; margin: 1.5rem auto 0; position: relative; }
+.timeline-bar { width: 100%; height: 3px; background: rgba(204, 133, 98, 0.2); position: relative; margin-bottom: 3.5rem; }
+.timeline-track-fill { height: 100%; background: var(--brass-bright); width: 0%; transition: width 0.5s ease; }
+.timeline-nodes { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+.tl-node { width: 32px; height: 32px; border-radius: 50%; background: #171210; border: 1px solid var(--line); color: var(--ivory-dim); font-family: var(--serif); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+.tl-node.active { background: var(--brass-bright); border-color: var(--brass-bright); color: var(--ink); transform: scale(1.15); }
+.pin-process-track { width: 100%; position: relative; min-height: 280px; }
+.pin-process-card { position: absolute; top: 0; left: 0; width: 100%; background: linear-gradient(145deg, #1e2430 0%, #12161f 100%); border: 1px solid rgba(204, 133, 98, 0.3); border-radius: 24px; padding: 2.5rem 2.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65); display: flex; justify-content: space-between; opacity: 0; transform: translateX(40px); pointer-events: none; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pin-process-card.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.proc-phase-tag { font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.proc-title { font-family: var(--serif); font-size: 1.8rem; color: var(--ivory); margin: 0.4rem 0; }
+.proc-desc { font-size: 0.92rem; color: var(--ivory-dim); line-height: 1.6; max-width: 50ch; }
+.proc-large-num { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: var(--brass-bright); opacity: 0.85; align-self: flex-end; }
+
+/* --- 5. RESULTS 3D DIAGONAL DEPTH (pin/406732) --- */
+.pin-diagonal-stage { width: 100%; max-width: 1100px; margin: 1.5rem auto 0; position: relative; display: flex; flex-direction: column; align-items: center; }
+.pin-diagonal-container { width: 100%; height: 380px; position: relative; perspective: 1200px; display: flex; justify-content: center; align-items: center; }
+.pin-diag-card { position: absolute; width: 440px; height: 270px; background: linear-gradient(145deg, #1f1916 0%, #130f0d 100%); border: 1px solid rgba(204, 133, 98, 0.25); border-radius: 24px; padding: 2.2rem 2.2rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease; }
+.pin-diag-card.active { border-color: var(--brass-bright); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(204, 133, 98, 0.3); }
+.diag-role-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass-bright); }
+.diag-name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); }
+.diag-subtitle { font-size: 0.85rem; color: var(--brass); }
+.diag-desc { font-size: 0.88rem; color: var(--ivory-dim); line-height: 1.55; }
+.diag-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; }
+
+/* TYPEWRITER & SLOW BOUNCE-IN */
+.typewriter-active::after { content: "|"; color: var(--brass-bright); animation: blinkCursor 0.8s infinite; }
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.bounce-reveal { opacity: 0; transform: translateY(45px) scale(0.96); transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.7s ease; }
+.bounce-reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+html { scroll-behavior: smooth; }
+
+
+/* ==========================================================================
+   Text Slide Left to Right Transition Across Every Section Tab
+   ========================================================================== */
+
+.slide-text-left {
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.slide-text-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered text delays */
+.slide-delay-1 { transition-delay: 0.1s; }
+.slide-delay-2 { transition-delay: 0.22s; }
+.slide-delay-3 { transition-delay: 0.34s; }
+.slide-delay-4 { transition-delay: 0.46s; }
+
+
+/* ==========================================================================
+   Dynamic Liquid Mesh Background Transition (from fortimarkweb)
+   ========================================================================== */
+
+body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+@keyframes liquidBgMesh {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
 </style>
 </head>
 <body class="is-loading">
@@ -662,101 +1838,116 @@ header nav a:hover:after{width:100%}
 <section class="section" id="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="rule"></span>OUR SERVICES</div>
-      <h2>Six pieces. One board.</h2>
-      <p>Every capability plays a distinct role — and only moves the business forward when the others are in position too.</p>
+      <div class="eyebrow slide-text-left slide-delay-1"><span class="rule"></span>OUR SERVICES</div>
+      <h2 class="typewriter-text slide-text-left slide-delay-2" data-original-text="Six pieces. One board.">Six pieces. One board.</h2>
+      <p class="slide-text-left slide-delay-3">Every capability plays a distinct role — and only moves the business forward when the others are in position too.</p>
     </div>
-  </div>
-  <div class="board">
-    <div class="square reveal">
-      <div class="piece-id">
-        <div class="piece-tag">· Strategic Lead</div>
-        <div class="piece-glyph">♚</div>
+
+    <!-- Pinterest 633387 3D Coverflow Stage -->
+    <div class="pin-coverflow-stage">
+      <div class="pin-coverflow-container" id="coverflowContainer">
+        <!-- Card 01 -->
+        <div class="pin-coverflow-card" data-index="0">
+          <div class="cf-num-badge">01</div>
+          <div class="cf-role-tag">♚ Strategic Lead</div>
+          <h3 class="cf-title">Digital Presence &amp; Brand Strategy</h3>
+          <ul class="cf-task-list">
+            <li>Brand Identity &amp; Architecture</li>
+            <li>Strategic Market Positioning</li>
+            <li>Omnichannel Brand Guidelines</li>
+            <li>Executive Pitch Decks</li>
+            <li>Competitor Intelligence Audit</li>
+            <li>Digital Reputation Strategy</li>
+          </ul>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="pin-coverflow-card" data-index="1">
+          <div class="cf-num-badge">02</div>
+          <div class="cf-role-tag">♛ ROAS Engine</div>
+          <h3 class="cf-title">Performance Marketing &amp; Paid Ads</h3>
+          <ul class="cf-task-list">
+            <li>Meta &amp; Instagram Ads Scaling</li>
+            <li>Google Search &amp; PPC Campaigns</li>
+            <li>Multi-Touch Funnel Optimization</li>
+            <li>Precision Audience Retargeting</li>
+            <li>Real-Time ROAS Dashboards</li>
+            <li>Landing Page CRO</li>
+          </ul>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="pin-coverflow-card" data-index="2">
+          <div class="cf-num-badge">03</div>
+          <div class="cf-role-tag">♝ Storytelling</div>
+          <h3 class="cf-title">Content Creation &amp; Visual Design</h3>
+          <ul class="cf-task-list">
+            <li>Cinematic Reel &amp; Video Editing</li>
+            <li>Studio Photo &amp; Product Shoots</li>
+            <li>High-Converting Copywriting</li>
+            <li>Social Media Grid Management</li>
+            <li>Custom Motion Graphics</li>
+            <li>Brand Narrative Scripts</li>
+          </ul>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="pin-coverflow-card" data-index="3">
+          <div class="cf-num-badge">04</div>
+          <div class="cf-role-tag">♞ Automation</div>
+          <h3 class="cf-title">AI &amp; Automation Workflows</h3>
+          <ul class="cf-task-list">
+            <li>WhatsApp Commerce Chatbots</li>
+            <li>Custom CRM &amp; Automated Pipelines</li>
+            <li>Automated Email &amp; SMS Workflows</li>
+            <li>AI Customer Service Agents</li>
+            <li>Internal Operations Automation</li>
+            <li>API &amp; Webhook Integration</li>
+          </ul>
+        </div>
+
+        <!-- Card 05 -->
+        <div class="pin-coverflow-card" data-index="4">
+          <div class="cf-num-badge">05</div>
+          <div class="cf-role-tag">♜ Systems</div>
+          <h3 class="cf-title">Software &amp; Custom App Dev</h3>
+          <ul class="cf-task-list">
+            <li>Custom SaaS Web Applications</li>
+            <li>Native iOS &amp; Android Mobile Apps</li>
+            <li>Enterprise API &amp; Backend</li>
+            <li>Secure Payment Gateways</li>
+            <li>Cloud Database Infrastructure</li>
+            <li>Ongoing QA &amp; Maintenance</li>
+          </ul>
+        </div>
+
+        <!-- Card 06 -->
+        <div class="pin-coverflow-card" data-index="5">
+          <div class="cf-num-badge">06</div>
+          <div class="cf-role-tag">♟ Foundation</div>
+          <h3 class="cf-title">Web Development &amp; Technical SEO</h3>
+          <ul class="cf-task-list">
+            <li>Responsive Custom Web Design</li>
+            <li>Comprehensive Technical SEO</li>
+            <li>E-Commerce Storefronts</li>
+            <li>Interactive UX Micro-Animations</li>
+            <li>Web Vitals Speed Tuning</li>
+            <li>Google Analytics Event Tracking</li>
+          </ul>
+        </div>
       </div>
-      <h3>Digital Presence &amp; Brand Strategy</h3>
-      <ul>
-        <li>Brand Identity &amp; Architecture</li>
-        <li>Strategic Market Positioning</li>
-        <li>Omnichannel Brand Guidelines</li>
-        <li>Executive Pitch Decks</li>
-        <li>Competitor Intelligence Audit</li>
-        <li>Digital Reputation Strategy</li>
-      </ul>
-    </div>
-    <div class="square reveal">
-      <div class="piece-id">
-        <div class="piece-tag">ROAS Engine</div>
-        <div class="piece-glyph">♛</div>
+
+      <!-- Controls -->
+      <div class="cf-controls">
+        <div class="cf-dots">
+          <span class="cf-dot active" data-index="0"></span>
+          <span class="cf-dot" data-index="1"></span>
+          <span class="cf-dot" data-index="2"></span>
+          <span class="cf-dot" data-index="3"></span>
+          <span class="cf-dot" data-index="4"></span>
+          <span class="cf-dot" data-index="5"></span>
+        </div>
       </div>
-      <h3>Performance Marketing &amp; Paid Ads</h3>
-      <ul>
-        <li>Meta &amp; Instagram Ads Scaling</li>
-        <li>Google Search &amp; PPC Campaigns</li>
-        <li>Multi-Touch Funnel Optimization</li>
-        <li>Precision Audience Retargeting</li>
-        <li>Real-Time ROAS Dashboards</li>
-        <li>Landing Page CRO</li>
-      </ul>
-    </div>
-    <div class="square reveal">
-      <div class="piece-id">
-        <div class="piece-tag">Storytelling</div>
-        <div class="piece-glyph">♝</div>
-      </div>
-      <h3>Content Creation &amp; Visual Design</h3>
-      <ul>
-        <li>Cinematic Reel &amp; Video Editing</li>
-        <li>Studio Photo &amp; Product Shoots</li>
-        <li>High-Converting Copywriting</li>
-        <li>Social Media Grid Management</li>
-        <li>Custom Motion Graphics</li>
-        <li>Brand Narrative Scripts</li>
-      </ul>
-    </div>
-    <div class="square reveal">
-      <div class="piece-id">
-        <div class="piece-tag">Automation</div>
-        <div class="piece-glyph">♞</div>
-      </div>
-      <h3>AI &amp; Automation Workflows</h3>
-      <ul>
-        <li>WhatsApp Commerce Chatbots</li>
-        <li>Custom CRM &amp; Automated Pipelines</li>
-        <li>Automated Email &amp; SMS Workflows</li>
-        <li>AI Customer Service Agents</li>
-        <li>Internal Operations Automation</li>
-        <li>API &amp; Webhook Integration</li>
-      </ul>
-    </div>
-    <div class="square reveal">
-      <div class="piece-id">
-        <div class="piece-tag">Systems</div>
-        <div class="piece-glyph">♜</div>
-      </div>
-      <h3>Software &amp; Custom App Dev</h3>
-      <ul>
-        <li>Custom SaaS Web Applications</li>
-        <li>Native iOS &amp; Android Mobile Apps</li>
-        <li>Enterprise API &amp; Backend</li>
-        <li>Secure Payment Gateways</li>
-        <li>Cloud Database Infrastructure</li>
-        <li>Ongoing QA &amp; Maintenance</li>
-      </ul>
-    </div>
-    <div class="square reveal">
-      <div class="piece-id">
-        <div class="piece-tag">Foundation</div>
-        <div class="piece-glyph">♟</div>
-      </div>
-      <h3>Web Development &amp; Technical SEO</h3>
-      <ul>
-        <li>Responsive Custom Web Design</li>
-        <li>Comprehensive Technical SEO</li>
-        <li>E-Commerce Storefronts</li>
-        <li>Interactive UX Micro-Animations</li>
-        <li>Web Vitals Speed Tuning</li>
-        <li>Google Analytics Event Tracking</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -764,56 +1955,110 @@ header nav a:hover:after{width:100%}
 <section class="section" id="clients" style="padding-top:0;">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="rule"></span>OUR CLIENTS</div>
-      <h2>Brands growing with us.</h2>
-      <p>Restaurants, cafés, bars, cloud kitchens and hospitality concepts we've partnered with directly.</p>
+      <div class="eyebrow slide-text-left slide-delay-1"><span class="rule"></span>OUR BRANDS</div>
+      <h2 class="typewriter-text slide-text-left slide-delay-2" data-original-text="Brands growing with us.">Brands growing with us.</h2>
+      <p class="slide-text-left slide-delay-3">Restaurants, cafés, bars, cloud kitchens and hospitality concepts we've partnered with directly.</p>
     </div>
-  </div>
-  <div class="wrap">
-    <div class="scroll-hint reveal"><span class="rule"></span>Swipe to see more</div>
-    <div class="client-strip reveal">
-      <div class="client-card">
-        <img src="https://fortimarkweb.vercel.app/assets/bologna_logo_hd.png" alt="Bologna Restaurant logo">
-        <div class="role">Partnered Brand</div>
-        <div class="name">Bologna Restaurant</div>
-        <div class="desc">Italian Fine Dining &amp; Specialty Kitchen</div>
-        <a href="https://slateblue-hedgehog-572890.hostingersite.com" target="_blank" rel="noopener">Visit Website →</a>
+
+    <!-- Pinterest 589127 3D Vertical Layer Stack Stage -->
+    <div class="pin-vstack-stage">
+      <div class="pin-vstack-container" id="vstackContainer">
+        <!-- Brand Card 01: Bologna Restaurant -->
+        <div class="pin-vstack-card active" data-index="0">
+          <div class="vstack-card-header">
+            <img src="https://fortimarkweb.vercel.app/assets/bologna_logo_hd.png" alt="Bologna logo" class="vstack-logo">
+            <span class="vstack-role">Official Website</span>
+          </div>
+          <h3 class="vstack-title">Bologna Restaurant</h3>
+          <p class="vstack-subtitle">Italian Fine Dining &amp; Specialty Kitchen</p>
+          <p class="vstack-desc">Italian Fine Dining &amp; Specialty Kitchen offering artisanal pizzas, hand-crafted pastas, and fine dining.</p>
+          <a href="https://slateblue-hedgehog-572890.hostingersite.com" target="_blank" rel="noopener" class="vstack-link-btn">Visit Website &rarr;</a>
+        </div>
+
+        <!-- Brand Card 02: Yumm Keralam -->
+        <div class="pin-vstack-card" data-index="1">
+          <div class="vstack-card-header">
+            <img src="https://fortimarkweb.vercel.app/assets/yumm_logo_hd.png" alt="Yumm Keralam logo" class="vstack-logo">
+            <span class="vstack-role">Official Website</span>
+          </div>
+          <h3 class="vstack-title">Yumm Keralam</h3>
+          <p class="vstack-subtitle">Kerala Regional Cuisine</p>
+          <p class="vstack-desc">Authentic regional Kerala culinary dining, traditional flavors, and modern hospitality concept.</p>
+          <a href="https://yummkeralam.com" target="_blank" rel="noopener" class="vstack-link-btn">Visit Website &rarr;</a>
+        </div>
+
+        <!-- Brand Card 03: Day One Cafe -->
+        <div class="pin-vstack-card" data-index="2">
+          <div class="vstack-card-header">
+            <img src="https://fortimarkweb.vercel.app/assets/dayone_logo_hd.png" alt="Day One Cafe logo" class="vstack-logo">
+            <span class="vstack-role">Official Website</span>
+          </div>
+          <h3 class="vstack-title">Day One Cafe</h3>
+          <p class="vstack-subtitle">Neighbourhood Café &amp; Roastery</p>
+          <p class="vstack-desc">Specialty coffee roastery, gourmet artisan brews, and vibrant neighbourhood café experience.</p>
+          <a href="https://dayonecafe.com" target="_blank" rel="noopener" class="vstack-link-btn">Visit Website &rarr;</a>
+        </div>
+
+        <!-- Brand Card 04: Thai Chef -->
+        <div class="pin-vstack-card" data-index="3">
+          <div class="vstack-card-header">
+            <img src="https://fortimarkweb.vercel.app/assets/thaichef_logo_hd.png" alt="Thai Chef logo" class="vstack-logo">
+            <span class="vstack-role">Official Website</span>
+          </div>
+          <h3 class="vstack-title">Thai Chef</h3>
+          <p class="vstack-subtitle">Authentic Thai Kitchen</p>
+          <p class="vstack-desc">Authentic Asian &amp; Thai culinary dining experience featuring handcrafted street-food and curries.</p>
+          <a href="https://thaichef.fortimark.co/" target="_blank" rel="noopener" class="vstack-link-btn">Visit Website &rarr;</a>
+        </div>
+
+        <!-- Brand Card 05: Once Upon a Flame -->
+        <div class="pin-vstack-card" data-index="4">
+          <div class="vstack-card-header">
+            <img src="https://fortimarkweb.vercel.app/assets/flame_logo_hd.png" alt="Once Upon a Flame logo" class="vstack-logo">
+            <span class="vstack-role">Instagram Page</span>
+          </div>
+          <h3 class="vstack-title">Once Upon a Flame</h3>
+          <p class="vstack-subtitle">Live-Fire Dining Concept</p>
+          <p class="vstack-desc">High-production cinematic visual assets, VIP event stories, and live-fire dining media on Instagram.</p>
+          <a href="https://www.instagram.com/once_upon_a_flame/" target="_blank" rel="noopener" class="vstack-link-btn">Visit Instagram Page &rarr;</a>
+        </div>
+
+        <!-- Brand Card 06: Rajya Dvaar -->
+        <div class="pin-vstack-card" data-index="5">
+          <div class="vstack-card-header">
+            <img src="https://fortimarkweb.vercel.app/assets/rajya_logo_hd.png" alt="Rajya Dvaar logo" class="vstack-logo">
+            <span class="vstack-role">Instagram Page</span>
+          </div>
+          <h3 class="vstack-title">Rajya Dvaar</h3>
+          <p class="vstack-subtitle">Regional Indian Dining</p>
+          <p class="vstack-desc">Royal heritage Indian dining stories, culinary highlights, and brand reels on Instagram.</p>
+          <a href="https://www.instagram.com/rajya.dvaar/" target="_blank" rel="noopener" class="vstack-link-btn">Visit Instagram Page &rarr;</a>
+        </div>
+
+        <!-- Brand Card 07: Cafe Down The Alley -->
+        <div class="pin-vstack-card" data-index="6">
+          <div class="vstack-card-header">
+            <img src="https://fortimarkweb.vercel.app/assets/alley_logo_hd.png" alt="Cafe Down The Alley logo" class="vstack-logo">
+            <span class="vstack-role">Instagram Page</span>
+          </div>
+          <h3 class="vstack-title">Cafe Down The Alley</h3>
+          <p class="vstack-subtitle">Boutique Café &amp; Bakery</p>
+          <p class="vstack-desc">Cozy specialty café hangout, boutique bakery highlights, and viral grid storytelling on Instagram.</p>
+          <a href="https://www.instagram.com/cafedownthealley/" target="_blank" rel="noopener" class="vstack-link-btn">Visit Instagram Page &rarr;</a>
+        </div>
       </div>
-      <div class="client-card">
-        <img src="https://fortimarkweb.vercel.app/assets/yumm_logo_hd.png" alt="Yumm Keralam logo">
-        <div class="role">Partnered Brand</div>
-        <div class="name">Yumm Keralam</div>
-        <div class="desc">Kerala Regional Cuisine</div>
-      </div>
-      <div class="client-card">
-        <img src="https://fortimarkweb.vercel.app/assets/dayone_logo_hd.png" alt="Day One Cafe logo">
-        <div class="role">Partnered Brand</div>
-        <div class="name">Day One Cafe</div>
-        <div class="desc">Neighbourhood Café &amp; Roastery</div>
-      </div>
-      <div class="client-card">
-        <img src="https://fortimarkweb.vercel.app/assets/thaichef_logo_hd.png" alt="Thai Chef logo">
-        <div class="role">Partnered Brand</div>
-        <div class="name">Thai Chef</div>
-        <div class="desc">Authentic Thai Kitchen</div>
-      </div>
-      <div class="client-card">
-        <img src="https://fortimarkweb.vercel.app/assets/flame_logo_hd.png" alt="Once Upon a Flame logo">
-        <div class="role">Partnered Brand</div>
-        <div class="name">Once Upon a Flame</div>
-        <div class="desc">Live-Fire Dining Concept</div>
-      </div>
-      <div class="client-card">
-        <img src="https://fortimarkweb.vercel.app/assets/rajya_logo_hd.png" alt="Rajya Dvaar logo">
-        <div class="role">Partnered Brand</div>
-        <div class="name">Rajya Dvaar</div>
-        <div class="desc">Regional Indian Dining</div>
-      </div>
-      <div class="client-card">
-        <img src="https://fortimarkweb.vercel.app/assets/alley_logo_hd.png" alt="Cafe Down The Alley logo">
-        <div class="role">Partnered Brand</div>
-        <div class="name">Cafe Down The Alley</div>
-        <div class="desc">Boutique Café &amp; Bakery</div>
+
+      <!-- Dots Controls -->
+      <div class="vstack-controls">
+        <div class="vstack-dots">
+          <span class="vstack-dot active" data-index="0"></span>
+          <span class="vstack-dot" data-index="1"></span>
+          <span class="vstack-dot" data-index="2"></span>
+          <span class="vstack-dot" data-index="3"></span>
+          <span class="vstack-dot" data-index="4"></span>
+          <span class="vstack-dot" data-index="5"></span>
+          <span class="vstack-dot" data-index="6"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -822,74 +2067,223 @@ header nav a:hover:after{width:100%}
 <section class="section" id="problem">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="rule"></span>THE PROBLEM</div>
-      <h2>Built to bridge the gaps.</h2>
-      <p>Over the last year we've worked closely with restaurants, cafés, bars, cloud kitchens, luxury dining concepts and hospitality brands. One thing became clear:</p>
+      <div class="eyebrow slide-text-left slide-delay-1"><span class="rule"></span>THE PROBLEM</div>
+      <h2 class="typewriter-text slide-text-left slide-delay-2" data-original-text="Built to bridge the gaps.">Built to bridge the gaps.</h2>
+      <p class="slide-text-left slide-delay-3">Over the last year we've worked closely with restaurants, cafés, bars, cloud kitchens, luxury dining concepts and hospitality brands. One thing became clear:</p>
     </div>
-    <div class="problem-grid">
-      <div class="problem-list">
-        <div class="problem-item reveal">
-          <div class="problem-num">01</div>
-          <div><h4>Content vs. Visibility</h4><p>Some have exceptional content but weak visibility.</p></div>
+
+    <!-- Pinterest 1073897 Linear Focus Blur Card Stage -->
+    <div class="pin-problem-stage">
+      <div class="pin-problem-track" id="pinProblemTrack">
+        <!-- Item 01 -->
+        <div class="pin-problem-card active" data-index="0">
+          <div class="prob-card-header">
+            <span class="prob-num">01</span>
+          </div>
+          <h4 class="prob-title">Content vs. Visibility</h4>
+          <p class="prob-desc">Some have exceptional content but weak visibility.</p>
         </div>
-        <div class="problem-item reveal">
-          <div class="problem-num">02</div>
-          <div><h4>Search vs. Story</h4><p>Some rank well but say nothing memorable once found.</p></div>
+
+        <!-- Item 02 -->
+        <div class="pin-problem-card" data-index="1">
+          <div class="prob-card-header">
+            <span class="prob-num">02</span>
+          </div>
+          <h4 class="prob-title">Search vs. Story</h4>
+          <p class="prob-desc">Some rank well but say nothing memorable once found.</p>
         </div>
-        <div class="problem-item reveal">
-          <div class="problem-num">03</div>
-          <div><h4>Ads vs. Retention</h4><p>Some acquire customers fast, then lose them just as fast.</p></div>
+
+        <!-- Item 03 -->
+        <div class="pin-problem-card" data-index="2">
+          <div class="prob-card-header">
+            <span class="prob-num">03</span>
+          </div>
+          <h4 class="prob-title">Ads vs. Retention</h4>
+          <p class="prob-desc">Some acquire customers fast, then lose them just as fast.</p>
         </div>
-        <div class="problem-item reveal">
-          <div class="problem-num">04</div>
-          <div><h4>CX vs. Tech</h4><p>Some deliver a great experience the technology can't scale.</p></div>
+
+        <!-- Item 04 -->
+        <div class="pin-problem-card" data-index="3">
+          <div class="prob-card-header">
+            <span class="prob-num">04</span>
+          </div>
+          <h4 class="prob-title">CX vs. Tech</h4>
+          <p class="prob-desc">Some deliver a great experience the technology can't scale.</p>
         </div>
       </div>
-      <div class="problem-statement reveal">
-        Most brands are doing something right. <span>Very few are doing everything together.</span><br><br>
-        That's where Fortimark comes in — we identify the missing pieces and build the connections that drive growth.
-      </div>
+    </div>
+
+    <div class="problem-statement reveal" style="margin-top: 3rem;">
+      Most brands are doing something right. <span>Very few are doing everything together.</span><br><br>
+      That's where Fortimark comes in — we identify the missing pieces and build the connections that drive growth.
     </div>
   </div>
 </section>
 
-<section class="section" id="process" style="padding-bottom:0;">
+<section class="section" id="process">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="rule"></span>THE PROCESS</div>
-      <h2>Diagnose before we prescribe.</h2>
-      <p>Every hospitality brand wants growth, but growth challenges rarely share one solution. That's why we never begin with execution — we begin with understanding.</p>
+      <div class="eyebrow slide-text-left slide-delay-1"><span class="rule"></span>HOW WE WORK</div>
+      <h2 class="typewriter-text slide-text-left slide-delay-2" data-original-text="Diagnose before we prescribe.">Diagnose before we prescribe.</h2>
+      <p class="slide-text-left slide-delay-3">A structured 5-step methodology ensuring strategic alignment and rapid execution.</p>
     </div>
-  </div>
-  <div class="process-row reveal">
-    <div class="process-step"><div class="n">01</div><h4>Discovery</h4><p>A deep dive into your business, brand positioning, customer journey, digital presence, and growth objectives.</p></div>
-    <div class="process-step"><div class="n">02</div><h4>Analysis</h4><p>We identify opportunities and gaps across content, performance, search visibility, retention, and technology.</p></div>
-    <div class="process-step"><div class="n">03</div><h4>Strategy</h4><p>A tailored roadmap focused on the initiatives that create the greatest business impact.</p></div>
-    <div class="process-step"><div class="n">04</div><h4>Execution</h4><p>Our team implements across every relevant channel, aligned to measurable objectives.</p></div>
-    <div class="process-step"><div class="n">05</div><h4>Optimisation</h4><p>Continuous monitoring, refinement, and discovery of new opportunities for growth.</p></div>
+
+    <!-- Pinterest 754564 Step Slider Stage -->
+    <div class="pin-process-stage">
+      <div class="timeline-bar">
+        <div class="timeline-track-fill" id="timelineTrackFill"></div>
+        <div class="timeline-nodes">
+          <span class="tl-node active" data-index="0">01</span>
+          <span class="tl-node" data-index="1">02</span>
+          <span class="tl-node" data-index="2">03</span>
+          <span class="tl-node" data-index="3">04</span>
+          <span class="tl-node" data-index="4">05</span>
+        </div>
+      </div>
+
+      <div class="pin-process-track" id="pinProcessTrack">
+        <!-- Step 01 -->
+        <div class="pin-process-card active" data-index="0">
+          <div class="proc-content">
+            <span class="proc-phase-tag">Phase One • Exploration</span>
+            <h3 class="proc-title">Discovery &amp; Audit</h3>
+            <p class="proc-desc">We take a deep dive into your business, brand positioning, customer journey, search presence, and competitor landscape.</p>
+          </div>
+          <div class="proc-large-num">01</div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="pin-process-card" data-index="1">
+          <div class="proc-content">
+            <span class="proc-phase-tag">Phase Two • Audit</span>
+            <h3 class="proc-title">Analysis &amp; Diagnosis</h3>
+            <p class="proc-desc">We identify system bottlenecks, marketing inefficiencies, content gaps, and untapped acquisition channels.</p>
+          </div>
+          <div class="proc-large-num">02</div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="pin-process-card" data-index="2">
+          <div class="proc-content">
+            <span class="proc-phase-tag">Phase Three • Blueprint</span>
+            <h3 class="proc-title">Strategy &amp; Architecture</h3>
+            <p class="proc-desc">We develop a tailored roadmap focused on high-impact initiatives that move revenue.</p>
+          </div>
+          <div class="proc-large-num">03</div>
+        </div>
+
+        <!-- Step 04 -->
+        <div class="pin-process-card" data-index="3">
+          <div class="proc-content">
+            <span class="proc-phase-tag">Phase Four • Build</span>
+            <h3 class="proc-title">Execution &amp; Launch</h3>
+            <p class="proc-desc">We design, build, and deploy the strategy across search, paid media, creative assets, and automation.</p>
+          </div>
+          <div class="proc-large-num">04</div>
+        </div>
+
+        <!-- Step 05 -->
+        <div class="pin-process-card" data-index="4">
+          <div class="proc-content">
+            <span class="proc-phase-tag">Phase Five • Growth</span>
+            <h3 class="proc-title">Optimization &amp; Scale</h3>
+            <p class="proc-desc">We continuously test, measure, and optimize every funnel component to compound your return on ad spend.</p>
+          </div>
+          <div class="proc-large-num">05</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section" id="results">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="rule"></span>OUR RESULTS</div>
-      <h2>Measurable outcomes for brands.</h2>
-      <p>Five outcomes we're built to move — driven by strategic, connected execution.</p>
+      <div class="eyebrow slide-text-left slide-delay-1"><span class="rule"></span>OUR RESULTS</div>
+      <h2 class="typewriter-text slide-text-left slide-delay-2" data-original-text="Measurable outcomes for brands.">Measurable outcomes for brands.</h2>
+      <p class="slide-text-left slide-delay-3">Because that\'s what marketing should do — create clear, compounding business impact across every channel.</p>
     </div>
-  </div>
-  <div class="results-grid reveal">
-    <div class="result-cell"><h4>Better Customer Retention</h4><p>Long-term brand equity and loyalty through strategic engagement.</p><div class="result-mark">01</div></div>
-    <div class="result-cell"><h4>Stronger Online Visibility</h4><p>Dominating search rankings and social feeds with high-impact creative.</p><div class="result-mark">02</div></div>
-    <div class="result-cell"><h4>Higher Return on Ad Spend</h4><p>Optimizing acquisition funnels to maximize ROAS, minimize CPA.</p><div class="result-mark">03</div></div>
-    <div class="result-cell"><h4>More Repeat Customers</h4><p>Automated lifecycle email and WhatsApp nurture funnels that drive re-orders.</p><div class="result-mark">04</div></div>
-    <div class="result-cell"><h4>More Revenue</h4><p>Accelerating sustainable bottom-line profitability and brand valuation.</p><div class="result-mark">05</div></div>
+
+    <!-- Pinterest 406732 3D Diagonal Depth Stage -->
+    <div class="pin-diagonal-stage">
+      <div class="pin-diagonal-container" id="diagonalContainer">
+        <!-- Outcome Card 01 -->
+        <div class="pin-diag-card active" data-index="0">
+          <div class="diag-card-header">
+            <span class="diag-role-tag">Measurable Outcome</span>
+          </div>
+          <h3 class="diag-name">Better Customer Retention</h3>
+          <p class="diag-subtitle">Long-Term Brand Equity</p>
+          <p class="diag-desc">Building long-term brand equity and customer loyalty through strategic engagement and retention funnels.</p>
+        </div>
+
+        <!-- Outcome Card 02 -->
+        <div class="pin-diag-card" data-index="1">
+          <div class="diag-card-header">
+            <span class="diag-role-tag">Measurable Outcome</span>
+          </div>
+          <h3 class="diag-name">Stronger Online Visibility</h3>
+          <p class="diag-subtitle">Search &amp; Social Dominance</p>
+          <p class="diag-desc">Dominating search result rankings and social feeds with high-impact visual creative and technical SEO dominance.</p>
+        </div>
+
+        <!-- Outcome Card 03 -->
+        <div class="pin-diag-card" data-index="2">
+          <div class="diag-card-header">
+            <span class="diag-role-tag">Measurable Outcome</span>
+          </div>
+          <h3 class="diag-name">Higher Return on Ad Spend</h3>
+          <p class="diag-subtitle">Funnel Optimization</p>
+          <p class="diag-desc">Optimizing multi-touch acquisition funnels to maximize ROAS and minimize customer acquisition cost (CAC).</p>
+        </div>
+
+        <!-- Outcome Card 04 -->
+        <div class="pin-diag-card" data-index="3">
+          <div class="diag-card-header">
+            <span class="diag-role-tag">Measurable Outcome</span>
+          </div>
+          <h3 class="diag-name">More Repeat Customers</h3>
+          <p class="diag-subtitle">Automated Nurture Workflows</p>
+          <p class="diag-desc">Automated lifecycle emails, SMS campaigns, and WhatsApp nurture funnels that consistently drive re-orders.</p>
+        </div>
+
+        <!-- Outcome Card 05 -->
+        <div class="pin-diag-card" data-index="4">
+          <div class="diag-card-header">
+            <span class="diag-role-tag">Measurable Outcome</span>
+          </div>
+          <h3 class="diag-name">More Revenue</h3>
+          <p class="diag-subtitle">Enterprise Profitability</p>
+          <p class="diag-desc">Accelerating sustainable bottom-line profitability, enterprise valuation, and predictable growth.</p>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="diag-controls">
+        <div class="diag-dots">
+          <span class="diag-dot active" data-index="0"></span>
+          <span class="diag-dot" data-index="1"></span>
+          <span class="diag-dot" data-index="2"></span>
+          <span class="diag-dot" data-index="3"></span>
+          <span class="diag-dot" data-index="4"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-panel reveal" style="margin-top: 4rem;">
+      <div class="eyebrow slide-text-left slide-delay-1"><span class="rule"></span>TAKE THE NEXT STEP</div>
+      <h3>Ready to accelerate your revenue?</h3>
+      <p>Speak directly with our strategy team to map out your custom growth blueprint.</p>
+      <div class="cta-actions">
+        <a href="tel:+956669921300" class="btn-primary">Call Us: +95 666 992 130</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="cta-section">
   <div class="wrap">
-    <div class="eyebrow" style="justify-content:center;"><span class="rule"></span>LET'S TALK</div>
+    <div class="eyebrow slide-text-left slide-delay-1" style="justify-content:center;"><span class="rule"></span>LET'S TALK</div>
     <h2 class="reveal">Ready to accelerate your revenue?</h2>
     <p class="reveal">Speak directly with our strategy team — no account managers, no relay chain.</p>
     <div class="cta-phone reveal"><a href="tel:+956669921300">+956 66992130</a></div>
@@ -967,5 +2361,404 @@ document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 It should be rebuilt directly from the original source file in the next revision.
 -->
 
+
+<script>
+// Pinterest 633387 3D Coverflow Rotator Logic for #services
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.pin-coverflow-card');
+  const dots = document.querySelectorAll('.cf-dot');
+  const total = cards.length;
+  let activeIndex = 0;
+
+  if (!cards.length) return;
+
+  function updateCoverflow(centerIdx) {
+    activeIndex = (centerIdx + total) % total;
+
+    cards.forEach((card, idx) => {
+      let offset = idx - activeIndex;
+      if (offset > total / 2) offset -= total;
+      if (offset < -total / 2) offset += total;
+
+      card.classList.remove('active');
+
+      if (offset === 0) {
+        card.classList.add('active');
+        card.style.transform = 'translate3d(0px, 0px, 150px) rotateY(0deg) scale(1)';
+        card.style.opacity = '1';
+        card.style.filter = 'blur(0px)';
+        card.style.zIndex = '20';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === -1) {
+        card.style.transform = 'translate3d(-260px, 0px, 20px) rotateY(25deg) scale(0.88)';
+        card.style.opacity = '0.7';
+        card.style.filter = 'blur(1.5px)';
+        card.style.zIndex = '10';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === 1) {
+        card.style.transform = 'translate3d(260px, 0px, 20px) rotateY(-25deg) scale(0.88)';
+        card.style.opacity = '0.7';
+        card.style.filter = 'blur(1.5px)';
+        card.style.zIndex = '10';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === -2) {
+        card.style.transform = 'translate3d(-460px, 0px, -120px) rotateY(40deg) scale(0.76)';
+        card.style.opacity = '0.35';
+        card.style.filter = 'blur(3.5px)';
+        card.style.zIndex = '5';
+        card.style.pointerEvents = 'none';
+      } else if (offset === 2) {
+        card.style.transform = 'translate3d(460px, 0px, -120px) rotateY(-40deg) scale(0.76)';
+        card.style.opacity = '0.35';
+        card.style.filter = 'blur(3.5px)';
+        card.style.zIndex = '5';
+        card.style.pointerEvents = 'none';
+      } else {
+        card.style.transform = 'translate3d(0px, 0px, -300px) scale(0.5)';
+        card.style.opacity = '0';
+        card.style.filter = 'blur(5px)';
+        card.style.zIndex = '1';
+        card.style.pointerEvents = 'none';
+      }
+    });
+
+    dots.forEach((dot, idx) => {
+      if (idx === activeIndex) dot.classList.add('active');
+      else dot.classList.remove('active');
+    });
+  }
+
+  cards.forEach((card, idx) => card.addEventListener('click', () => updateCoverflow(idx)));
+  dots.forEach((dot, idx) => dot.addEventListener('click', () => updateCoverflow(idx)));
+  updateCoverflow(0);
+});
+</script>
+
+<script>
+// Pinterest 589127 3D Vertical Layer Stack Cascade Logic for #clients
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.pin-vstack-card');
+  const dots = document.querySelectorAll('.vstack-dot');
+  const total = cards.length;
+  let activeIndex = 0;
+
+  if (!cards.length) return;
+
+  function updateVStack(centerIdx) {
+    activeIndex = (centerIdx + total) % total;
+
+    cards.forEach((card, idx) => {
+      let offset = idx - activeIndex;
+      if (offset < 0) offset += total;
+
+      card.classList.remove('active');
+
+      if (offset === 0) {
+        card.classList.add('active');
+        card.style.transform = 'translate3d(0px, 0px, 120px) scale(1)';
+        card.style.opacity = '1';
+        card.style.filter = 'blur(0px)';
+        card.style.zIndex = '20';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === 1) {
+        card.style.transform = 'translate3d(0px, -70px, 40px) scale(0.92)';
+        card.style.opacity = '0.75';
+        card.style.filter = 'blur(1px)';
+        card.style.zIndex = '15';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === 2) {
+        card.style.transform = 'translate3d(0px, -130px, -30px) scale(0.84)';
+        card.style.opacity = '0.55';
+        card.style.filter = 'blur(2.5px)';
+        card.style.zIndex = '10';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === 3) {
+        card.style.transform = 'translate3d(0px, -180px, -100px) scale(0.76)';
+        card.style.opacity = '0.35';
+        card.style.filter = 'blur(4px)';
+        card.style.zIndex = '5';
+        card.style.pointerEvents = 'none';
+      } else {
+        card.style.transform = 'translate3d(0px, -220px, -180px) scale(0.68)';
+        card.style.opacity = '0';
+        card.style.filter = 'blur(6px)';
+        card.style.zIndex = '1';
+        card.style.pointerEvents = 'none';
+      }
+    });
+
+    dots.forEach((dot, idx) => {
+      if (idx === activeIndex) dot.classList.add('active');
+      else dot.classList.remove('active');
+    });
+  }
+
+  cards.forEach((card, idx) => card.addEventListener('click', () => updateVStack(idx)));
+  dots.forEach((dot, idx) => dot.addEventListener('click', () => updateVStack(idx)));
+  updateVStack(0);
+});
+</script>
+
+<script>
+// Pinterest 1073897 Linear Focus Blur Logic for #problem
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.pin-problem-card');
+  if (!cards.length) return;
+
+  function updateProblemFocus(activeIdx) {
+    cards.forEach((card, idx) => {
+      if (idx === activeIdx) card.classList.add('active');
+      else card.classList.remove('active');
+    });
+  }
+
+  cards.forEach((card, idx) => {
+    card.addEventListener('mouseenter', () => updateProblemFocus(idx));
+    card.addEventListener('click', () => updateProblemFocus(idx));
+  });
+
+  updateProblemFocus(0);
+});
+</script>
+
+<script>
+// Pinterest 754564 Step Slider Logic for #process
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.pin-process-card');
+  const nodes = document.querySelectorAll('.tl-node');
+  const fill = document.getElementById('timelineTrackFill');
+  const total = cards.length;
+  let activeIndex = 0;
+
+  if (!cards.length) return;
+
+  function updateProcessStep(index) {
+    activeIndex = (index + total) % total;
+
+    if (fill) {
+      const percentage = (activeIndex / (total - 1)) * 100;
+      fill.style.width = percentage + '%';
+    }
+
+    nodes.forEach((node, idx) => {
+      if (idx === activeIndex) node.classList.add('active');
+      else node.classList.remove('active');
+    });
+
+    cards.forEach((card, idx) => {
+      if (idx === activeIndex) card.classList.add('active');
+      else card.classList.remove('active');
+    });
+  }
+
+  nodes.forEach((node, idx) => node.addEventListener('click', () => updateProcessStep(idx)));
+  updateProcessStep(0);
+});
+</script>
+
+<script>
+// Pinterest 406732 3D Diagonal Depth Logic for #results
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.pin-diag-card');
+  const dots = document.querySelectorAll('.diag-dot');
+  const total = cards.length;
+  let activeIndex = 0;
+
+  if (!cards.length) return;
+
+  function updateDiagonal(centerIdx) {
+    activeIndex = (centerIdx + total) % total;
+
+    cards.forEach((card, idx) => {
+      let offset = idx - activeIndex;
+      if (offset > total / 2) offset -= total;
+      if (offset < -total / 2) offset += total;
+
+      card.classList.remove('active');
+
+      if (offset === 0) {
+        card.classList.add('active');
+        card.style.transform = 'translate3d(0px, 0px, 160px) rotateY(0deg) scale(1)';
+        card.style.opacity = '1';
+        card.style.filter = 'blur(0px)';
+        card.style.zIndex = '20';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === -1) {
+        card.style.transform = 'translate3d(-210px, -120px, -60px) rotateY(18deg) scale(0.88)';
+        card.style.opacity = '0.65';
+        card.style.filter = 'blur(3px)';
+        card.style.zIndex = '10';
+        card.style.pointerEvents = 'auto';
+      } else if (offset === 1) {
+        card.style.transform = 'translate3d(210px, 120px, -60px) rotateY(-18deg) scale(0.88)';
+        card.style.opacity = '0.65';
+        card.style.filter = 'blur(3px)';
+        card.style.zIndex = '10';
+        card.style.pointerEvents = 'auto';
+      } else {
+        card.style.transform = 'translate3d(0px, 0px, -250px) scale(0.6)';
+        card.style.opacity = '0';
+        card.style.filter = 'blur(6px)';
+        card.style.zIndex = '1';
+        card.style.pointerEvents = 'none';
+      }
+    });
+
+    dots.forEach((dot, idx) => {
+      if (idx === activeIndex) dot.classList.add('active');
+      else dot.classList.remove('active');
+    });
+  }
+
+  cards.forEach((card, idx) => card.addEventListener('click', () => updateDiagonal(idx)));
+  dots.forEach((dot, idx) => dot.addEventListener('click', () => updateDiagonal(idx)));
+  updateDiagonal(0);
+});
+</script>
+
+<script>
+// Pinterest 330739 Typewriter & Slow Bounce-In Scroll Observer
+document.addEventListener('DOMContentLoaded', () => {
+  const bounceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.bounce-reveal, .reveal').forEach(el => bounceObserver.observe(el));
+
+  function typeWriter(element) {
+    if (element.classList.contains('typed-complete') || element.dataset.typing === "true") return;
+    
+    const fullText = element.getAttribute('data-original-text') || element.textContent;
+    element.setAttribute('data-original-text', fullText);
+    element.dataset.typing = "true";
+    element.textContent = "";
+    element.classList.add('typewriter-active');
+
+    let charIndex = 0;
+    const speed = 35;
+
+    function typeChar() {
+      if (charIndex < fullText.length) {
+        element.textContent += fullText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeChar, speed);
+      } else {
+        element.classList.remove('typewriter-active');
+        element.classList.add('typed-complete');
+        element.dataset.typing = "false";
+      }
+    }
+
+    typeChar();
+  }
+
+  const typeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        typeWriter(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('.typewriter-text').forEach(el => typeObserver.observe(el));
+});
+</script>
+
+<script>
+// Left-to-Right Text Slide Intersection Observer
+document.addEventListener('DOMContentLoaded', () => {
+  const textObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.slide-text-left').forEach(el => textObserver.observe(el));
+
+  // Re-trigger text slide when clicking navigation links
+  document.querySelectorAll('nav a[href^="#"], .mobile-menu a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const targetId = link.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetSec = document.querySelector(targetId);
+        if (targetSec) {
+          targetSec.querySelectorAll('.slide-text-left').forEach(el => {
+            el.classList.remove('in');
+            setTimeout(() => el.classList.add('in'), 150);
+          });
+        }
+      }
+    });
+  });
+});
+</script>
+
+<script>
+// Dynamic Liquid Background Mesh Shift (fortimarkweb)
+document.addEventListener('DOMContentLoaded', () => {
+  const bgGlows = [
+    'linear-gradient(135deg, #141210 0%, #1e1713 35%, #291e17 70%, #171310 100%)',
+    'linear-gradient(135deg, #171310 0%, #201915 35%, #2d211a 70%, #171310 100%)',
+    'linear-gradient(135deg, #12151c 0%, #19202c 35%, #222b3c 70%, #12151c 100%)',
+    'linear-gradient(135deg, #1b1418 0%, #261a22 35%, #34222f 70%, #1b1418 100%)'
+  ];
+
+  document.querySelectorAll('.pin-vstack-card, .pin-coverflow-card, .pin-diag-card').forEach((card, idx) => {
+    card.addEventListener('mouseenter', () => {
+      document.body.style.backgroundImage = bgGlows[idx % bgGlows.length];
+    });
+  });
+});
+</script>
+
+
+
+<script>
+// Lightweight Silky-Smooth Navigation Handler
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) {
+        mobileMenu.classList.remove('open');
+        burger.classList.remove('active');
+      } else {
+        mobileMenu.classList.add('open');
+        burger.classList.add('active');
+      }
+    });
+  }
+
+  // Smooth click scroll to sections
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            if (burger) burger.classList.remove('active');
+          }
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
