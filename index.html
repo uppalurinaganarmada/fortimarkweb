@@ -717,6 +717,123 @@ body{
   }
 }
 
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
+  }
+}
+
 </style>
 
 <style id="phase1-upgrade">
@@ -1035,6 +1152,123 @@ body{
   .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
     width: 92vw !important;
     padding: 1.25rem 1.1rem !important;
+  }
+}
+
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
   }
 }
 
@@ -1363,6 +1597,123 @@ body{
   }
 }
 
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
+  }
+}
+
 </style>
 
 <style id="phase3-upgrade">
@@ -1685,6 +2036,123 @@ body{
   .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
     width: 92vw !important;
     padding: 1.25rem 1.1rem !important;
+  }
+}
+
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
   }
 }
 
@@ -2017,6 +2485,123 @@ body{
   .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
     width: 92vw !important;
     padding: 1.25rem 1.1rem !important;
+  }
+}
+
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
   }
 }
 
@@ -2356,6 +2941,123 @@ body{
   }
 }
 
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
+  }
+}
+
 </style>
 
 <style id="phase5">
@@ -2667,6 +3369,123 @@ body{
   .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
     width: 92vw !important;
     padding: 1.25rem 1.1rem !important;
+  }
+}
+
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
   }
 }
 
@@ -3026,6 +3845,123 @@ body{
   .pin-coverflow-card, .pin-vstack-card, .pin-diag-card {
     width: 92vw !important;
     padding: 1.25rem 1.1rem !important;
+  }
+}
+
+
+/* ==========================================================================
+   CENTERED LAYOUT & EXACT LAPTOP 3D CARD ROTATORS ON MOBILE
+   ========================================================================== */
+
+/* Center Section Headings & Text Across All Devices */
+.section-head {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.eyebrow {
+  justify-content: center !important;
+}
+
+.section-head p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure 3D Card Stages are Centered on Mobile & Laptop */
+.pin-coverflow-stage,
+.pin-vstack-stage,
+.pin-problem-stage,
+.pin-process-stage,
+.pin-diagonal-stage {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Problem Section Horizontal Focus Blur Row Centered */
+.pin-problem-track {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+/* Exact Laptop 3D Card Rotator Scaling on Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* 1. Services 3D Coverflow Mobile Scaling */
+  .pin-coverflow-container {
+    height: 420px !important;
+    perspective: 800px !important;
+  }
+  .pin-coverflow-card {
+    width: 290px !important;
+    height: 390px !important;
+    padding: 1.6rem 1.4rem !important;
+  }
+
+  /* 2. Brands 3D Vertical Layer Stack Mobile Scaling */
+  .pin-vstack-container {
+    height: 350px !important;
+    perspective: 900px !important;
+  }
+  .pin-vstack-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+
+  /* 3. Problem Focus Blur Mobile Row Scaling */
+  .pin-problem-track {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .pin-problem-card {
+    min-width: 250px !important;
+    height: 220px !important;
+  }
+
+  /* 4. Process Step Slider Mobile Scaling */
+  .pin-process-stage {
+    width: 100% !important;
+  }
+  .pin-process-card {
+    width: 100% !important;
+    padding: 1.8rem 1.5rem !important;
+  }
+
+  /* 5. Results 3D Diagonal Depth Mobile Scaling */
+  .pin-diagonal-container {
+    height: 360px !important;
+    perspective: 900px !important;
+  }
+  .pin-diag-card {
+    width: 320px !important;
+    height: 250px !important;
+    padding: 1.5rem 1.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-coverflow-card {
+    width: 270px !important;
+    height: 370px !important;
+  }
+  .pin-vstack-card, .pin-diag-card {
+    width: 290px !important;
+    height: 240px !important;
   }
 }
 
